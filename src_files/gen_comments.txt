@@ -1,0 +1,4 @@
+"start","Hi!"
+"start","Welcome!"
+"endgame","Good Game!"
+"endgame","Finished!"

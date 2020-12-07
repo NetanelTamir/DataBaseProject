@@ -1,12 +1,22 @@
 import tkinter as tk
 
-from page import signup_view
+from page import home_view
 from PIL import Image, ImageTk
 
-def handle_Back_click():
-    print("back")
+window = None
 
-def main(id):
+
+def handle_Back_click():
+    global window
+    global player_g
+    window.destroy()
+    home_view.main()
+
+
+def main():
+    id = home_view.PLAYER[0]
+    global window
+    global player_g
     window = tk.Tk()
     window.geometry('640x480')
     window.configure(background='#4169E1')
@@ -30,8 +40,9 @@ def main(id):
         width=20,
     ).grid(row=0, column=0, columnspan=6, rowspan=2, sticky=tk.W + tk.E)
 
-    #table_records = get table records from DB limit
-    table = [("tal", 1000), ("omer", 900), ("yael", 700),("tal", 1000), ("omer", 900), ("yael", 700),("tal", 1000), ("omer", 900), ("yael", 700),("yoe", 10000)]
+    # table_records = get table records from DB limit
+    table = [("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000),
+             ("omer", 900), ("yael", 700), ("yoe", 10000)]
 
     label = []
     i = 2
@@ -39,22 +50,22 @@ def main(id):
         i += 1
         name = t[0]
         score = t[1]
-        if i % 2 ==0:
+        if i % 2 == 0:
             bg = "GREY"
         else:
             bg = "WHITE"
         x = tk.Label(
             window,
-            text= name,
+            text=name,
             font=("bold"),
             fg="black",
             bg=bg,
             width=20,
         )
         x.grid(row=i, column=2, sticky='NW')
-        y =tk.Label(
+        y = tk.Label(
             window,
-            text= str(score),
+            text=str(score),
             font=("bold"),
             fg="black",
             bg=bg,
@@ -65,11 +76,11 @@ def main(id):
         label.append(y)
     backButton = tk.Button(
         window,
-        text="Exit",
+        text="Go Back",
         width=24,
         height=1,
         bg="black",
         fg="white",
-        command=handle_Back_click()
+        command=lambda: handle_Back_click()
     ).place(x=225, y=420)
     window.mainloop()

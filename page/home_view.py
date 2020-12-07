@@ -6,7 +6,7 @@ from page import records_view
 from PIL import Image, ImageTk
 
 # import database_interaction
-
+PLAYER = None
 entry_name = None
 entry_pass = None
 label = None
@@ -43,10 +43,10 @@ def handle_add_friend_click():
 # database_intercation
 
 
-def handle_records_click(id):
+def handle_records_click():
     global root
     root.destroy()
-    records_view.main(id)
+    records_view.main()
 
     # response = database_interaction.add_player((username, password))
 
@@ -61,7 +61,8 @@ def favorite_locations_click():
     print("b")
 
 
-def main(player):
+def main():
+    global PLAYER
     global root
     global label
     global entry_pass
@@ -70,11 +71,11 @@ def main(player):
     global goBack
     global passw
     global userName
-    id = player[0]
-    firstName = player[3]
-    lastName = player[4]
-    lastPlay = player[5]
-    userName = player[0]
+    id = PLAYER[0]
+    firstName = PLAYER[3]
+    lastName = PLAYER[4]
+    lastPlay = PLAYER[5]
+    userName = PLAYER[0]
     delta = datetime.datetime.today() - lastPlay
     root = tk.Tk()
     root.geometry('640x480')
@@ -114,7 +115,7 @@ def main(player):
         height=1,
         bg="black",
         fg="white",
-        command=lambda:handle_records_click(id)
+        command=lambda:handle_records_click()
     ).grid(row=3, column=6)
     favoritesButton = tk.Button(
         root,

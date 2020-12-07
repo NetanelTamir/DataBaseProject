@@ -1,8 +1,9 @@
 import tkinter as tk
-from time import sleep
-from page import signup_view,home_view
-from PIL import Image, ImageTk
 import datetime
+from time import sleep
+
+from page import signup_view
+from PIL import Image, ImageTk
 
 # import database_interaction
 
@@ -16,18 +17,15 @@ userName = ""
 passw = ""
 
 
-def handle_click():
+def handle_play_click():
     global entry_first_name
     global entry_password
-    global root
     ##todo- goto the model and get user name and password
     # entry = username entry2 = password
-    if(entry_name and entry_pass):
+    if (entry_name and entry_pass):
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
         password = entry_pass.get()
-        root.destroy()
-        home_view.main(("omer","41241",41222,"omeqq","dimri",datetime.datetime(2020,12,5)))
 
 
 # response = database_interaction.log_in(username, password)
@@ -39,27 +37,26 @@ def handle_click():
 # database_intercation
 
 
-def handle_sign_up():
+def handle_records_click():
     global root
     global entry_pass
     global entry_name
     root.destroy()
-    signup_view.main()
+
     # response = database_interaction.add_player((username, password))
 
 
+def handle_Exit_click():
+    global root
+    #root.destroy()
+    #exit(0)
 
-# print(response)
-def after_signup_main(user,password):
-    global entry_pass
-    global entry_name
-    global userName
-    global passw
-    userName = user
-    passw = password
-    main()
 
-def main():
+def favorite_locations_click():
+    print("b")
+
+
+def main(player):
     global root
     global label
     global entry_pass
@@ -68,66 +65,66 @@ def main():
     global goBack
     global passw
     global userName
+    firstName = player[3]
+    lastName = player[4]
+    lastPlay = player[5]
+    userName = player[0]
+    delta = datetime.datetime.today() - lastPlay
     root = tk.Tk()
     root.geometry('640x480')
     root.configure(background='#4169E1')
     load = Image.open("Earth-icon.png")
     render = ImageTk.PhotoImage(load)
-    img = tk.Label(root, image=render,bg="#4169E1")
+    img = tk.Label(root, image=render, bg="#4169E1")
     img.image = render
-    img.place(x=0, y=0, relwidth = 1, relheight=1)
+    img.place(x=0, y=0, relwidth=1, relheight=1)
     for i in range(1, 10):
         root.grid_rowconfigure(i, {'minsize': 64})
     for i in range(0, 10):
         root.grid_columnconfigure(i, {'minsize': 48})
     root.title("login")
     label = tk.Label(
-        text="Welcome to Carmen Diago Game",
-        font=("Helvetica", 27),
+        text="Welcome " + firstName + ",\n your last game was " + str(delta.days) + " days ago",
+        font=("Helvetica", 14),
         background="#4169E1",
         fg="black",
         width=20,
-    ).grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
+    ).grid(row=0, column=3, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
 
-    user_label = tk.Label(
-        text="enter your user name",
-        fg="white",
-        bg="black",
-        width=20,
-    ).grid(row=3, column=3, sticky='NW')
-    entry_name = tk.Entry(width=20, text="user name", master=root)
-    entry_name.grid(row=3, column=5, sticky='NW')
-    entry_name.insert(0,userName)
-    pass_label = tk.Label(
-        text="enter your password",
-        fg="white",
-        bg="black",
-        width=20,
-    ).grid(row=4, column=3, sticky='NW')
-    entry_pass = tk.Entry(width=20, text="password", master=root)
-    entry_pass.grid(row=4, column=5, sticky='NW')
-    entry_pass.insert(0,passw)
-    loginButton = tk.Button(
+    playButton = tk.Button(
         root,
-        text="login!",
-        width=8,
+        text="play!",
+        width=12,
         height=1,
         bg="black",
         fg="white",
-        command=handle_click
-    ).grid(row=5, column=3)
-    signUpButton = tk.Button(
+        command=handle_play_click
+    ).grid(row=3, column=6)
+    recordsButton = tk.Button(
         root,
-        text="sign up!",
-        width=8,
+        text="show records",
+        width=12,
         height=1,
         bg="black",
         fg="white",
-        command=handle_sign_up
-    ).grid(row=5, column=5)
+        command=handle_records_click
+    ).grid(row=4, column=6)
+    favoritesButton = tk.Button(
+        root,
+        text="favorite locations",
+        width=12,
+        height=1,
+        bg="black",
+        fg="white",
+        command=favorite_locations_click
+    ).grid(row=5, column=6)
+    exitButton = tk.Button(
+        root,
+        text="Exit",
+        width=12,
+        height=1,
+        bg="black",
+        fg="white",
+        command=handle_Exit_click()
+    ).grid(row=6, column=6)
     root.mainloop()
-
-
-if '__name__' == '__main__':
-    # database_interaction.add_player(("omer", "12345"))
-    main()

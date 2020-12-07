@@ -9,9 +9,9 @@ from mysql.connector import Error
 from dataset_parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations
 
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
-                                             database='carmen_sandiego',
-                                             user='root',
-                                             password='netanel')
+                                     database='carmen_sandiego',
+                                     user='root',
+                                     password='netanel')
 cursor = None
 
 
@@ -32,7 +32,7 @@ def create_connection():
         print("Error while connecting to MySQL", e)
 
 
-def close_connection():
+def commit_connection():
     global connection
     connection.commit()
 
@@ -105,7 +105,7 @@ def fill_all():
     fill_cities()
     fill_comments()
     fill_questions()
-    close_connection()
+    commit_connection()
 
 
 # Gets Player By ID
@@ -119,15 +119,24 @@ def get_player_by_id(id):
 # Adds player to DB
 def add_player(user):
     # (username,password,first_name,last_name)
-    salt = str(os.urandom(32))
-    password = user[1]
-    hash = hashlib.sha256((password + salt).encode('utf-8')).hexdigest()
-    last_played = datetime.now()
+    try:
+        sql = "SELECT * FROM carmen_sandiego.players WHERE user_name='%s'" % (user[0])
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        if (len(res) > 0):
+            return -1
+        salt = str(os.urandom(32))
+        password = user[1]
+        hash = hashlib.sha256((password + salt).encode('utf-8')).hexdigest()
+        last_played = datetime.now()
 
-    sql = "INSERT INTO carmen_sandiego.players (user_name,password,salt,first_name,last_name,last_played) VALUES (%s,%s,%s,%s,%s,%s)"
-    cursor.execute(sql, (user[0], hash, salt, user[2], user[3], last_played))
+        sql = "INSERT INTO carmen_sandiego.players (user_name,password,salt,first_name,last_name,last_played) VALUES (%s,%s,%s,%s,%s,%s)"
+        cursor.execute(sql, (user[0], hash, salt, user[2], user[3], last_played))
+        commit_connection()
+        return 0
 
-    return
+    except:
+        return -2
 
 
 # Returns PlayerID if username and password exist in DB, -1 otherwise
@@ -146,7 +155,9 @@ def log_in(username, password):
         sql = "SELECT * FROM carmen_sandiego.players WHERE user_name='%s'" % (username)
         cursor.execute(sql)
         res = cursor.fetchall()[0][0]
+        commit_connection()
         return res
+    commit_connection()
     return -1
 
 
@@ -162,6 +173,18 @@ def add_friendship(id1, id2):
     except:
         print("Friendship exists already ")
 
+def remove_friendship(id1, id2):
+    sql = "DELETE FROM carmen_sandiego.friendships WHERE id_friendships_a='%s' AND id_friendships_b='%s'"
+    try:
+        if (id1 < id2):
+            cursor.execute(sql, (id1, id2))
+            return 1
+        else:
+            cursor.execute(sql, (id2, id1))
+            return 1
+    except:
+        print("Error Deleting friendship")
+        return -1
 
 # Returns the ids of players who are friends with id
 def get_all_friendships_by_id(id):
@@ -217,7 +240,7 @@ def get_highscores_no_repeats_friends(id):
     sql = '''SELECT id_players,max(score) AS score FROM carmen_sandiego.high_scores
              WHERE (id_players in (SELECT id_friendships_a FROM friendships WHERE id_friendships_b='%s') or
 		     id_players in (SELECT id_friendships_b FROM friendships WHERE id_friendships_a='%s' ) or
-		      id_players = '%s') group by id_players;''' % (id, id, id)
+		      id_players = '%s') group by id_players order by score DESC limit 10''' % (id, id, id)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res
@@ -239,7 +262,7 @@ def get_number_of_countries():
 
 
 def get_country_by_id(country_id):
-    sql = '''SELECT * FROM carmen_sandiego.countries WHERE id_countries='%s' ''' %(country_id)
+    sql = '''SELECT * FROM carmen_sandiego.countries WHERE id_countries='%s' ''' % (country_id)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res
@@ -261,15 +284,15 @@ def get_locations_by_city_name(city_name):
     return res
 
 
-def get_locations_by_city_name_and_type(city_name,type):
-    #Type= around/buy/diplomatic-representation/do/drink/eat/other/see/sleep/vicinity
-    sql = '''SELECT * FROM carmen_sandiego.locations WHERE city='%s' AND type='%s' ''' % (city_name,type)
+def get_locations_by_city_name_and_type(city_name, type):
+    # Type= around/buy/diplomatic-representation/do/drink/eat/other/see/sleep/vicinity
+    sql = '''SELECT * FROM carmen_sandiego.locations WHERE city='%s' AND type='%s' ''' % (city_name, type)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res
 
 
-def add_favorite_location(player_id,location_id):
+def add_favorite_location(player_id, location_id):
     try:
         sql = "INSERT INTO carmen_sandiego.favorite_locations (id_players,id_locations) VALUES (%s,%s)"
         cursor.execute(sql, (player_id, location_id))
@@ -278,7 +301,7 @@ def add_favorite_location(player_id,location_id):
     return
 
 
-def remove_favorite_location(player_id,location_id):
+def remove_favorite_location(player_id, location_id):
     try:
         sql = "DELETE FROM carmen_sandiego.favorite_locations WHERE id_players='%s' AND id_locations='%s'"
         cursor.execute(sql, (player_id, location_id))
@@ -295,4 +318,4 @@ def get_location_by_id(location_id):
 
 
 create_connection()
-close_connection()
+commit_connection()

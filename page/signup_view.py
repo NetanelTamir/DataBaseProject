@@ -32,8 +32,10 @@ def handle_sign_up():
     print(password + "  " + user_name)
     response = 1
     if response == -1:
-        messagebox.showerror("Error","user-name already exist")
-    else:
+        messagebox.showerror("Error", "user-name already exist")
+    if response == -2:
+        messagebox.showerror("Error","sign up failed")
+    if response == 0:
         messagebox.showinfo("success!", "welcome " + first_name + " " + last_name)
         root.destroy()
         login_view.after_signup_main(user_name,password)

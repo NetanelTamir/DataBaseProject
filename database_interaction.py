@@ -4,6 +4,7 @@ import os
 from datetime import date, datetime
 
 import mysql.connector
+import sqlalchemy as db
 from mysql.connector import Error
 
 from dataset_parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations

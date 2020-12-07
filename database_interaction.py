@@ -5,21 +5,21 @@ from datetime import date, datetime
 
 import mysql.connector
 from mysql.connector import Error
+from mysql.connector import Error
 
 from dataset_parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations
 
-connection = ''
-cursor = ''
+connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
+                                             database='carmen_sandiego',
+                                             user='root',
+                                             password='netanel')
+cursor = None
 
 
 def create_connection():
     try:
         global connection
         global cursor
-        connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
-                                             database='carmen_sandiego',
-                                             user='root',
-                                             password='netanel')
         if connection.is_connected():
             db_Info = connection.get_server_info()
             print("Connected to MySQL Server version ", db_Info)

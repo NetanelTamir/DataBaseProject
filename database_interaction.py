@@ -158,7 +158,6 @@ def log_in(username, password):
         res = cursor.fetchall()[0][0]
         commit_connection()
         return res
-    commit_connection()
     return -1
 
 
@@ -169,8 +168,10 @@ def add_friendship(id1, id2):
     try:
         if (id1 < id2):
             cursor.execute(sql, (id1, id2))
+            commit_connection()
         else:
             cursor.execute(sql, (id2, id1))
+            commit_connection()
     except:
         print("Friendship exists already ")
 
@@ -179,9 +180,11 @@ def remove_friendship(id1, id2):
     try:
         if (id1 < id2):
             cursor.execute(sql, (id1, id2))
+            commit_connection()
             return 1
         else:
             cursor.execute(sql, (id2, id1))
+            commit_connection()
             return 1
     except:
         print("Error Deleting friendship")
@@ -218,6 +221,7 @@ def update_highscore_table(id, score):
         sql = "UPDATE carmen_sandiego.high_scores SET date ='%s' WHERE id_players = '%s' and score='%s'" % (
             datetime.now(), id, score)
         cursor.execute(sql)
+    commit_connection()
 
 
 # Gets HighScores (No Repeats)
@@ -297,6 +301,7 @@ def add_favorite_location(player_id, location_id):
     try:
         sql = "INSERT INTO carmen_sandiego.favorite_locations (id_players,id_locations) VALUES (%s,%s)"
         cursor.execute(sql, (player_id, location_id))
+        commit_connection()
     except:
         pass
     return
@@ -306,6 +311,7 @@ def remove_favorite_location(player_id, location_id):
     try:
         sql = "DELETE FROM carmen_sandiego.favorite_locations WHERE id_players='%s' AND id_locations='%s'"
         cursor.execute(sql, (player_id, location_id))
+        commit_connection()
     except:
         pass
     return

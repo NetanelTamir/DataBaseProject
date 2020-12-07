@@ -89,7 +89,7 @@ def main():
     for i in range(2, 10):
         root.grid_rowconfigure(i, {'minsize': 64})
     for i in range(0, 10):
-        root.grid_columnconfigure(i, {'minsize': 48})
+        root.grid_columnconfigure(i, {'minsize': 45})
     root.title("login")
     label = tk.Label(
         text="Welcome " + firstName + ",\n your last game was " + str(delta.days) + " days ago",
@@ -101,7 +101,7 @@ def main():
 
     playButton = tk.Button(
         root,
-        text="play!",
+        text="Play!",
         width=12,
         height=1,
         bg="black",
@@ -110,7 +110,7 @@ def main():
     ).grid(row=2, column=6)
     recordsButton = tk.Button(
         root,
-        text="show records",
+        text="Show Records",
         width=12,
         height=1,
         bg="black",
@@ -119,8 +119,8 @@ def main():
     ).grid(row=3, column=6)
     favoritesButton = tk.Button(
         root,
-        text="favorite locations",
-        width=12,
+        text="Favorite Locations",
+        width=14,
         height=1,
         bg="black",
         fg="white",
@@ -128,7 +128,7 @@ def main():
     ).grid(row=4, column=6)
     addFriend_button = tk.Button(
         root,
-        text="add friend",
+        text="Friends",
         width=12,
         height=1,
         bg="black",

@@ -50,10 +50,11 @@ def main():
     root.title("login")
     label = tk.Label(
         text="Welcome to Carmen Diago Game",
+        font=("Helvetica", 27),
         background = "#4169E1",
         fg="black",
         width=20,
-    ).grid(row =0, column = 1, columnspan = 10, rowspan= 2, sticky = tk.W+tk.E)
+    ).grid(row =0, column = 0, columnspan = 10, rowspan= 2, sticky = tk.W+tk.E)
 
     user_label = tk.Label(
         text="enter your user name",

@@ -2,11 +2,11 @@ import tkinter as tk
 import datetime
 from time import sleep
 
-from page import signup_view
+from page import records_view
 from PIL import Image, ImageTk
 
 # import database_interaction
-
+PLAYER = None
 entry_name = None
 entry_pass = None
 label = None
@@ -28,6 +28,12 @@ def handle_play_click():
         password = entry_pass.get()
 
 
+def handle_add_friend_click():
+    global root
+    #root.withdraw()
+    #root.deiconify()
+
+
 # response = database_interaction.log_in(username, password)
 # if response == -1:
 #    print("Wrong password or username")
@@ -39,24 +45,24 @@ def handle_play_click():
 
 def handle_records_click():
     global root
-    global entry_pass
-    global entry_name
     root.destroy()
+    records_view.main()
 
     # response = database_interaction.add_player((username, password))
 
 
 def handle_Exit_click():
     global root
-    #root.destroy()
-    #exit(0)
+    # root.destroy()
+    # exit(0)
 
 
 def favorite_locations_click():
     print("b")
 
 
-def main(player):
+def main():
+    global PLAYER
     global root
     global label
     global entry_pass
@@ -65,10 +71,11 @@ def main(player):
     global goBack
     global passw
     global userName
-    firstName = player[3]
-    lastName = player[4]
-    lastPlay = player[5]
-    userName = player[0]
+    id = PLAYER[0]
+    firstName = PLAYER[3]
+    lastName = PLAYER[4]
+    lastPlay = PLAYER[5]
+    userName = PLAYER[0]
     delta = datetime.datetime.today() - lastPlay
     root = tk.Tk()
     root.geometry('640x480')
@@ -78,10 +85,11 @@ def main(player):
     img = tk.Label(root, image=render, bg="#4169E1")
     img.image = render
     img.place(x=0, y=0, relwidth=1, relheight=1)
-    for i in range(1, 10):
+    root.grid_rowconfigure(1, {'minsize': 110})
+    for i in range(2, 10):
         root.grid_rowconfigure(i, {'minsize': 64})
     for i in range(0, 10):
-        root.grid_columnconfigure(i, {'minsize': 48})
+        root.grid_columnconfigure(i, {'minsize': 45})
     root.title("login")
     label = tk.Label(
         text="Welcome " + firstName + ",\n your last game was " + str(delta.days) + " days ago",
@@ -93,30 +101,39 @@ def main(player):
 
     playButton = tk.Button(
         root,
-        text="play!",
+        text="Play!",
         width=12,
         height=1,
         bg="black",
         fg="white",
         command=handle_play_click
-    ).grid(row=3, column=6)
+    ).grid(row=2, column=6)
     recordsButton = tk.Button(
         root,
-        text="show records",
+        text="Show Records",
         width=12,
         height=1,
         bg="black",
         fg="white",
-        command=handle_records_click
-    ).grid(row=4, column=6)
+        command=lambda:handle_records_click()
+    ).grid(row=3, column=6)
     favoritesButton = tk.Button(
         root,
-        text="favorite locations",
-        width=12,
+        text="Favorite Locations",
+        width=14,
         height=1,
         bg="black",
         fg="white",
         command=favorite_locations_click
+    ).grid(row=4, column=6)
+    addFriend_button = tk.Button(
+        root,
+        text="Friends",
+        width=12,
+        height=1,
+        bg="black",
+        fg="white",
+        command=handle_add_friend_click
     ).grid(row=5, column=6)
     exitButton = tk.Button(
         root,
@@ -126,5 +143,5 @@ def main(player):
         bg="black",
         fg="white",
         command=handle_Exit_click()
-    ).grid(row=6, column=6)
+    ).grid(row=7, column=6)
     root.mainloop()

@@ -27,7 +27,8 @@ def handle_click():
         username = entry_name.get()
         password = entry_pass.get()
         root.destroy()
-        home_view.main(("omer","41241",41222,"omeqq","dimri",datetime.datetime(2020,12,5)))
+        home_view.PLAYER = ("omer","41241",41222,"omeqq","dimri",datetime.datetime(2020,12,5))
+        home_view.main()
 
 
 # response = database_interaction.log_in(username, password)

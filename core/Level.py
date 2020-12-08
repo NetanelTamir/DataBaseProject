@@ -11,6 +11,8 @@ class Level():
         self.dst = idx
 
     def run(self, time_left):
+        country = Country(self.start)
+        level_main_window(self, country)
         # create country, open first window
         # options for locations     }   DONT FORGET TO
         # options for destinations  }   DECREASE TIME HERE

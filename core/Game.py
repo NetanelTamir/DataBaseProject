@@ -1,0 +1,51 @@
+from core.Level import Level
+from core.utils import get_new_countries
+import random
+from database_interaction import get_number_of_countries
+
+NUMBER_OF_LEVELS = 5
+NUMBER_OF_HOURS = 168
+NUMBER_OF_COUNTRIES_IN_LEVEL = 4
+
+class Game():
+    def __init__(self):
+        self.number_of_levels = NUMBER_OF_LEVELS
+        self.current_level = 0
+        self.countries_used = set()
+        self.start = random.random(get_number_of_countries())
+        self.countries_used.add(self.start)
+        self.levels = self.create_levels(self.start)
+        self.time_left = NUMBER_OF_HOURS
+
+    def run(self):
+        # opening window with explanations
+        while self.current_level < self.number_of_levels:
+            level = self.levels[self.current_level]
+            passed, time_left = level.run(self.time_left)
+            if not passed:
+                self.game_lost()
+                return
+            self.time_left = time_left
+            self.current_level += 1
+        self.game_won()
+
+    def game_lost(self):
+        print("game lost")
+        # go to lose page
+
+    def game_won(self):
+        print("game won")
+        # go tp win page
+
+    def create_levels(self, src):
+        l = []
+        for i in range(self.number_of_levels):
+            # randomize countries
+            countries = get_new_countries(self.countries_used, NUMBER_OF_COUNTRIES_IN_LEVEL - 1)
+            for c in countries:
+                self.countries_used.add(c)
+            level = Level(countries, src)
+            src = level.get_dst()
+            l.append(level)
+        print("create levels")
+        return l

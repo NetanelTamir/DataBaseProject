@@ -1,9 +1,11 @@
 import tkinter as tk
 import datetime
 from time import sleep
+# from core.event_handlers import handle_Exit_click,handle_play_click, handle_records_click, handle_add_friend_click
 
 from page import records_view
 from PIL import Image, ImageTk
+from core.Game import Game
 
 # import database_interaction
 PLAYER = None
@@ -16,7 +18,6 @@ root = None
 userName = ""
 passw = ""
 
-
 def handle_play_click():
     global entry_first_name
     global entry_password
@@ -27,21 +28,15 @@ def handle_play_click():
         username = entry_name.get()
         password = entry_pass.get()
 
+    game = Game()
+    game.run()
+
+
 
 def handle_add_friend_click():
     global root
     #root.withdraw()
     #root.deiconify()
-
-
-# response = database_interaction.log_in(username, password)
-# if response == -1:
-#    print("Wrong password or username")
-# else:
-#    print("hello" + str(response))
-
-# database_intercation
-
 
 def handle_records_click():
     global root
@@ -59,6 +54,15 @@ def handle_Exit_click():
 
 def favorite_locations_click():
     print("b")
+
+# response = database_interaction.log_in(username, password)
+# if response == -1:
+#    print("Wrong password or username")
+# else:
+#    print("hello" + str(response))
+
+# database_intercation
+
 
 
 def main():
@@ -106,7 +110,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=handle_play_click
+        command=lambda:handle_play_click()
     ).grid(row=2, column=6)
     recordsButton = tk.Button(
         root,
@@ -124,7 +128,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=favorite_locations_click
+        command=lambda:favorite_locations_click()
     ).grid(row=4, column=6)
     addFriend_button = tk.Button(
         root,
@@ -133,7 +137,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=handle_add_friend_click
+        command=lambda:handle_add_friend_click()
     ).grid(row=5, column=6)
     exitButton = tk.Button(
         root,
@@ -142,6 +146,6 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=handle_Exit_click()
+        command=lambda:handle_Exit_click()
     ).grid(row=7, column=6)
     root.mainloop()

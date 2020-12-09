@@ -323,6 +323,17 @@ def get_location_by_id(location_id):
     res = cursor.fetchall()
     return res
 
+def get_questions_by_tyoe(type):
+    sql = '''SELECT * FROM carmen_sandiego.questions WHERE question_type='%s' ''' % (type)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    return res
+
+def get_comments_by_tyoe(type):
+    sql = '''SELECT * FROM carmen_sandiego.comments WHERE comment_type='%s' ''' % (type)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    return res
 
 create_connection()
 commit_connection()

@@ -12,3 +12,5 @@ def get_new_countries(countries_set, number_of_countries):
         countries.append(chosen)
 
     return countries
+
+def generate_hint(country, level):

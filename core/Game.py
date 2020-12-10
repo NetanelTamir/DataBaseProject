@@ -6,6 +6,8 @@ from database_interaction import get_number_of_countries
 NUMBER_OF_LEVELS = 5
 NUMBER_OF_HOURS = 168
 NUMBER_OF_COUNTRIES_IN_LEVEL = 4
+QUESTION_COST = 3
+FLIGHT_COST = 8
 
 class Game():
     def __init__(self):
@@ -35,7 +37,7 @@ class Game():
 
     def game_won(self):
         print("game won")
-        # go tp win page
+        # go to win page
 
     def create_levels(self, src):
         l = []

@@ -324,7 +324,7 @@ def get_location_by_id(location_id):
     return res
 
 def get_questions_by_type(type):
-    sql = '''SELECT * FROM carmen_sandiego.questions WHERE question_type='%s' ''' % (type)
+    sql = '''SELECT description FROM carmen_sandiego.questions WHERE question_type='%s' ''' % (type)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res

@@ -27,3 +27,11 @@ class Level():
 
     def get_dst(self):
         return self.dst
+
+    def get_possible_destinations(self):
+        possible_destinations = []
+        for c in self.countries:
+            country = Country(c)
+            possible_destinations.append(country)
+        return possible_destinations
+

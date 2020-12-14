@@ -61,13 +61,14 @@ def main():
     for i in range(0, 10):
         root.grid_columnconfigure(i, {'minsize': 48})
     root.title("sign-up")
-    label = tk.Label(
-        text="Sign up :)",
-        font=("Helvetica", 27),
-        background="#4169E1",
-        fg="black",
-        width=20,
-    ).grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
+
+    load2 = Image.open("images/logos/signUp.png")
+    render2 = ImageTk.PhotoImage(load2)
+    img2 = tk.Label(root, image=render2, bg="#4169E1")
+    img2.image = render2
+    img2.grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
+
+
     first_name_label = tk.Label(
         text="enter first name",
         fg="white",
@@ -118,4 +119,6 @@ def main():
         fg="white",
         command=handle_sign_up
     ).grid(row=7, column=5)
+
+
     root.mainloop()

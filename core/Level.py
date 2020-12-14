@@ -1,6 +1,6 @@
 import random
 from core.Country import Country
-from core.Game import HINT_COST, FLIGHT_COST
+#from core.Game import HINT_COST, FLIGHT_COST
 
 class Level():
     def __init__(self, countries, src):
@@ -15,10 +15,9 @@ class Level():
     def run(self, time_left):
         self.time_left = time_left
         country = Country(self.start)
-        id = level_main_view(self, country)
+ #       id = level_main_view(self, country)
         if not self.is_real_dest(id):
-
-        print("run level")
+            print("run level")
 
     def get_dst(self):
         return self.dst

@@ -3,7 +3,7 @@ import datetime
 from time import sleep
 # from core.event_handlers import handle_Exit_click,handle_play_click, handle_records_click, handle_add_friend_click
 
-from page import records_view
+from page import records_view, friends_view
 from PIL import Image, ImageTk
 from core.Game import Game
 
@@ -35,8 +35,8 @@ def handle_play_click():
 
 def handle_add_friend_click():
     global root
-    #root.withdraw()
-    #root.deiconify()
+    root.destroy()
+    friends_view.main()
 
 def handle_records_click():
     global root
@@ -89,6 +89,7 @@ def main():
     img = tk.Label(root, image=render, bg="#4169E1")
     img.image = render
     img.place(x=0, y=0, relwidth=1, relheight=1)
+
     root.grid_rowconfigure(1, {'minsize': 110})
     for i in range(2, 10):
         root.grid_rowconfigure(i, {'minsize': 64})
@@ -141,7 +142,7 @@ def main():
     ).grid(row=5, column=6)
     exitButton = tk.Button(
         root,
-        text="Exit",
+        text="log out",
         width=12,
         height=1,
         bg="black",

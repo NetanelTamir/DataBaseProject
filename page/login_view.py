@@ -2,7 +2,7 @@ import tkinter as tk
 from time import sleep
 
 import database_interaction
-from page import signup_view,home_view
+from page import signup_view, home_view
 from PIL import Image, ImageTk
 import datetime
 
@@ -53,9 +53,8 @@ def handle_sign_up():
     # response = database_interaction.add_player((username, password))
 
 
-
 # print(response)
-def after_signup_main(user,password):
+def after_signup_main(user, password):
     global entry_pass
     global entry_name
     global userName
@@ -63,6 +62,7 @@ def after_signup_main(user,password):
     userName = user
     passw = password
     main()
+
 
 def main():
     global root
@@ -78,21 +78,28 @@ def main():
     root.configure(background='#4169E1')
     load = Image.open("Earth-icon.png")
     render = ImageTk.PhotoImage(load)
-    img = tk.Label(root, image=render,bg="#4169E1")
+    img = tk.Label(root, image=render, bg="#4169E1")
     img.image = render
-    img.place(x=0, y=0, relwidth = 1, relheight=1)
+    img.place(x=0, y=0, relwidth=1, relheight=1)
     for i in range(1, 10):
         root.grid_rowconfigure(i, {'minsize': 64})
     for i in range(0, 10):
         root.grid_columnconfigure(i, {'minsize': 48})
+
+    load2 = Image.open("images/logos/welcome.png")
+    render2 = ImageTk.PhotoImage(load2)
+    img = tk.Label(root, image=render2, bg="#4169E1")
+    img.image = render2
+    img.grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
+
     root.title("login")
-    label = tk.Label(
-        text="Welcome to Carmen Diago Game",
-        font=("Helvetica", 27),
-        background="#4169E1",
-        fg="black",
-        width=20,
-    ).grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
+    # label = tk.Label(
+    #     text="Welcome to Carmen Diago Game",
+    #     font=("Helvetica", 27),
+    #     background="#4169E1",
+    #     fg="black",
+    #     width=20,
+    # ).grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
 
     user_label = tk.Label(
         text="enter your user name",
@@ -102,7 +109,7 @@ def main():
     ).grid(row=3, column=3, sticky='NW')
     entry_name = tk.Entry(width=20, text="user name", master=root)
     entry_name.grid(row=3, column=5, sticky='NW')
-    entry_name.insert(0,userName)
+    entry_name.insert(0, userName)
     pass_label = tk.Label(
         text="enter your password",
         fg="white",
@@ -111,7 +118,7 @@ def main():
     ).grid(row=4, column=3, sticky='NW')
     entry_pass = tk.Entry(width=20, text="password", master=root)
     entry_pass.grid(row=4, column=5, sticky='NW')
-    entry_pass.insert(0,passw)
+    entry_pass.insert(0, passw)
     loginButton = tk.Button(
         root,
         text="login!",

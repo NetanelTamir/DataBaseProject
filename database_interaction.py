@@ -170,7 +170,7 @@ def log_in(username, password):
 
 
 # Adds friendship to DB
-def add_friendship(id1, id2):
+def add_friendship_by_id(id1, id2):
     sql = "INSERT INTO carmen_sandiego.friendships (id_friendships_a,id_friendships_b) VALUES (%s,%s)"
 
     try:
@@ -180,6 +180,15 @@ def add_friendship(id1, id2):
         else:
             cursor.execute(sql, (id2, id1))
             commit_connection()
+    except:
+        print("Friendship exists already ")
+
+def add_friendship_by_username(id,username):
+    try:
+        sql = '''Insert into friendships (id_friendships_a,id_friendships_b) values((SELECT min(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')),
+                (SELECT max(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')))''' % (id, username, id,username)
+        cursor.execute(sql)
+        commit_connection()
     except:
         print("Friendship exists already ")
 
@@ -198,6 +207,14 @@ def remove_friendship(id1, id2):
         print("Error Deleting friendship")
         return -1
 
+def remove_friendship_by_username(id,username):
+    try:
+        sql = '''Delete from friendships where(id_friendships_a = (SELECT min(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')) and id_friendships_b =
+                (SELECT max(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')))''' % (id, username, id,username)
+        cursor.execute(sql)
+        commit_connection()
+    except:
+        print("Error Deleting friendship ")
 # Returns the ids of players who are friends with id
 def get_all_friendships_by_id(id):
     sql = "SELECT * FROM carmen_sandiego.friendships WHERE id_friendships_a='%s'" % (id)

@@ -217,19 +217,14 @@ def remove_friendship_by_username(id,username):
         print("Error Deleting friendship ")
 # Returns the ids of players who are friends with id
 def get_all_friendships_by_id(id):
-    sql = "SELECT * FROM carmen_sandiego.friendships WHERE id_friendships_a='%s'" % (id)
+    sql = '''Select user_name from players where ((id_players in (select id_friendships_a FROM carmen_sandiego.friendships
+     WHERE id_friendships_b='%s')) or (id_players in (select id_friendships_b FROM carmen_sandiego.friendships 
+     WHERE id_friendships_a='%s')))''' % (id,id)
     cursor.execute(sql)
-    res1 = cursor.fetchall()
-    sql = "SELECT * FROM carmen_sandiego.friendships WHERE id_friendships_b='%s'" % (id)
-    cursor.execute(sql)
-    res2 = cursor.fetchall()
-    res = res1 + res2
-    return_list = []
-    for i in res:
-        for j in i:
-            if (j != id):
-                return_list.append(j)
-    return sorted(return_list)
+    res = cursor.fetchall()
+    for count,value in enumerate(res):
+        res[count]=res[count][0]
+    return res
 
 
 # Updates DB with new high_score

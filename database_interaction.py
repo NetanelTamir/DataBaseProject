@@ -102,7 +102,7 @@ def fill_locations():
     global cursor
     with open('parsed_csvs/locations.csv', encoding='cp850') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
-        sql = "INSERT INTO carmen_sandiego.locations (location_name, type, city,url,description) VALUES (%s,%s,%s,%s,%s)"
+        sql = "INSERT INTO carmen_sandiego.locations (location_name, type, cityid ,url,description) VALUES (%s,%s,%s,%s,%s)"
         for row in reader:
             cursor.execute(sql, row)
     commit_connection()

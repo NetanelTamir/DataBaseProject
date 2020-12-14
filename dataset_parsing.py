@@ -53,17 +53,18 @@ def create_cities():
 
 def create_locations():
     rows = []
-    with open('src_files/wikivoyage-listings-en.csv', encoding='cp850') as csvfile, open('parsed_csvs/cities.csv',
-                                                                                         encoding='cp850') as csvfile2:
+    with open('src_files/wikivoyage-listings-en.csv', encoding='cp850') as csvfile, open('parsed_csvs/cities.csv',encoding='cp850') as csvfile2:
         reader = csv.reader(csvfile, delimiter=',')
         reader2 = csv.reader(csvfile2, delimiter=',')
         cities = []
-        for row2 in reader2:
+        indexes = []
+        for index,row2 in enumerate(reader2):
             cities.append(row2[0])
+            indexes.append(index+1)
         for row in reader:
-            for city in cities:
+            for index,city in zip(indexes,cities):
                 if (row[0].startswith(city)):
-                    rows.append((row[2], row[1], city, row[12], row[23]))
+                    rows.append((row[2], row[1], index, row[12], row[23]))
                     break
     with open('parsed_csvs/locations.csv', 'w', newline='', encoding='cp850') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quoting=1)

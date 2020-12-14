@@ -2,7 +2,7 @@ from database_interaction import get_number_of_countries, get_questions_by_type
 import random
 
 QUESTION_TYPE = {0:"population", 1:"currency", 2:"flag", 3:"capital", 4:"language", 5:"map", 6:"incorrect"}
-ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":1, "population":2, "language":3, "flag":4, "map":0, }
+ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":1, "population":2, "language":4, "flag":5, "map":0, "currency":3}
 
 def get_new_countries(countries_set, number_of_countries):
     countries = []
@@ -31,4 +31,12 @@ def generate_questions(country):
     return questions
 
 def build_real_question_from_generic_question(generic_question, type, country):
-    return ''
+    ret = {}
+    attr = country[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
+    if type in ["flag", "map"]:
+        ret["file"] = attr
+        ret["string"] = generic_question
+    else:
+        generic_question.replace("_ATTR_", attr)
+        ret["string"] = generic_question
+    return generic_question

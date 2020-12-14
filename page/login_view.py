@@ -1,5 +1,7 @@
 import tkinter as tk
 from time import sleep
+
+import database_interaction
 from page import signup_view,home_view
 from PIL import Image, ImageTk
 import datetime
@@ -22,13 +24,15 @@ def handle_click():
     global root
     ##todo- goto the model and get user name and password
     # entry = username entry2 = password
-    if(entry_name and entry_pass):
+    if (entry_name and entry_pass):
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
         password = entry_pass.get()
-        root.destroy()
-        home_view.PLAYER = ("omer","41241",41222,"omeqq","dimri",datetime.datetime(2020,12,5))
-        home_view.main()
+        id = database_interaction.log_in(username, password)
+        if (id > -1):
+            home_view.PLAYER = database_interaction.get_player_by_id(id)[0]
+            root.destroy()
+            home_view.main()
 
 
 # response = database_interaction.log_in(username, password)

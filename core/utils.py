@@ -31,3 +31,4 @@ def generate_questions(country):
     return questions
 
 def build_real_question_from_generic_question(generic_question, type, country):
+    return ''

@@ -4,7 +4,6 @@ import os
 from datetime import date, datetime
 
 import mysql.connector
-import sqlalchemy as db
 from mysql.connector import Error
 
 from dataset_parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations
@@ -37,6 +36,9 @@ def commit_connection():
     global connection
     connection.commit()
 
+def close_connection():
+    global connection
+    connection.close()
 
 def fill_countries():
     global cursor
@@ -46,6 +48,7 @@ def fill_countries():
         sql = "INSERT INTO carmen_sandiego.countries (country_name,capital_name,population,currency,languages,flag,region,area,gdp,climate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
         for row in reader:
             row[2] = int(row[2].replace(',', ''))
+            row[4] = row[4].split(',')[0]
             row[7] = int(row[7])
             try:
                 row[8] = int(row[8])
@@ -57,6 +60,7 @@ def fill_countries():
                 row[9] = 0
 
             cursor.execute(sql, row)
+    commit_connection()
 
 
 def fill_cities():
@@ -69,6 +73,7 @@ def fill_cities():
         sql = "INSERT INTO carmen_sandiego.cities (city, country) VALUES (%s,%s)"
         for row in reader:
             cursor.execute(sql, row)
+    commit_connection()
 
 
 def fill_comments():
@@ -79,6 +84,7 @@ def fill_comments():
         sql = "INSERT INTO carmen_sandiego.comments (comment_type, description) VALUES (%s,%s)"
         for row in reader:
             cursor.execute(sql, row)
+    commit_connection()
 
 
 def fill_questions():
@@ -89,6 +95,7 @@ def fill_questions():
         sql = "INSERT INTO carmen_sandiego.questions (question_type, description) VALUES (%s,%s)"
         for row in reader:
             cursor.execute(sql, row)
+    commit_connection()
 
 
 def fill_locations():
@@ -98,6 +105,7 @@ def fill_locations():
         sql = "INSERT INTO carmen_sandiego.locations (location_name, type, city,url,description) VALUES (%s,%s,%s,%s,%s)"
         for row in reader:
             cursor.execute(sql, row)
+    commit_connection()
 
 
 def fill_all():
@@ -129,7 +137,7 @@ def add_player(user):
         salt = str(os.urandom(32))
         password = user[1]
         hash = hashlib.sha256((password + salt).encode('utf-8')).hexdigest()
-        last_played = datetime.now()
+        last_played = datetime.today().date()
 
         sql = "INSERT INTO carmen_sandiego.players (user_name,password,salt,first_name,last_name,last_played) VALUES (%s,%s,%s,%s,%s,%s)"
         cursor.execute(sql, (user[0], hash, salt, user[2], user[3], last_played))
@@ -242,10 +250,10 @@ def get_highscores_yes_repeats():
 
 # Gets HighScores (No Repeats - Friends Only)
 def get_highscores_no_repeats_friends(id):
-    sql = '''SELECT id_players,max(score) AS score FROM carmen_sandiego.high_scores
-             WHERE (id_players in (SELECT id_friendships_a FROM friendships WHERE id_friendships_b='%s') or
-		     id_players in (SELECT id_friendships_b FROM friendships WHERE id_friendships_a='%s' ) or
-		      id_players = '%s') group by id_players order by score DESC limit 10''' % (id, id, id)
+    sql = '''SELECT first_name,last_name,max(score) AS score FROM carmen_sandiego.high_scores ,carmen_sandiego.players
+             WHERE ((high_scores.id_players in (SELECT id_friendships_a FROM friendships WHERE id_friendships_b='%s') or
+		     high_scores.id_players in (SELECT id_friendships_b FROM friendships WHERE id_friendships_a='%s' ) or
+		      high_scores.id_players = '%s')) and players.id_players=high_scores.id_players group by high_scores.id_players order by score DESC limit 10''' % (id, id, id)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res
@@ -335,5 +343,3 @@ def get_comments_by_type(type):
     res = cursor.fetchall()
     return res
 
-create_connection()
-commit_connection()

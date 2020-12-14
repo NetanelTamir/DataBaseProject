@@ -76,11 +76,11 @@ def main():
     global passw
     global userName
     id = PLAYER[0]
-    firstName = PLAYER[3]
-    lastName = PLAYER[4]
-    lastPlay = PLAYER[5]
-    userName = PLAYER[0]
-    delta = datetime.datetime.today() - lastPlay
+    firstName = PLAYER[4]
+    lastName = PLAYER[5]
+    lastPlay = PLAYER[6]
+    userName = PLAYER[1]
+    delta = datetime.datetime.today().date() - lastPlay
     root = tk.Tk()
     root.geometry('640x480')
     root.configure(background='#4169E1')

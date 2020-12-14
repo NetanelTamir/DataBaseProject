@@ -1,5 +1,6 @@
 import random
 from core.Country import Country
+from core.Game import HINT_COST, FLIGHT_COST
 
 class Level():
     def __init__(self, countries, src):
@@ -9,19 +10,13 @@ class Level():
         while idx == self.start:
             idx = random.randrange(len(self.countries))
         self.dst = idx
+        self.time_left = 0
 
     def run(self, time_left):
+        self.time_left = time_left
         country = Country(self.start)
-        level_main_view(self, country)
-        # create country, open first window
-        # options for locations     }   DONT FORGET TO
-        # options for destinations  }   DECREASE TIME HERE
-        # player chooses dest.
-            # if dest:
-                # return
-            # if not dest:
-                # open "not-dest window": new window that says that she wasnt here and button to go back to origin
-
+        id = level_main_view(self, country)
+        if not self.is_real_dest(id):
 
         print("run level")
 
@@ -35,3 +30,13 @@ class Level():
             possible_destinations.append(country)
         return possible_destinations
 
+    def is_real_dest(self, dest_to_check):
+        return dest_to_check == self.dst
+
+    def user_used_hint(self):
+        self.time_left -= HINT_COST
+        return self.time_left > 0
+
+    def user_switched_country(self):
+        self.time_left -= FLIGHT_COST
+        return self.time_left > 0

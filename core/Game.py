@@ -6,7 +6,7 @@ from database_interaction import get_number_of_countries
 NUMBER_OF_LEVELS = 5
 NUMBER_OF_HOURS = 168
 NUMBER_OF_COUNTRIES_IN_LEVEL = 4
-QUESTION_COST = 3
+HINT_COST = 3
 FLIGHT_COST = 8
 
 class Game():
@@ -20,7 +20,7 @@ class Game():
         self.time_left = NUMBER_OF_HOURS
 
     def run(self):
-        # opening window with explanations
+        start_game_view()
         while self.current_level < self.number_of_levels:
             level = self.levels[self.current_level]
             passed, time_left = level.run(self.time_left)
@@ -32,10 +32,12 @@ class Game():
         self.game_won()
 
     def game_lost(self):
+        game_lost_window()
         print("game lost")
         # go to lose page
 
     def game_won(self):
+        game_won_window()
         print("game won")
         # go to win page
 

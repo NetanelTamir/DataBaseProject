@@ -31,3 +31,12 @@ def generate_questions(country):
     return questions
 
 def build_real_question_from_generic_question(generic_question, type, country):
+    ret = {}
+    attr = country[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
+    if type in ["flag", "map"]:
+        ret["file"] = attr
+        ret["string"] = generic_question
+    else:
+        generic_question.replace("_ATTR_", attr)
+        ret["string"] = generic_question
+    return generic_question

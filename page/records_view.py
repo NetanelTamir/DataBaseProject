@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from database_interaction import get_highscores_no_repeats_friends
 from page import home_view
 from PIL import Image, ImageTk
 
@@ -41,15 +42,16 @@ def main():
     ).grid(row=0, column=0, columnspan=6, rowspan=2, sticky=tk.W + tk.E)
 
     # table_records = get table records from DB limit
-    table = [("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000),
-             ("omer", 900), ("yael", 700), ("yoe", 10000)]
+    # table = [("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000),
+    #          ("omer", 900), ("yael", 700), ("yoe", 10000)]
+    table = get_highscores_no_repeats_friends(home_view.PLAYER[0])
 
     label = []
     i = 2
     for t in table:
         i += 1
-        name = t[0]
-        score = t[1]
+        name = t[0] +" "+t[1]
+        score = t[2]
         if i % 2 == 0:
             bg = "GREY"
         else:

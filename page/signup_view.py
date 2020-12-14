@@ -3,7 +3,7 @@ from time import sleep
 from tkinter import messagebox
 from page import login_view
 from PIL import Image, ImageTk
-
+import database_interaction
 entry_first_name = None
 entry_password = None
 entry_user_name = None
@@ -30,7 +30,7 @@ def handle_sign_up():
     password = entry_password.get()
     ##insert to DB and connect
     print(password + "  " + user_name)
-    response = 1
+    response = database_interaction.add_player((user_name,password,first_name,last_name))
     if response == -1:
         messagebox.showerror("Error", "user-name already exist")
     if response == -2:

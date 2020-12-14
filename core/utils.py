@@ -20,8 +20,14 @@ def get_random_question_type():
     idx = random.randrange(7)
     return QUESTION_TYPE[idx]
 
+def generate_questions(country):
+    questions = []
+    for type in country.questions_types:
+        all_questions = get_questions_by_type(type)
+        idx = random.randrange(0, len(all_questions))
+        generic_question = all_questions[idx]
+        real_question = build_real_question_from_generic_question(generic_question, type, country)
+        questions.append()
+    return questions
 
 def build_real_question_from_generic_question(generic_question, type, country):
-    attr = country[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
-    generic_question.replace("_ATTR_", attr)
-    return generic_question

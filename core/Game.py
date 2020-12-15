@@ -23,8 +23,8 @@ class Game():
         start_game_view()
         while self.current_level < self.number_of_levels:
             level = self.levels[self.current_level]
-            passed, time_left = level.run(self.time_left)
-            if not passed:
+            time_left = level.run(self.time_left)
+            if time_left <= 0:
                 self.game_lost()
                 return
             self.time_left = time_left

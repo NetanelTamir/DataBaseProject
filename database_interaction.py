@@ -157,16 +157,17 @@ def log_in(username, password):
     salt = res[3]
     hash = res[2]
     if (hashlib.sha256((password + salt).encode('utf-8')).hexdigest() == hash):
-        sql = "UPDATE carmen_sandiego.players SET last_played = '%s' WHERE user_name = '%s'" % (
-            datetime.now(), username)
-        cursor.execute(sql)
-
         sql = "SELECT * FROM carmen_sandiego.players WHERE user_name='%s'" % (username)
         cursor.execute(sql)
         res = cursor.fetchall()[0][0]
         commit_connection()
         return res
     return -1
+
+def update_last_played(id):
+    sql = "UPDATE carmen_sandiego.players SET last_played = '%s' WHERE id_players='%s'" % (
+        datetime.now(), id)
+    cursor.execute(sql)
 
 
 # Adds friendship to DB

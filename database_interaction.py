@@ -70,7 +70,7 @@ def fill_cities():
 
     with open('parsed_csvs/cities.csv', encoding='cp850') as csvfile:
         reader = csv.reader(csvfile, delimiter=',')
-        sql = "INSERT INTO carmen_sandiego.cities (city, country) VALUES (%s,%s)"
+        sql = "INSERT INTO carmen_sandiego.cities (city, id_country) VALUES (%s,%s)"
         for row in reader:
             cursor.execute(sql, row)
     commit_connection()

@@ -117,7 +117,6 @@ Myanmar	Naypyidaw	47,400,000	Kyat	Burmese	mm-t.gif
 Namibia	Windhoek	2,054,500	Dollar, Rand	English	wa-t.gif
 Nepal	Kathmandu	28,880,000	Rupee	samoan,English	np-t.gif
 Netherlands	Amsterdam	16,390,000	Euro	Dutch	nl-t.gif
-New Caledonia	Noumea	237,000	CFP franc	French	nc-t.gif
 New Zealand	Wellington	4,182,000	Dollar	Maori,English	nz-t.gif
 Nicaragua	Managua	5,770,000	Cordoba	Spanish	ni-t.gif
 Niger	Niamey	13,957,000	Franc	French	ne-t.gif
@@ -140,7 +139,6 @@ Republic of Macedonia	Skopje	2,054,500	Denar	Macedonian,Albanian	mk-t.gif
 Romania	Bucharest	22,280,000	Leu	Romanian	ro-t.gif
 Russia	Moscow	141,400,000	Ruble	Russian	ru-t.gif
 Rwanda	Kigali	9,800,000	Franc	Kinyarwanda,French,English	rwanda-t.gif
-Saint Kitts and Nevis	Basseterre	43,000	Dollar	English	sc-t.gif
 Saint Lucia	Castries	161,000	Dollar	English	st-t.gif
 Samoa	Apia	185,000	Tala	Samoan,English	ws-t.gif
 Saudi Arabia	Riyadh	25,970,000	Riyal	Arabic	sa-t.gif
@@ -169,7 +167,6 @@ Trinidad and Tobago	Port of Spain	1,305,000	Dollar	English	td-t.gif
 Tunisia	Tunis	10,280,000	Dinar	Arabic	ts-t.gif
 Turkey	Ankara	76,028,600	New lira	Turkish	tu-t.gif
 Turkmenistan	Ashgabat	5,220,000	Manat	Turkmen,Russian,Uzbek	tx-t.gif
-Turks and Caicos Islands	Cockburn Town	21,330	Dollar	English	turks_caicos-t.gif
 Uganda	Kampala	29,990,000	Shilling	Swahili	ug-t.gif
 Ukraine	Kiev (Kyiv)	46,300,000	Hryvnia	Ukrainian	up-t.gif
 United Arab Emirates	Abu Dhabi	4,496,000	Dirham	Arabic	ue-t.gif

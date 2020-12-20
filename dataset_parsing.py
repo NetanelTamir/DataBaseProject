@@ -2,7 +2,12 @@ import csv
 
 def help_create_cities():
     rows = []
-    with open('src_files/worldcities.csv', encoding='cp850') as csvfile:
+    with open('src_files/worldcities.csv', encoding='cp850') as csvfile,open('parsed_csvs/countries.csv',
+                                                                               encoding='cp850') as csvfile2:
+        reader2=csv.reader(csvfile2, delimiter=',')
+        cities_dict={}
+        for index,value in enumerate(reader2):
+            cities_dict[value[0]]=index+1
         reader = csv.reader(csvfile, delimiter=',')
         cities = []
         for row in reader:
@@ -10,7 +15,8 @@ def help_create_cities():
         csvfile.seek(0)
         for row in reader:
             if sum(row[1] in s for s in cities) == 1:
-                rows.append((row[1], row[4]))
+                if(row[4] in cities_dict.keys()):
+                    rows.append((row[1], cities_dict[row[4]]))
 
     with open('src_files/worldcities2.csv', 'w', newline='', encoding='cp850') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quoting=1)

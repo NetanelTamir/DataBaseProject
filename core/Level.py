@@ -15,9 +15,20 @@ class Level():
     def run(self, time_left):
         self.time_left = time_left
         country = Country(self.start)
- #       id = level_main_view(self, country)
-        if not self.is_real_dest(id):
-            print("run level")
+       # id = level_main_view(self, country)
+        while not self.is_real_dest(id):
+            if id == -1:
+                return self.time_left
+            game_over = self.user_switched_country()
+            if game_over:
+                return self.time_left
+            wrong_country = Country(id)
+            wrong_country.make_wrong()
+            game_over = self.user_switched_country()
+            if game_over:
+                return self.time_left
+            id = level_main_view(self, wrong_country)
+        return time_left
 
     def get_dst(self):
         return self.dst

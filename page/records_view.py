@@ -1,11 +1,8 @@
 import tkinter as tk
 
 from database_interaction import get_highscores_no_repeats_friends
-from page import home_view
-from PIL import Image, ImageTk
-
+from page import home_view, view_utils
 window = None
-
 
 def handle_Back_click():
     global window
@@ -19,37 +16,16 @@ def main():
     global window
     global player_g
     window = tk.Tk()
-    window.geometry('640x480')
-    window.configure(background='#4169E1')
-    load = Image.open("Earth-icon.png")
-    render = ImageTk.PhotoImage(load)
-    img = tk.Label(window, image=render, bg="#4169E1")
-    img.image = render
-    img.place(x=0, y=0, relwidth=1, relheight=1)
+    view_utils.init_root(window, "records view")
+    view_utils.add_background(window, "Earth-icon.png")
+    view_utils.add_title_image(window, "highscores.png")
+
     window.grid_rowconfigure(1, {'minsize': 100})
     for i in range(2, 10):
         window.grid_rowconfigure(i, {'minsize': 0})
-    for i in range(2, 5):
+    for i in range(2, 6):
         window.grid_columnconfigure(i, {'minsize': 48})
 
-    window.title("records")
-
-    load2 = Image.open("images/logos/highscores.png")
-    render2 = ImageTk.PhotoImage(load2)
-    img = tk.Label(window, image=render2, bg="#4169E1")
-    img.image = render2
-    img.grid(row=0, column=0, columnspan=6, rowspan=2, sticky=tk.W + tk.E)
-    # label = tk.Label(
-    #     text="High score table",
-    #     font=("Helvetica", 18, "bold"),
-    #     background="#4169E1",
-    #     fg="black",
-    #     width=20,
-    # ).grid(row=0, column=0, columnspan=6, rowspan=2, sticky=tk.W + tk.E)
-
-    # table_records = get table records from DB limit
-    # table = [("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000), ("omer", 900), ("yael", 700), ("tal", 1000),
-    #          ("omer", 900), ("yael", 700), ("yoe", 10000)]
     table = get_highscores_no_repeats_friends(home_view.PLAYER[0])
 
     label = []

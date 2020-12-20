@@ -1,13 +1,8 @@
 import tkinter as tk
 import datetime
-from time import sleep
-# from core.event_handlers import handle_Exit_click,handle_play_click, handle_records_click, handle_add_friend_click
-
-from page import records_view, friends_view
-from PIL import Image, ImageTk
+from page import records_view, friends_view, view_utils, login_view
 from core.Game import Game
 
-# import database_interaction
 PLAYER = None
 entry_name = None
 entry_pass = None
@@ -21,8 +16,6 @@ passw = ""
 def handle_play_click():
     global entry_first_name
     global entry_password
-    ##todo- goto the model and get user name and password
-    # entry = username entry2 = password
     if (entry_name and entry_pass):
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
@@ -43,27 +36,15 @@ def handle_records_click():
     root.destroy()
     records_view.main()
 
-    # response = database_interaction.add_player((username, password))
-
 
 def handle_Exit_click():
     global root
-    # root.destroy()
-    # exit(0)
+    root.destroy()
+    login_view.main()
 
 
 def favorite_locations_click():
     print("b")
-
-# response = database_interaction.log_in(username, password)
-# if response == -1:
-#    print("Wrong password or username")
-# else:
-#    print("hello" + str(response))
-
-# database_intercation
-
-
 
 def main():
     global PLAYER
@@ -82,20 +63,16 @@ def main():
     userName = PLAYER[1]
     delta = datetime.datetime.today().date() - lastPlay
     root = tk.Tk()
-    root.geometry('640x480')
-    root.configure(background='#4169E1')
-    load = Image.open("Earth-icon.png")
-    render = ImageTk.PhotoImage(load)
-    img = tk.Label(root, image=render, bg="#4169E1")
-    img.image = render
-    img.place(x=0, y=0, relwidth=1, relheight=1)
+
+    view_utils.init_root(root, "home view")
+    view_utils.add_background(root, "Earth-icon.png")
+
 
     root.grid_rowconfigure(1, {'minsize': 110})
     for i in range(2, 10):
         root.grid_rowconfigure(i, {'minsize': 64})
     for i in range(0, 10):
         root.grid_columnconfigure(i, {'minsize': 45})
-    root.title("login")
     label = tk.Label(
         text="Welcome " + firstName + ",\n your last game was " + str(delta.days) + " days ago",
         font=("Helvetica", 14),

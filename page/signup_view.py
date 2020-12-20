@@ -1,8 +1,6 @@
 import tkinter as tk
-from time import sleep
 from tkinter import messagebox
-from page import login_view
-from PIL import Image, ImageTk
+from page import login_view, view_utils
 import database_interaction
 entry_first_name = None
 entry_password = None
@@ -28,7 +26,6 @@ def handle_sign_up():
     user_name = entry_user_name.get()
     first_name = entry_first_name.get()
     password = entry_password.get()
-    ##insert to DB and connect
     print(password + "  " + user_name)
     response = database_interaction.add_player((user_name,password,first_name,last_name))
     if response == -1:
@@ -49,25 +46,10 @@ def main():
     global signUpButton
     global goBack
     root = tk.Tk()
-    root.geometry('640x480')
-    root.configure(background='#4169E1')
-    load = Image.open("Earth-icon.png")
-    render = ImageTk.PhotoImage(load)
-    img = tk.Label(root, image=render,bg="#4169E1")
-    img.image = render
-    img.place(x=0, y=0, relwidth = 1, relheight=1)
-    for i in range(1, 10):
-        root.grid_rowconfigure(i, {'minsize': 64})
-    for i in range(0, 10):
-        root.grid_columnconfigure(i, {'minsize': 48})
-    root.title("sign-up")
-
-    load2 = Image.open("images/logos/signUp.png")
-    render2 = ImageTk.PhotoImage(load2)
-    img2 = tk.Label(root, image=render2, bg="#4169E1")
-    img2.image = render2
-    img2.grid(row=0, column=0, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
-
+    view_utils.init_root(root, "sign-up view")
+    view_utils.add_background(root, "Earth-icon.png")
+    view_utils.add_title_image(root, "signUp.png")
+    view_utils.classic_grid(root)
 
     first_name_label = tk.Label(
         text="enter first name",

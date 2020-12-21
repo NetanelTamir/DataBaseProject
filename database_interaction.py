@@ -357,3 +357,8 @@ def get_comments_by_type(type):
     res = cursor.fetchall()
     return res
 
+def get_favorite_locations_by_user_id(id):
+    sql = '''Select * from locations where id_locations in (SELECT id_locations FROM carmen_sandiego.favorite_locations where id_players='%s') ''' % (id)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    return res

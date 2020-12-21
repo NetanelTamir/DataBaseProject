@@ -1,6 +1,6 @@
 import tkinter as tk
 import datetime
-from page import records_view, friends_view, view_utils, login_view
+from page import records_view, friends_view, view_utils, login_view, favorite_locations_view
 from core.Game import Game
 
 PLAYER = None
@@ -44,7 +44,9 @@ def handle_Exit_click():
 
 
 def favorite_locations_click():
-    print("b")
+    global root
+    root.destroy()
+    favorite_locations_view.main()
 
 def main():
     global PLAYER

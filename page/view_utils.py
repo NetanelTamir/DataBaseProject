@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from PIL import Image, ImageTk
 
 def init_root(root, title_name):
@@ -25,3 +26,9 @@ def classic_grid(root):
         root.grid_rowconfigure(i, {'minsize': 64})
     for i in range(0, 10):
         root.grid_columnconfigure(i, {'minsize': 48})
+
+def show_message(title, message):
+    messagebox.showinfo(title, message)
+    
+def show_error(message):
+    messagebox.showerror("Error", message)

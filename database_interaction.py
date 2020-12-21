@@ -11,7 +11,7 @@ from dataset_parsing import help_create_cities, create_cities, create_comments, 
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
                                      user='root',
-                                     password='omer123')
+                                     password='netanel')
 cursor = None
 
 

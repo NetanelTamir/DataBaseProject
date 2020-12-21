@@ -46,9 +46,10 @@ def main():
     global signUpButton
     global goBack
     root = tk.Tk()
+
     view_utils.init_root(root, "sign-up view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "signUp.png")
+    view_utils.add_title_image(root, "signUp.png",0.38,0)
     view_utils.classic_grid(root)
 
     first_name_label = tk.Label(

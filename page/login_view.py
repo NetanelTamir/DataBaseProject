@@ -58,26 +58,29 @@ def main():
     root = tk.Tk()
     view_utils.init_root(root, "login view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "welcome.png")
-    view_utils.classic_grid(root)
+    view_utils.add_title_image(root, "welcome.png",0.1,0)
+    #view_utils.classic_grid(root)
 
-    user_label = tk.Label(
-        text="enter your user name",
-        fg="white",
-        bg="black",
-        width=20,
-    ).grid(row=3, column=3, sticky='NW')
+    # user_label = tk.Label(
+    #     text="enter your user name",
+    #     fg="white",
+    #     bg="black",
+    #     width=20,
+    # ).grid(row=3, column=3, sticky='NW')
+
+    view_utils.add_image(root,'username.png',0.07,0.2)
     entry_name = tk.Entry(width=20, text="user name", master=root)
-    entry_name.grid(row=3, column=5, sticky='NW')
+    entry_name.place(relx=0.4, rely=0.241)
     entry_name.insert(0, userName)
-    pass_label = tk.Label(
-        text="enter your password",
-        fg="white",
-        bg="black",
-        width=20,
-    ).grid(row=4, column=3, sticky='NW')
+    # pass_label = tk.Label(
+    #     text="enter your password",
+    #     fg="white",
+    #     bg="black",
+    #     width=20,
+    # ).grid(row=4, column=3, sticky='NW')
+    view_utils.add_image(root,'password.png',0.07,0.35)
     entry_pass = tk.Entry(width=20, text="password", master=root)
-    entry_pass.grid(row=4, column=5, sticky='NW')
+    entry_pass.place(relx=0.4, rely=0.395)
     entry_pass.insert(0, passw)
     loginButton = tk.Button(
         root,
@@ -87,7 +90,7 @@ def main():
         bg="black",
         fg="white",
         command=handle_click
-    ).grid(row=5, column=3)
+    ).place(relx=0.7, rely=0.24)
     signUpButton = tk.Button(
         root,
         text="sign up!",
@@ -96,7 +99,7 @@ def main():
         bg="black",
         fg="white",
         command=handle_sign_up
-    ).grid(row=5, column=5)
+    ).place(relx=0.7, rely=0.39)
     root.mainloop()
 
 

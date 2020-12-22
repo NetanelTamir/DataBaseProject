@@ -1,6 +1,6 @@
 import tkinter as tk
 import datetime
-from page import records_view, friends_view, view_utils, login_view, favorite_locations_view
+from page import records_view, friends_view, view_utils, login_view, favorite_locations_view, all_records_view
 from core.Game import Game
 
 PLAYER = None
@@ -36,6 +36,10 @@ def handle_records_click():
     root.destroy()
     records_view.main()
 
+def handle_all_records_click():
+    global root
+    root.destroy()
+    all_records_view.main()
 
 def handle_Exit_click():
     global root
@@ -70,19 +74,19 @@ def main():
     view_utils.add_background(root, "Earth-icon.png")
 
 
-    root.grid_rowconfigure(1, {'minsize': 110})
-    for i in range(2, 10):
-        root.grid_rowconfigure(i, {'minsize': 64})
-    for i in range(0, 10):
-        root.grid_columnconfigure(i, {'minsize': 45})
+    # root.grid_rowconfigure(1, {'minsize': 110})
+    # for i in range(2, 10):
+    #     root.grid_rowconfigure(i, {'minsize': 64})
+    # for i in range(0, 10):
+    #     root.grid_columnconfigure(i, {'minsize': 45})
     label = tk.Label(
-        text="Welcome " + firstName + ",\n your last game was " + str(delta.days) + " days ago",
+        text="Welcome " + firstName + "!\n Your last game was " + str(delta.days) + " days ago.",
         font=("Helvetica", 14),
         background="#4169E1",
         fg="black",
-        width=20,
-    ).grid(row=0, column=3, columnspan=10, rowspan=2, sticky=tk.W + tk.E)
-
+        width=25,
+    ).place(relx=0.28, rely=0)
+    view_utils.add_image(root,'carmen_home.png',relx=0.70,rely=0.10)
     playButton = tk.Button(
         root,
         text="Play!",
@@ -91,16 +95,25 @@ def main():
         bg="black",
         fg="white",
         command=lambda:handle_play_click()
-    ).grid(row=2, column=6)
+    ).place(relx=0.42, rely=0.2)
     recordsButton = tk.Button(
         root,
-        text="Show Records",
+        text="Friends Records",
         width=12,
         height=1,
         bg="black",
         fg="white",
         command=lambda:handle_records_click()
-    ).grid(row=3, column=6)
+    ).place(relx=0.32, rely=0.3)
+    allrecordsButton = tk.Button(
+        root,
+        text="All Records",
+        width=12,
+        height=1,
+        bg="black",
+        fg="white",
+        command=lambda: handle_all_records_click()
+    ).place(relx=0.52, rely=0.3)
     favoritesButton = tk.Button(
         root,
         text="Favorite Locations",
@@ -109,7 +122,7 @@ def main():
         bg="black",
         fg="white",
         command=lambda:favorite_locations_click()
-    ).grid(row=4, column=6)
+    ).place(relx=0.41, rely=0.4)
     addFriend_button = tk.Button(
         root,
         text="Friends",
@@ -118,14 +131,14 @@ def main():
         bg="black",
         fg="white",
         command=lambda:handle_add_friend_click()
-    ).grid(row=5, column=6)
+    ).place(relx=0.42, rely=0.50)
     exitButton = tk.Button(
         root,
-        text="log out",
+        text="Log Out",
         width=12,
         height=1,
         bg="black",
         fg="white",
         command=lambda:handle_Exit_click()
-    ).grid(row=7, column=6)
+    ).place(relx=0.422, rely=0.8)
     root.mainloop()

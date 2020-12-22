@@ -52,7 +52,7 @@ def main():
     root = tk.Tk()
     view_utils.init_root(root, "friendship view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "friends.png")
+    view_utils.add_title_image(root, "friends.png",relx=0.4,rely=0)
 
     PLAYER = home_view.PLAYER
     root.grid_rowconfigure(1, {'minsize': 110})

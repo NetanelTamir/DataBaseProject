@@ -54,3 +54,6 @@ class Country():
             chosen_locations.append(all_locations[idx])
         return chosen_locations
 
+    def get_description(self):
+        return get_country_description(self.data)
+

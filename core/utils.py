@@ -6,6 +6,9 @@ QUESTION_TYPE = {0:"population", 1:"currency", 2:"flag", 3:"capital", 4:"languag
 ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":1, "population":2, "language":4, "flag":5, "map":0, "currency":3}
 WETHER_DICT = {"1":"a","2":"b","3":"c","4":"d"}
 
+"""
+    Generate n new countries which are not in given set
+"""
 def get_new_countries(countries_set, number_of_countries):
     countries = []
     total_countries = get_number_of_countries()
@@ -18,10 +21,18 @@ def get_new_countries(countries_set, number_of_countries):
 
     return countries
 
+
+"""
+    Get random question type
+"""
 def get_random_question_type():
     idx = random.randrange(7)
     return QUESTION_TYPE[idx]
 
+
+"""
+    Generate questions for country
+"""
 def generate_questions(country):
     questions = []
     for type in country.questions_types:
@@ -29,9 +40,13 @@ def generate_questions(country):
         idx = random.randrange(0, len(all_questions))
         generic_question = all_questions[idx]
         real_question = build_real_question_from_generic_question(generic_question, type, country)
-        questions.append()
+        questions.append(real_question)
     return questions
 
+
+"""
+    Generate real question from generic one
+"""
 def build_real_question_from_generic_question(generic_question, type, country):
     ret = {}
     attr = country[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
@@ -43,6 +58,10 @@ def build_real_question_from_generic_question(generic_question, type, country):
         ret["string"] = generic_question
     return generic_question
 
+
+"""
+    Get instruction for game
+"""
 def get_instructions():
     return f"Welcome agent 007! We've got intel on Carmen San Diego's whereabout. Wer'e sending you to catch her!\n" \
         f"You need to act quickly - she's moving fast and shes about to commit a serious crime by the end of" \
@@ -51,6 +70,10 @@ def get_instructions():
         f"questioning people and {FLIGHT_COST} hours for switching countries. Keep that in mind before making " \
         f"any move!\nWer'e counting on you. Good luck!"
 
+
+"""
+    Get country description
+"""
 def get_country_description(country_data):
     # country_name, capital_name, population, currency, languages, flag, region, area, gdp, climate
     desc = f"Welcome to {country_data[0]}! Here is some infromation about this wonderful country:\n" \
@@ -75,3 +98,11 @@ def get_country_description(country_data):
         desc += climate
     return desc
 
+
+"""
+    Generate incorrect question
+"""
+def get_incorrect_question():
+    all_questions = get_questions_by_type("incorrect")
+    idx = random.randrange(len(all_questions))
+    return all_questions[idx]

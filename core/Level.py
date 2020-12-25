@@ -1,52 +1,72 @@
 import random
 from core.Country import Country
-#from core.Game import HINT_COST, FLIGHT_COST
+from core.utils import get_incorrect_question
 
 class Level():
     def __init__(self, countries, src):
         self.countries = countries
         self.start = src
-        idx = self.start
-        while idx == self.start:
-            idx = random.randrange(len(self.countries))
+        idx = random.randrange(len(self.countries))
         self.dst = idx
-        self.time_left = 0
+        self.wrong_country = False
+        self.destinations = None
 
-    def run(self, time_left):
-        self.time_left = time_left
+
+    """
+        Return src country of level
+    """
+    def get_src_country(self):
         country = Country(self.start)
-       # id = level_main_view(self, country)
-        while not self.is_real_dest(id):
-            if id == -1:
-                return self.time_left
-            game_over = self.user_switched_country()
-            if game_over:
-                return self.time_left
-            wrong_country = Country(id)
-            wrong_country.make_wrong()
-            game_over = self.user_switched_country()
-            if game_over:
-                return self.time_left
-            id = level_main_view(self, wrong_country)
-        return time_left
+        return country
 
+
+    """
+        React to user's choice
+    """
+    def user_chose_dest(self, dst):
+        if self.is_real_dest(dst):
+            return True
+        else:
+            return False, get_incorrect_question()
+
+
+    """
+        Get specipic country of level by it's ID. Return None if not a possible dst
+    """
+    def get_specific_dst(self, id):
+        if id not in self.countries:
+            return None
+        for dst in self.get_possible_destinations():
+            if dst.data[0] == id:
+                return dst
+        # error handling
+        return None
+
+
+    """
+        Return correct destination of level
+    """
     def get_dst(self):
         return self.dst
 
-    def get_possible_destinations(self):
-        possible_destinations = []
-        for c in self.countries:
-            country = Country(c)
-            possible_destinations.append(country)
-        return possible_destinations
 
+    """
+        Get all possible destinations of level
+    """
+    def get_possible_destinations(self):
+        if not self.destinations:
+            possible_destinations = []
+            for c in self.countries:
+                country = Country(c)
+                possible_destinations.append(country)
+            self.destinations = possible_destinations
+        return self.destinations
+
+
+    """
+        Get real destination of level
+    """
     def is_real_dest(self, dest_to_check):
         return dest_to_check == self.dst
 
-    def user_used_hint(self):
-        self.time_left -= HINT_COST
-        return self.time_left > 0
 
-    def user_switched_country(self):
-        self.time_left -= FLIGHT_COST
-        return self.time_left > 0

@@ -1,21 +1,25 @@
 from database_interaction import *
-from core.utils import get_random_question_type, build_real_question_from_generic_question
+from core.utils import *
 import random
 
 class Country():
     def __init__(self, id):
         self.id = id
         self.data = get_country_by_id(id)
-        self.cities = get_cities_by_countryid(id)
         self.questions_types = set()
         self.questions = None
         self.cities = None
+        self.wrong = False
         while len(self.questions_types) < 3:
             type = get_random_question_type()
             if type == "incorrect":
                 continue
             self.questions_types.add(type)
 
+
+    """
+        Generate the lists of questions and cities
+    """
     def generate_questions_and_cities(self):
         questions = []
         cities = []
@@ -31,21 +35,21 @@ class Country():
             cities.append(all_cities[idx][1])
         return questions, cities
 
+
+    """
+        Return two lists: question and cities 
+        (each questions "belongs" to a city, that's where the question is happening) 
+    """
     def get_questions_and_cities(self):
         if not self.questions:
             self.questions, self.cities = self.generate_questions_and_cities()
         return self.questions, self.cities
 
-    def make_wrong(self):
-        self.questions = []
-        all_questions = get_questions_by_type("incorrect")
-        idxs = random.sample(range(len(all_questions)), 3)
-        for idx in idxs:
-            self.questions.append(all_questions[idx])
 
+    """
+        Get locations by city
+    """
     def get_locations(self, city_name):
-        # NUMBER_OF_LOCATIONS_OF_EACH_TYPE = 4
-        # LOCATIONS_TYPES = ("buy", "sleep", "eat", "drink", "go", "see", "do", "other", "diplomatic-representation")
         NUMBER_OF_LOCATIONS = 15
         all_locations = get_locations_by_city_name(city_name)
         chosen_locations = []
@@ -54,6 +58,10 @@ class Country():
             chosen_locations.append(all_locations[idx])
         return chosen_locations
 
+
+    """
+        Get string description of country
+    """
     def get_description(self):
         return get_country_description(self.data)
 

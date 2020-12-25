@@ -1,6 +1,6 @@
 from database_interaction import get_number_of_countries, get_questions_by_type
 import random
-from core.Game import HINT_COST, FLIGHT_COST, NUMBER_OF_HOURS
+#from core.Game import HINT_COST, FLIGHT_COST, NUMBER_OF_HOURS
 
 QUESTION_TYPE = {0:"population", 1:"currency", 2:"flag", 3:"capital", 4:"language", 5:"map", 6:"incorrect"}
 ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":1, "population":2, "language":4, "flag":5, "map":0, "currency":3}

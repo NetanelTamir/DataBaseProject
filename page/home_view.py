@@ -13,6 +13,7 @@ root = None
 userName = ""
 passw = ""
 
+
 def handle_play_click():
     global entry_first_name
     global entry_password
@@ -25,21 +26,23 @@ def handle_play_click():
     game.run()
 
 
-
 def handle_add_friend_click():
     global root
     root.destroy()
     friends_view.main()
+
 
 def handle_records_click():
     global root
     root.destroy()
     records_view.main()
 
+
 def handle_all_records_click():
     global root
     root.destroy()
     all_records_view.main()
+
 
 def handle_Exit_click():
     global root
@@ -51,6 +54,7 @@ def favorite_locations_click():
     global root
     root.destroy()
     favorite_locations_view.main()
+
 
 def main():
     global PLAYER
@@ -73,7 +77,6 @@ def main():
     view_utils.init_root(root, "home view")
     view_utils.add_background(root, "Earth-icon.png")
 
-
     # root.grid_rowconfigure(1, {'minsize': 110})
     # for i in range(2, 10):
     #     root.grid_rowconfigure(i, {'minsize': 64})
@@ -86,7 +89,8 @@ def main():
         fg="black",
         width=25,
     ).place(relx=0.28, rely=0)
-    view_utils.add_image(root,'carmen_home.png',relx=0.70,rely=0.10)
+    view_utils.add_image(root, 'carmen_home.png', relx=0.70, rely=0.10)
+    view_utils.add_image(root, 'carmen_home_miror.png', relx=0.013, rely=0.10)
     playButton = tk.Button(
         root,
         text="Play!",
@@ -94,7 +98,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=lambda:handle_play_click()
+        command=lambda: handle_play_click()
     ).place(relx=0.42, rely=0.2)
     recordsButton = tk.Button(
         root,
@@ -103,7 +107,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=lambda:handle_records_click()
+        command=lambda: handle_records_click()
     ).place(relx=0.32, rely=0.3)
     allrecordsButton = tk.Button(
         root,
@@ -121,7 +125,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=lambda:favorite_locations_click()
+        command=lambda: favorite_locations_click()
     ).place(relx=0.41, rely=0.4)
     addFriend_button = tk.Button(
         root,
@@ -130,7 +134,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=lambda:handle_add_friend_click()
+        command=lambda: handle_add_friend_click()
     ).place(relx=0.42, rely=0.50)
     exitButton = tk.Button(
         root,
@@ -139,6 +143,6 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        command=lambda:handle_Exit_click()
+        command=lambda: handle_Exit_click()
     ).place(relx=0.422, rely=0.8)
     root.mainloop()

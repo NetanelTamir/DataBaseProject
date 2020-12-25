@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from database_interaction import get_highscores_no_repeats_friends
+from database_interaction import get_highscores_yes_repeats
 from page import home_view, view_utils
 window = None
 
@@ -26,7 +26,7 @@ def main():
     for i in range(2, 6):
         window.grid_columnconfigure(i, {'minsize': 48})
 
-    table = get_highscores_no_repeats_friends(home_view.PLAYER[0])
+    table = get_highscores_yes_repeats()
 
     label = []
     i = 2

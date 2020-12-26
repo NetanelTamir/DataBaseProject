@@ -77,12 +77,12 @@ def get_instructions():
 def get_country_description(country_data):
     # country_name, capital_name, population, currency, languages, flag, region, area, gdp, climate
     desc = f"Welcome to {country_data[0]}! Here is some infromation about this wonderful country:\n" \
-           f"Our capital is {country_data[1]}, we are speaking here in {country_data[4]} and we " \
-           f"are using the {country_data[3]} currency. We are located on the {country_data[5]} region. "
+           f"Our capital is {country_data[1]}, the size of our country is  {country_data[7]} and our gdp is {country_data[8]}. Our " \
+           f"currency is called the {country_data[3]}. We are located on the {country_data[5]} region. "
     if country_data[2] != "":
         desc += f"We also have a population of {country_data[2]} people. "
     if country_data[9] != "" and country_data[9] != "5": # climate
-        climate = "Our wether here is "
+        climate = "Our weather here is "
         if country_data[9].count(",") > 0:
             climate_list = country_data.split(",")
             for i in range(len(climate_list) - 1):

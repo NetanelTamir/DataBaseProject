@@ -79,7 +79,7 @@ def main():
     #     width=20,
     # ).grid(row=4, column=3, sticky='NW')
     view_utils.add_image(root,'password.png',0.07,0.35)
-    entry_pass = tk.Entry(width=20, text="password", master=root)
+    entry_pass = tk.Entry(width=20, text="password",show="*" ,master=root)
     entry_pass.place(relx=0.4, rely=0.395)
     entry_pass.insert(0, passw)
     loginButton = tk.Button(

@@ -19,7 +19,13 @@ def main():
     view_utils.init_root(window, "records view")
     view_utils.add_background(window, "Earth-icon.png")
     view_utils.add_title_image(window, "highscores.png",relx=0.26,rely=0)
-
+    label = tk.Label(
+        text="High-scores of all users. With repeats",
+        font=("Helvetica", 14),
+        background="#4169E1",
+        fg="black",
+        width=50,
+    ).place(relx=0.08, rely=0.12)
     window.grid_rowconfigure(1, {'minsize': 100})
     for i in range(2, 10):
         window.grid_rowconfigure(i, {'minsize': 0})
@@ -46,7 +52,7 @@ def main():
             bg=bg,
             width=20,
         )
-        z.grid(row=i, column=2, sticky='NW')
+        z.grid(row=i, column=3, sticky='NW')
         x = tk.Label(
             window,
             text=name,
@@ -55,7 +61,7 @@ def main():
             bg=bg,
             width=20,
         )
-        x.grid(row=i, column=3, sticky='NW')
+        x.grid(row=i, column=4, sticky='NW')
         y = tk.Label(
             window,
             text=str(score),
@@ -64,7 +70,7 @@ def main():
             bg=bg,
             width=20,
         )
-        y.grid(row=i, column=4, sticky='NW')
+        y.grid(row=i, column=5, sticky='NW')
         label.append(x)
         label.append(y)
     backButton = tk.Button(

@@ -1,6 +1,7 @@
 import tkinter as tk
 import datetime
-from page import records_view, friends_view, view_utils, login_view, favorite_locations_view, all_records_view
+from page import records_view, friends_view, view_utils, login_view, favorite_locations_view, all_records_view, \
+    game_view
 from core.Game import Game
 
 PLAYER = None
@@ -22,8 +23,8 @@ def handle_play_click():
         username = entry_name.get()
         password = entry_pass.get()
 
-    game = Game()
-    game.run()
+    root.destroy()
+    game_view.main()
 
 
 def handle_add_friend_click():

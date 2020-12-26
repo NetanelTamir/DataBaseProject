@@ -11,7 +11,7 @@ from dataset_parsing import help_create_cities, create_cities, create_comments, 
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
                                      user='root',
-                                     password='omer123')
+                                     password='netanel')
 cursor = None
 
 
@@ -290,9 +290,12 @@ def get_number_of_countries():
 
 
 def get_country_by_id(country_id):
-    sql = '''SELECT * FROM carmen_sandiego.countries WHERE id_countries='%s' ''' % (country_id)
-    cursor.execute(sql)
-    res = cursor.fetchall()
+    try:
+        sql = '''SELECT * FROM carmen_sandiego.countries WHERE id_countries='%s' ''' % (country_id)
+        cursor.execute(sql)
+        res = cursor.fetchall()
+    except Exception:
+        res=None
     return res
 
 

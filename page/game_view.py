@@ -34,18 +34,25 @@ def flight_click():
     global flight
     l = []
     canvas.delete("all")
-    for i in range(0, 3):
-        l.append(tk.Button(
-            canvas,
-            text=flight[i],
-            width=27,
-            height=4,
-            font=("Helvetica", 14),
-            bg=Colors[i],
-            fg="white",
-            # command=new_
-        ).place(relx=0, rely= + 0.33 * i))
-    canvas.update()
+    frame = tk.Frame()
+    button1=tk.Button(frame,text=flight[0],width=27,height=4,font=("Helvetica", 14),bg=Colors[0],fg="white").place(relx=0, rely=+ 0.33 * 0)
+    button2=tk.Button(frame,text=flight[1],width=27,height=4,font=("Helvetica", 14),bg=Colors[1],fg="white").place(relx=0, rely=+ 0.33 * 1)
+    button3=tk.Button(frame,text=flight[2],width=27,height=4,font=("Helvetica", 14),bg=Colors[2],fg="white").place(relx=0, rely=+ 0.33 * 2)
+
+    canvas.create_window(152, 152, window=frame, width=300, height=300)
+
+    #canvas.delete("button1")
+    # for i in range(0, 3):
+    #     l.append(tk.Button(
+    #         canvas,
+    #         text=flight[i],
+    #         width=27,
+    #         height=4,
+    #         font=("Helvetica", 14),
+    #         bg=Colors[i],
+    #         fg="white",
+    #         # command=new_
+    #     ).place(relx=0, rely= + 0.33 * i))
     canvas.update()
 
 
@@ -126,8 +133,6 @@ def main():
     start_text = utils.get_instructions()
     canvas.create_text(150, 150, width=300, fill="darkblue", font="Times 10 italic bold",
                        text=start_text)
-    canvas.update()
-
     canvas.update()
     mapCanvas.update()
     root.mainloop()

@@ -63,12 +63,15 @@ def build_real_question_from_generic_question(generic_question, type, country):
     Get instruction for game
 """
 def get_instructions():
-    return f"Welcome agent 007! We've got intel on Carmen San Diego's whereabout. Wer'e sending you to catch her!\n" \
-        f"You need to act quickly - she's moving fast and shes about to commit a serious crime by the end of" \
-        f" this week, according to our intel. So you've got {NUMBER_OF_HOURS} to catch her!\n" \
-        f"You can ask people around to see if they saw her, but it will cost you time; {HINT_COST} hours for " \
+    NUMBER_OF_HOURS = 168
+    HINT_COST = 1
+    FLIGHT_COST = 8
+    return f"Welcome agent 007! We've got intel on Carmen San Diego's whereabouts. We're sending you to catch her!\n" \
+        f"You need to act quickly - she's moving fast and she's about to commit a serious crime by the end of" \
+        f" this week, according to our intel. You've got {NUMBER_OF_HOURS} to catch her!\n" \
+        f"You can ask people around to see if they saw her, but it will cost you time; {HINT_COST} hour for " \
         f"questioning people and {FLIGHT_COST} hours for switching countries. Keep that in mind before making " \
-        f"any move!\nWer'e counting on you. Good luck!"
+        f"any move!\nWe're counting on you. Good luck!"
 
 
 """
@@ -76,25 +79,34 @@ def get_instructions():
 """
 def get_country_description(country_data):
     # country_name, capital_name, population, currency, languages, flag, region, area, gdp, climate
-    desc = f"Welcome to {country_data[0]}! Here is some infromation about this wonderful country:\n" \
-           f"Our capital is {country_data[1]}, the size of our country is  {country_data[7]} and our gdp is {country_data[8]}. Our " \
-           f"currency is called the {country_data[3]}. We are located on the {country_data[5]} region. "
+    desc = f"Welcome to {country_data[1]}! Here is some infromation about this wonderful country:\n" \
+           f"Our capital is {country_data[2]}, the size of our country is  {country_data[8]} square meters and our gdp is {country_data[9]} USD.\nOur " \
+           f"currency is called the {country_data[4]}.\nWe are located in the {country_data[7]} region.\n"
     if country_data[2] != "":
-        desc += f"We also have a population of {country_data[2]} people. "
-    if country_data[9] != "" and country_data[9] != "5": # climate
-        climate = "Our weather here is "
-        if country_data[9].count(",") > 0:
-            climate_list = country_data.split(",")
-            for i in range(len(climate_list) - 1):
-                if climate_list[i] == 5:
-                    continue
-                climate += WETHER_DICT[climate_list[i]]
-                if i == len(climate_list) - 2 and climate_list[i + 1] != 5:
-                    climate += " and "
-            if climate_list[len(climate_list) - 1] != 5:
-                climate += WETHER_DICT[climate_list[len(climate_list) - 1]]
-        else:
-            climate += WETHER_DICT[country_data[9]]
+        desc += f"We also have a population of {country_data[3]} people.\n"
+    if country_data[10] != "" and country_data[10] != "5" and country_data[10] != "0": # climate
+        # climate = "Our climate here is "
+        # if country_data[10].count(",") > 0:
+        #     climate_list = country_data.split(",")
+        #     for i in range(len(climate_list) - 1):
+        #         if climate_list[i] == 5:
+        #             continue
+        #         climate += WETHER_DICT[climate_list[i]]
+        #         if i == len(climate_list) - 2 and climate_list[i + 1] != 5:
+        #             climate += " and "
+        #     if climate_list[len(climate_list) - 1] != 5:
+        #         climate += WETHER_DICT[climate_list[len(climate_list) - 1]]
+        # else:
+        #     climate += WETHER_DICT[country_data[10]]
+        climate=""
+        if(country_data[10]==1):
+            climate = "Our climate is - dry tropical or tundra and ice"
+        if (country_data[10] == 2):
+            climate = "Our climate is - wet tropical"
+        if (country_data[10] == 3):
+            climate = "Our climate is - temperate humid subtropical and temperate continental"
+        if (country_data[10] == 4):
+            climate = "Our climate is - dry hot summers and wet winters"
         desc += climate
     return desc
 

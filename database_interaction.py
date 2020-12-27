@@ -293,7 +293,7 @@ def get_country_by_id(country_id):
     try:
         sql = '''SELECT * FROM carmen_sandiego.countries WHERE id_countries='%s' ''' % (country_id)
         cursor.execute(sql)
-        res = cursor.fetchall()
+        res = cursor.fetchall()[0]
     except Exception:
         res=None
     return res

@@ -4,16 +4,25 @@ import PIL
 from PIL import Image, ImageTk
 from PIL import Image
 
+from core import utils
 from core.Country import Country
 from page import signup_view, home_view, view_utils
 country_object = Country(154)
+country_desc=""
 def handle_country_info_click():
     global country_object
-    #country_object.get_description()
-
-
+    global country_desc
+    global canvas
+    country_object=Country(154)
+    country_desc=country_object.get_description()
+    canvas.delete("all")
+    canvas.create_text(150, 150, width=300, fill="green", font="Times 10 bold",
+                       text=country_desc)
+    canvas.update()
+    canvas.update()
 
 def main():
+    global canvas
     root = tk.Tk()
     country = "Spain"
     city = "Madrid"
@@ -85,6 +94,11 @@ def main():
         fg="white",
         # command=handle_click
     ).place(relx=0.635, rely=0.81)
+
+    start_text=utils.get_instructions()
+    canvas.create_text(150, 150,width=300,fill="darkblue", font="Times 10 italic bold",
+                            text=start_text)
+    canvas.update()
 
     canvas.update()
     mapCanvas.update()

@@ -104,7 +104,7 @@ def get_country_description(country_data):
 def get_incorrect_question():
     all_questions = get_questions_by_type("incorrect")
     idx = random.randrange(len(all_questions))
-    return all_questions[idx]
+    return all_questions[idx][1:-1]
 
 
 def get_random_city_from_list_by_id(id):

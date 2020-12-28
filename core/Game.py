@@ -76,3 +76,7 @@ class Game():
     """
     def user_switched_country(self):
         self.time_left -= FLIGHT_COST
+
+
+    def get_score(self):
+        return self.time_left / NUMBER_OF_HOURS * 100. + 20 * self.current_level

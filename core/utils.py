@@ -113,4 +113,4 @@ def get_random_city_from_list_by_id(id):
     return all_cities[idx]
 
 def update_score(player, score):
-    print("a")
+    update_highscore_table(player[0],score)

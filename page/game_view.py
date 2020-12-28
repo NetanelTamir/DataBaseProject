@@ -6,7 +6,7 @@ from PIL import Image
 
 from core import utils
 from core.Country import Country
-from page import signup_view, home_view, view_utils
+from page import signup_view, home_view, view_utils, Winner_view, lost_view
 
 root = None
 GAME = None
@@ -32,7 +32,8 @@ def handle_flight_choose(flight_obj):
     if LEVEL.is_real_dest(id):
         GAME.level_done()
         if GAME.is_game_won():
-            print("win")
+            root.destroy()
+            Winner_view.main(home_view.PLAYER,GAME.time_left)
         else:
             GAME.user_switched_country()
             update_time()
@@ -56,7 +57,8 @@ def handle_flight_choose(flight_obj):
 def update_time():
     global time_label
     if GAME.is_game_lost():
-        print("LOST")
+        root.destroy()
+        lost_view.main(home_view.PLAYER,GAME.time_left)
     else:
         time_label.config(text="Time Left: " + str(GAME.time_left) + " h")
 

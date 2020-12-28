@@ -7,7 +7,7 @@ class Country():
     def __init__(self, id):
         self.id = id
         self.data = get_country_by_id(id)
-        self.data[2] = get_random_city_from_list_by_id(id)
+        # self.data[2] = get_random_city_from_list_by_id(id)
         self.questions_types = set()
         self.questions = None
         self.cities = None

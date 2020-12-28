@@ -2,6 +2,7 @@ import tkinter as tk
 
 import database_interaction
 from page import signup_view, home_view, view_utils, records_view
+from core.utils import *
 
 entry_name = None
 entry_pass = None
@@ -42,16 +43,16 @@ def main(player, score):
     root = tk.Tk()
     view_utils.init_root(root, "you won")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "winner.png",0.1,0)
+    view_utils.add_title_image(root, "winner.png",0.3,0)
 
     score_bunner = tk.Label(
-        text= player[0] +", Your score is: " + score,
+        text= str(player[4]) +", Your score is: " + str(score),
         font=("Helvetica", 13),
         background="#4169E1",
         fg="black",
         width=40,
-    ).place(x=10, y=60)
-    utils.update_score(player,score)
+    ).place(x=125, y=90)
+    update_score(player,score)
     go_to_menu_button = tk.Button(
         root,
         text="return to menu",
@@ -60,7 +61,7 @@ def main(player, score):
         bg="black",
         fg="white",
         command=handle_go_to_main_window
-    ).place(relx=0.7, rely=0.24)
+    ).place(relx=0.33, rely=0.8)
     go_to_high_scores_button = tk.Button(
         root,
         text="high scores",
@@ -69,7 +70,7 @@ def main(player, score):
         bg="black",
         fg="white",
         command=handle_go_to_high_scores
-    ).place(relx=0.7, rely=0.39)
+    ).place(relx=0.53, rely=0.8)
     root.mainloop()
 
 

@@ -22,6 +22,9 @@ class Country():
         idx_list = random.sample(range(len(all_locations)), NUMBER_OF_LOCATIONS)
         for idx in idx_list:
             chosen_locations.append(all_locations[idx])
+        for i in range(len(chosen_locations)):
+            if chosen_locations[i][2] == "diplomatic-representation":
+                chosen_locations[i][2] = "diplomatic"
         return chosen_locations
 
 

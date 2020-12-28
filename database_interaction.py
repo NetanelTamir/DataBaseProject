@@ -256,8 +256,7 @@ def get_highscores_no_repeats():
 
 # Gets HighScores (Yes Repeats)
 def get_highscores_yes_repeats():
-    sql = '''SELECT first_name,last_name,score AS score FROM carmen_sandiego.high_scores ,carmen_sandiego.players 
-            WHERE high_scores.id_players=players.id_players order by score DESC limit 10'''
+    sql = "SELECT * FROM carmen_sandiego.high_scores;"
     cursor.execute(sql)
     res = cursor.fetchall()
     return res

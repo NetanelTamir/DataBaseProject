@@ -22,7 +22,7 @@ def add_background(root, img_name):
 
 
 def add_title_image(root, image_name, relx, rely):
-    load2 = Image.open("images/logos/" + image_name)
+    load2 = Image.open("../images/logos/" + image_name)
     render2 = ImageTk.PhotoImage(load2)
     img = tk.Label(root, image=render2, bg="#4169E1")
     img.image = render2

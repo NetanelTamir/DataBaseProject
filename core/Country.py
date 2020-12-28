@@ -31,10 +31,10 @@ class Country():
             generic_question = generic_question[0]
             real_question = build_real_question_from_generic_question(generic_question, type, self)
             questions.append(real_question)
-        all_cities = get_cities_by_countryid(self.id)
-        idx_list = random.sample(range(len(all_cities)), len(self.questions_types))
-        for idx in idx_list:
-            cities.append(all_cities[idx][1])
+        # all_cities = get_cities_by_countryid(self.id)
+        # idx_list = random.sample(range(len(all_cities)), len(self.questions_types))
+        # for idx in idx_list:
+        #     cities.append(all_cities[idx][1])
         return questions, cities
 
     """

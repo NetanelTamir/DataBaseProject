@@ -32,18 +32,9 @@ def handle_country_info_click():
 
 def handel_single_hint(message):
     canvas.delete("all")
-    frame = tk.Frame()
-    country_city_banner = tk.Label(
-        frame,
-        text=message,
-        font=("Helvetica", 14),
-        background="#4169E1",
-        fg="black",
-        width=30,
-        heigth = 5,
-    ).place(x=0, y=0)
-
-    canvas.create_window(152, 152, window=frame, width=300, height=300)
+    canvas.create_text(150, 150, width=300, fill="red", font="Times 10 bold",
+                       text=message)
+    canvas.update()
     canvas.update()
 
 
@@ -102,18 +93,18 @@ def main():
     view_utils.add_image(root, 'Carmen-sandiego-game-logo.png', relx=0.13, rely=0.05)
     country_city_banner = tk.Label(
         text="Your current location: " + country + " , " + city,
-        font=("Helvetica", 14),
+        font=("Helvetica", 13),
         background="#4169E1",
         fg="black",
-        width=30,
-    ).place(x=0, y=0)
+        width=40,
+    ).place(x=10, y=0)
     score_banner = tk.Label(
-        text="Time Left: " + str(score) + " h",
-        font=("Helvetica", 14),
+        text="Time Left: " + str(GAME.time_left) + " h",
+        font=("Helvetica", 13),
         background="#4169E1",
         fg="black",
-        width=20,
-    ).place(x=400, y=0)
+        width=17,
+    ).place(x=430, y=0)
 
     canvas = tk.Canvas(root, bg="white", height=300, width=300)
     canvas.place(relx=0.10, rely=0.25)

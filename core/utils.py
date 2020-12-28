@@ -1,4 +1,4 @@
-from database_interaction import get_number_of_countries, get_questions_by_type
+from database_interaction import *
 import random
 #from core.Game import HINT_COST, FLIGHT_COST, NUMBER_OF_HOURS
 
@@ -105,3 +105,9 @@ def get_incorrect_question():
     all_questions = get_questions_by_type("incorrect")
     idx = random.randrange(len(all_questions))
     return all_questions[idx]
+
+
+def get_random_city_from_list_by_id(id):
+    all_cities = get_cities_by_country_id(id)
+    idx = random.randrange(len(all_cities))
+    return all_cities[idx]

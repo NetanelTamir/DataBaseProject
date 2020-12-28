@@ -7,6 +7,7 @@ class Country():
     def __init__(self, id):
         self.id = id
         self.data = get_country_by_id(id)
+        self.data[2] = get_random_city_from_list_by_id(id)
         self.questions_types = set()
         self.questions = None
         self.cities = None
@@ -21,9 +22,8 @@ class Country():
         Generate the lists of questions and cities
     """
 
-    def generate_questions_and_cities(self):
+    def generate_questions(self):
         questions = []
-        cities = []
         for type in self.questions_types:
             all_questions = get_questions_by_type(type)
             idx = random.randrange(0, len(all_questions))
@@ -31,29 +31,24 @@ class Country():
             generic_question = generic_question[0]
             real_question = build_real_question_from_generic_question(generic_question, type, self)
             questions.append(real_question)
-        # all_cities = get_cities_by_countryid(self.id)
-        # idx_list = random.sample(range(len(all_cities)), len(self.questions_types))
-        # for idx in idx_list:
-        #     cities.append(all_cities[idx][1])
-        return questions, cities
+        return questions
 
     """
-        Return two lists: question and cities 
-        (each questions "belongs" to a city, that's where the question is happening) 
+        Return questions list 
     """
 
     def get_hints(self):
         if not self.questions:
-            self.questions, self.cities = self.generate_questions_and_cities()
+            self.questions = self.generate_questions()
         return self.questions
 
     """
         Get locations by city
     """
 
-    def get_locations(self, city_name):
+    def get_locations(self):
         NUMBER_OF_LOCATIONS = 15
-        all_locations = get_locations_by_city_name(city_name)
+        all_locations = get_locations_by_city_name(self.get_src_city)
         chosen_locations = []
         idx_list = random.sample(range(len(all_locations)), NUMBER_OF_LOCATIONS)
         for idx in idx_list:
@@ -77,4 +72,13 @@ class Country():
         return self.data[1]
 
     def get_src_city(self):
-        return self.data[2]
+        return self.data[2][1]
+
+    def get_src_city_id(self):
+        return self.data[2][0]
+
+    def get_flag(self):
+        return self.data[6]
+
+    def get_id(self):
+        return self.id

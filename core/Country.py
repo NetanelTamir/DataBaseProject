@@ -41,10 +41,10 @@ class Country():
         (each questions "belongs" to a city, that's where the question is happening) 
     """
 
-    def get_questions_and_cities_list(self):
+    def get_hints(self):
         if not self.questions:
             self.questions, self.cities = self.generate_questions_and_cities()
-        return zip(self.questions, self.cities)
+        return self.questions
 
     """
         Get locations by city

@@ -308,8 +308,8 @@ def get_cities_by_countryid(country_id):
     return res
 
 
-def get_locations_by_city_name(city_name):
-    sql = '''SELECT * FROM carmen_sandiego.locations WHERE city='%s' ''' % (city_name)
+def get_locations_by_city_id(city_id):
+    sql = '''SELECT * FROM carmen_sandiego.locations WHERE cityid='%s' ''' % (city_id)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res

@@ -7,6 +7,7 @@ from PIL import Image
 from core import utils
 from core.Country import Country
 from page import signup_view, home_view, view_utils, Winner_view, lost_view
+from database_interaction import add_favorite_location
 
 root = None
 GAME = None
@@ -135,6 +136,80 @@ def flight_click():
     canvas.update()
 
 
+def handle_add_to_favorite(place):
+    add_favorite_location(home_view.PLAYER[0],place)
+
+def favorite_locations_handle_click():
+    global canvas
+    list_of_poc = country_object.get_locations()
+    place_lables = []
+    type_lables = []
+    buttons = []
+    frame = tk.Frame()
+    canvas.delete("all")
+    for i in range(len(list_of_poc)):
+        if i %2 == 0:
+            back_ground = "white"
+        else:
+            back_ground = "#007fff"
+        place_lables.append(tk.Label(
+            frame,
+            text=list_of_poc[i][1],
+            font=("Helvetica", 10),
+            fg="black",
+            bg=back_ground,
+            width=25,
+            height=1,
+        ))
+        place_lables[i].place(relx=0, rely=i * 0.1)
+        type_lables.append(tk.Label(
+            frame,
+            text=list_of_poc[i][2],
+            font=("Helvetica", 10),
+            bg=back_ground,
+            fg="black",
+            width=6,
+            height=1,
+        ))
+        type_lables[i].place(relx=0.62, rely=i * 0.1)
+    if len(list_of_poc)>=1:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10),bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[0][0])).place(relx=0.8, rely= 0.1 * 0))
+    if len(list_of_poc) >= 2:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[1][0])).place(relx=0.8, rely=0.1 * 1))
+    if len(list_of_poc) >= 3:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[2][0])).place(relx=0.8, rely=0.1 * 2))
+    if len(list_of_poc) >= 4:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[3][0])).place(relx=0.8, rely=0.1 * 3))
+    if len(list_of_poc) >= 5:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[4][0])).place(relx=0.8, rely=0.1 * 4))
+    if len(list_of_poc) >= 6:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[5][0])).place(relx=0.8, rely=0.1 * 5))
+    if len(list_of_poc) >= 7:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[6][0])).place(relx=0.8, rely=0.1 * 6))
+    if len(list_of_poc) >= 8:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[7][0])).place(relx=0.8, rely=0.1 * 7))
+    if len(list_of_poc) >= 9:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[8][0])).place(relx=0.8, rely=0.1 * 8))
+    if len(list_of_poc) >= 10:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg=back_ground,
+                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[9][0])).place(relx=0.8, rely=0.1 * 9))
+
+
+    canvas.create_window(152, 152, window=frame, width=300, height=300)
+
+    canvas.update()
+    canvas.update()
+
+
 def main():
     global canvas
     global GAME
@@ -207,7 +282,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        # command=handle_click
+        command=favorite_locations_handle_click
     ).place(relx=0.635, rely=0.65)
 
     get_hint = tk.Button(

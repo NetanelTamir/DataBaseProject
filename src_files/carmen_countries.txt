@@ -1,182 +1,182 @@
-Afghanistan	Kabul	31,500,000	Afghani	Dari,Pashtu	af-t.gif
-Albania	Tirana	3,622,720	Lek	Albanian	al-t.gif
-Algeria	Algiers	33,333,000	Dinar	Arabic	ag-t.gif
-American Samoa	Pago Pago	60,660	Dollar	Samoan,English	aq-t.gif
-Andorra	Andorra la Vella	71,710	Euro	Catalan	an-t.gif
-Angola	Luanda	12,150,000	Kwanza	Portuguese	ao-t.gif
-Argentina	Buenos Aires	40,250,000	Peso	Spanish	ar-t.gif
-Armenia	Yerevan	3,215,800	Dram	Armenian	am-t.gif
-Aruba	Oranjestad	72,720	Florin	Dutch,English	aa-t.gif
-Australia	Canberra	20,830,000	Dollar	English	as-t.gif
-Austria	Vienna	8,292,322	Euro	German	au-t.gif
-Azerbaijan	Baku	8,411,000	Manat	Azeri	aj-t.gif
-Bahrain	Manama	727,000	Dinar	Arabic	ba-t.gif
-Bangladesh	Dhaka	150,500,000	Taka	Bengali	bg-t.gif
-Belarus	Minsk	9,700,000	Ruble	Belarusian,Russian	bo-t.gif
-Belgium	Brussels	10,364,000	Euro	French,Dutch,German	be-t.gif
-Belize	Belmopan	291,600	Dollar	English,Spanish,Creoles	bz-t.gif
-Benin	Porto-Novo	8,439,000	West African CFA franc	French	bn-t.gif
-Bhutan	Thimphu	2,279,723	Ngultrum	Dzongkha	bt-t.gif
-Bolivia	La Paz	9,182,000	Boliviano	Spanish,Aymara,Quecha	bl-t.gif
-Bosnia and Herzegovina	Sarajevo	3,511,000	Convertible mark	Croatian,Serbian	bosnia.gif
-Botswana	Gaborone	1,765,000	Pula	English,Setswana	bc-t.gif
-Brazil	Brasilia	186,500,000	Real	Portuguese	br-t.gif
-Brunei	Bandar Seri Begawan	382,100	Dollar	Malay	bx-t.gif
-Bulgaria	Sofia	7,390,000	Lev	Bulgarian	bu-t.gif
-Burkina Faso	Ouagadougou	14,250,000	Franc	French	uv-t.gif
-Burundi	Bujumbura	8,250,000	Franc	French	bi-t.gif
-Cambodia	Phnom Penh	14,200,000	Riel	Khmer	kh-t.gif
-Cameroon	Yaounde	18,080,000	Franc	French	cm-t.gif
-Canada	Ottawa	33,390,000	Dollar	English,French	ca-t.gif
-Cape Verde	Praia	507,000	Escudo	Portuguese	cv-t.gif
-Central African Republic	Bangui	4,038,000	Franc	Sango,French	ct-t.gif
-Chad	N'Djamena	10,250,000	Franc	Arabic,French	cd-t.gif
-Chile	Santiago	16,295,000	Peso	Spanish	cl-t.gif
-China	Beijing	1,321,000,000	Renminbi	Mandarin Chinese	ch-t.gif
-Colombia	Bogota	42,660,000	Peso	Spanish	co-t.gif
-Congo	Brazzaville	64,460,000	Franc	French	cg-t.gif
-Costa Rica	San Jose	4,327,000	Colon	Spanish	cs-t.gif
-Cote d'Ivoire	Yamoussoukro	17,990,000	Franc	French	iv-t.gif
-Croatia	Zagreb	4,551,000	Kuna	Croatian	cu-t.gif
-Cuba	Havana	11,470,000	Peso	Spanish	cy-t.gif
-Cyprus	Nicosia	835,000	Pound	Turkish,English,Greek	ez-t.gif
-Czech Republic	Prague	10,287,189	Koruna	Czech	cz-t.gif
-Denmark	Copenhagen	5,450,000	Krone	Danish	da-t.gif
-Djibouti	Djibouti	793,000	Franc	Arabic,French	dj-t.gif
-Dominica	Roseau	70,210	Dollar	English	do-t.gif
-Dominican Republic	Santo Domingo	9,400,000	Peso	Spanish	dr-t.gif
-Ecuador	Quito	13,850,000	Dollar	Spanish	ec-t.gif
-Egypt	Cairo	80,880,000	Pound	Arabic	eg-t.gif
-El Salvador	San Salvador	7,104,999	Colon	Spanish	es-t.gif
-Eritrea	Asmara	4,401,000	Nakfa	Arabic,Tigre,Tigrinya,Dahlik	er-t.gif
-Estonia	Tallinn	1,326,500	Kroon	Estonian	en-t.gif
-Ethiopia	Addis Ababa	77,431,000	Birr	Amharic	et-t.gif
-Faroe Islands	Torshavn	47,700	Krone	Faroese,Danish	fo.gif
-Fiji	Suva	848,000	Dollar	Fijian,English,Hindustani	fj-t.gif
-Finland	Helsinki	5,290,000	Euro	Finnish,Swedish	fi-t.gif
-France	Paris	64,102,140	Euro	French	fr-t.gif
-French Polynesia	Papeete	257,000	Franc	French	pf-t.gif
-Gabon	Libreville	1,384,000	Franc	French	gb-t.gif
-Gambia	Banjul	1,641,564	Dalasi	English	ga-t.gif
-Georgia	Tbilisi	4,474,000	Lari	Georgian	gg-t.gif
-Germany	Berlin	82,310,000	Euro	German	de-t.gif
-Ghana	Accra	22,880,000	Cedi	English	gh-t.gif
-Gibraltar	Gibraltar	28,000	Pound	English	gi-t.gif
-Greece	Athens	10,668,000	Euro	Greek	gr-t.gif
-Greenland	Nuuk	57,750	Krone	Danish	gl-t.gif
-Guam	Hagatna	170,000	Dollar	English,Chamorro	gq-t.gif
-Guatemala	Guatemala City	12,750,000	Quetzal	Spanish	gt-t.gif
-Guinea	Conakry	9,950,000	Franc	French	gv-t.gif
-Guinea-Bissau	Bissau	1,586,000	Franc	Portuguese	gn-t.gif
-Guyana	Georgetown	751,000	Dollar	English	gy-t.gif
-Haiti	Port-au-Prince	8,700,000	Gourde	French,Haitian Creole	ha-t.gif
-Honduras	Tegucigalpa	7,510,000	Lempira	Spanish	hn-t.gif
-Hungary	Budapest	9,950,000	Forint	Hungarian	hu-t.gif
-Iceland	Reykjavik	309,699	Krona	Icelandic	ic-t.gif
-India	New Delhi	1,129,000,000	Rupee	Hindi,English,Telugu,Marathi,Tamil,Urdu,Assamese,Gujarati,Malayalam,Kannada,Oriya,Punjabi,Kashmiri,Sanskrit,Sindhi	in-t.gif
-Indonesia	Jakarta	234,950,000	Rupiah	Bahasa	id-t.gif
-Iran	Tehran	70,049,262	Rial	Persian	ir-t.gif
-Iraq	Baghdad	26,783,383	Dinar	Arabic and Kurdish	iq-t.gif
-Ireland	Dublin	4,062,235	Euro	English	ie-t.gif
-Israel	Jerusalem	7,150,000	New sheqel	Hebrew,Arabic	is-t.gif
-Italy	Rome	58,863,124	Euro	Italian	it-t.gif
-Jamaica	Kingston	2,651,000	Dollar	English	jm-t.gif
-Japan	Tokyo	127,720,000	Yen	Japan	ja-t.gif
-Jordan	Amman	5,990,000	Dinar	Arabic	jo-t.gif
-Kazakhstan	Astana	15,390,000	Tenge	Kazakh,Russian	kz-t.gif
-Kenya	Nairobi	31,000,000	Shilling	Swahili,English	ke-t.gif
-Kiribati	South Tarawa	110,000	Dollar	English	kr-t.gif
-Kuwait	Kuwait City	2,687,000	Dinar	Arabic	kw-t.gif
-Kyrgyzstan	Bishkek	5,330,000	Som	Kyrgyz,Russian	kg-t.gif
-Laos	Vientiane	6,550,000	Lao kip	Lao	la-t.gif
-Latvia	Riga	2,268,891	Lats	Latvian	lg-t.gif
-Lebanon	Beirut	3,907,000	Lira	Arabic	le-t.gif
-Lesotho	Maseru	2,022,000	Loti, Rand	Sesotho,English	ls-t.gif
-Liberia	Monrovia	3,283,000	Dollar	English	lr-t.gif
-Libya	Tripoli	6,100,000	Dinar	Arabic	ly-t.gif
-Liechtenstein	Vaduz	34,000	Franc	German	li-t.gif
-Lithuania	Vilnius	3,431,000	Litas	Lithuanian	lh-t.gif
-Luxembourg	Luxembourg	472,000	Euro	French,German	lu-t.gif
-Madagascar	Antananarivo	19,400,000	Ariary	Malagasy,French,English	ma-t.gif
-Malawi	Lilongwe	13,550,000	Kwacha	English,Chichewa	mi-t.gif
-Malaysia	Kuala Lumpur	26,990,000	Ringgit	Malay	my-t.gif
-Maldives	Male	329,000	Rufiyaa	Dhivehi	mv-t.gif
-Mali	Bamako	12,065,000	Franc	French	ml-t.gif
-Malta	Valletta	402,000	Lira	Maltese,English	mt-t.gif
-Marshall Islands	Majuro	62,620	Dollar	Marshallese,English	rm-t.gif
-Mauritania	Nouakchott	3,069,000	Ouguiya	Arabic,Hassaniya,French	mr-t.gif
-Mauritius	Port Louis	1,249,000	Rupee	English,Creole	mp-t.gif
-Mexico	Mexico City	107,449,525	Peso	Spanish	mx-t.gif
-Micronesia	Palikir	115,000	Dollar	Austronesian	fm-t.gif
-Moldova	Chisinau	4,148,000	Leu	Moldovan,Romanian	md-t.gif
-Monaco	Monaco	32,000	Euro	French	mn-t.gif
-Mongolia	Ulaanbaatar	2,646,000	Tugrug	Mongolian	mg-t.gif
-Morocco	Rabat	33,241,000	Dirham	Arabic	mo-t.gif
-Mozambique	Maputo	20,765,000	Metical	Portuguese	mz-t.gif
-Myanmar	Naypyidaw	47,400,000	Kyat	Burmese	mm-t.gif
-Namibia	Windhoek	2,054,500	Dollar, Rand	English	wa-t.gif
-Nepal	Kathmandu	28,880,000	Rupee	samoan,English	np-t.gif
-Netherlands	Amsterdam	16,390,000	Euro	Dutch	nl-t.gif
-New Zealand	Wellington	4,182,000	Dollar	Maori,English	nz-t.gif
-Nicaragua	Managua	5,770,000	Cordoba	Spanish	ni-t.gif
-Niger	Niamey	13,957,000	Franc	French	ne-t.gif
-Nigeria	Abuja	134,700,000	Naira	English	ng-t.gif
-North Korea	Pyongyang	23,330,000	Won	Korean	kn-t.gif
-Norway	Oslo	4,770,000	Krone	Norwegian	no-t.gif
-Oman	Muscat	2,567,000	Rial	Arabic	mu-t.gif
-Pakistan	Islamabad	163,630,000	Rupee	English,Urdu	pk-t.gif
-Palau	Melekeok	20,770	Dollar	English,Palauan	ps-t.gif
-Panama	Panama City	3,232,000	Balboa	Spanish	pm-t.gif
-Papua New Guinea	Port Moresby	5,887,000	Kina	Tok Pisin,Motu,English	pg-t.gif
-Paraguay	Asuncion	6,660,000	Paraguayan guaran�	Spanish	py-t.gif
-Peru	Lima	28,750,000	Nuevo sol	Spanish	pe-t.gif
-Philippines	Manila	91,100,000	Peso	Filipino	ph-t.gif
-Poland	Warsaw	38,132,277	Zloty	Polish	pl-t.gif
-Portugal	Lisbon	10,605,870	Euro	Portuguese	po-t.gif
-Puerto Rico	San Juan	3,955,000	Dollar	Spanish,English	pr-t.gif
-Qatar	Doha	813,000	Riyal	Arabic	qa-t.gif
-Republic of Macedonia	Skopje	2,054,500	Denar	Macedonian,Albanian	mk-t.gif
-Romania	Bucharest	22,280,000	Leu	Romanian	ro-t.gif
-Russia	Moscow	141,400,000	Ruble	Russian	ru-t.gif
-Rwanda	Kigali	9,800,000	Franc	Kinyarwanda,French,English	rwanda-t.gif
-Saint Lucia	Castries	161,000	Dollar	English	st-t.gif
-Samoa	Apia	185,000	Tala	Samoan,English	ws-t.gif
-Saudi Arabia	Riyadh	25,970,000	Riyal	Arabic	sa-t.gif
-Senegal	Dakar	12,500,000	Franc	French	sg-t.gif
-Sierra Leone	Freetown	6,140,000	Leone	English	sl-t.gif
-Singapore	Singapore	4,483,900	Dollar	Malay,Tamil,Mandarin Chinese,English	sn-t.gif
-Slovakia	Bratislava	5,460,000	Koruna	Slovak	sk-t.gif
-Slovenia	Ljubljana	2,009,000	Euro	Slovene	si-t.gif
-Solomon Islands	Honiara	478,000	Dollar	English	bp-t.gif
-Somalia	Mogadishu	9,110,000	Shilling	Somali	so-t.gif
-South Africa	Pretoria	44,220,000	Rand	Afrikaans,Afrikaans,Ndebele,Northern Sotho,Sotho,Swazi,Tsonga,Tswana,Venda,Xhosa,Zulu	sf-t.gif
-South Korea	Seoul	49,024,737	Won	Korean	ks-t.gif
-Spain	Madrid	44,708,964	Euro	Spanish	sp-t.gif
-Sri Lanka	Sri Jayawardenepura	20,990,000	Rupee	Sinhala,Tamil	ce-t.gif
-Sudan	Khartoum	42,250,000	Pound, dinar	Arabic	sd-t.gif
-Suriname	Paramaribo	449,000	Dollar	Suriname	sr-t.gif
-Swaziland	Lobamba	1,032,000	Lilangeni	Swazi	wz-t.gif
-Sweden	Stockholm	9,113,257	Krona	Swedish	sw-t.gif
-Switzerland	Bern	7,520,000	Franc	French,German,Italian	sz-t.gif
-Syria	Damascus	19,300,000	Pound	Arabic	sy-t.gif
-Taiwan	Taipei	22,890,000	Dollar	Mandarin Chinese	tw-t.gif
-Tajikistan	Dushanbe	7,100,000	Somoni	Persian	tj-t.gif
+Afghanistan	Kabul	31,500,000	Afghani	Dari,Pashtu	af-t.png
+Albania	Tirana	3,622,720	Lek	Albanian	al-t.png
+Algeria	Algiers	33,333,000	Dinar	Arabic	ag-t.png
+American Samoa	Pago Pago	60,660	Dollar	Samoan,English	aq-t.png
+Andorra	Andorra la Vella	71,710	Euro	Catalan	an-t.png
+Angola	Luanda	12,150,000	Kwanza	Portuguese	ao-t.png
+Argentina	Buenos Aires	40,250,000	Peso	Spanish	ar-t.png
+Armenia	Yerevan	3,215,800	Dram	Armenian	am-t.png
+Aruba	Oranjestad	72,720	Florin	Dutch,English	aa-t.png
+Australia	Canberra	20,830,000	Dollar	English	as-t.png
+Austria	Vienna	8,292,322	Euro	German	au-t.png
+Azerbaijan	Baku	8,411,000	Manat	Azeri	aj-t.png
+Bahrain	Manama	727,000	Dinar	Arabic	ba-t.png
+Bangladesh	Dhaka	150,500,000	Taka	Bengali	bg-t.png
+Belarus	Minsk	9,700,000	Ruble	Belarusian,Russian	bo-t.png
+Belgium	Brussels	10,364,000	Euro	French,Dutch,German	be-t.png
+Belize	Belmopan	291,600	Dollar	English,Spanish,Creoles	bz-t.png
+Benin	Porto-Novo	8,439,000	West African CFA franc	French	bn-t.png
+Bhutan	Thimphu	2,279,723	Ngultrum	Dzongkha	bt-t.png
+Bolivia	La Paz	9,182,000	Boliviano	Spanish,Aymara,Quecha	bl-t.png
+Bosnia and Herzegovina	Sarajevo	3,511,000	Convertible mark	Croatian,Serbian	bosnia.png
+Botswana	Gaborone	1,765,000	Pula	English,Setswana	bc-t.png
+Brazil	Brasilia	186,500,000	Real	Portuguese	br-t.png
+Brunei	Bandar Seri Begawan	382,100	Dollar	Malay	bx-t.png
+Bulgaria	Sofia	7,390,000	Lev	Bulgarian	bu-t.png
+Burkina Faso	Ouagadougou	14,250,000	Franc	French	uv-t.png
+Burundi	Bujumbura	8,250,000	Franc	French	bi-t.png
+Cambodia	Phnom Penh	14,200,000	Riel	Khmer	kh-t.png
+Cameroon	Yaounde	18,080,000	Franc	French	cm-t.png
+Canada	Ottawa	33,390,000	Dollar	English,French	ca-t.png
+Cape Verde	Praia	507,000	Escudo	Portuguese	cv-t.png
+Central African Republic	Bangui	4,038,000	Franc	Sango,French	ct-t.png
+Chad	N'Djamena	10,250,000	Franc	Arabic,French	cd-t.png
+Chile	Santiago	16,295,000	Peso	Spanish	cl-t.png
+China	Beijing	1,321,000,000	Renminbi	Mandarin Chinese	ch-t.png
+Colombia	Bogota	42,660,000	Peso	Spanish	co-t.png
+Congo	Brazzaville	64,460,000	Franc	French	cg-t.png
+Costa Rica	San Jose	4,327,000	Colon	Spanish	cs-t.png
+Cote d'Ivoire	Yamoussoukro	17,990,000	Franc	French	iv-t.png
+Croatia	Zagreb	4,551,000	Kuna	Croatian	cu-t.png
+Cuba	Havana	11,470,000	Peso	Spanish	cy-t.png
+Cyprus	Nicosia	835,000	Pound	Turkish,English,Greek	ez-t.png
+Czech Republic	Prague	10,287,189	Koruna	Czech	cz-t.png
+Denmark	Copenhagen	5,450,000	Krone	Danish	da-t.png
+Djibouti	Djibouti	793,000	Franc	Arabic,French	dj-t.png
+Dominica	Roseau	70,210	Dollar	English	do-t.png
+Dominican Republic	Santo Domingo	9,400,000	Peso	Spanish	dr-t.png
+Ecuador	Quito	13,850,000	Dollar	Spanish	ec-t.png
+Egypt	Cairo	80,880,000	Pound	Arabic	eg-t.png
+El Salvador	San Salvador	7,104,999	Colon	Spanish	es-t.png
+Eritrea	Asmara	4,401,000	Nakfa	Arabic,Tigre,Tigrinya,Dahlik	er-t.png
+Estonia	Tallinn	1,326,500	Kroon	Estonian	en-t.png
+Ethiopia	Addis Ababa	77,431,000	Birr	Amharic	et-t.png
+Faroe Islands	Torshavn	47,700	Krone	Faroese,Danish	fo.png
+Fiji	Suva	848,000	Dollar	Fijian,English,Hindustani	fj-t.png
+Finland	Helsinki	5,290,000	Euro	Finnish,Swedish	fi-t.png
+France	Paris	64,102,140	Euro	French	fr-t.png
+French Polynesia	Papeete	257,000	Franc	French	pf-t.png
+Gabon	Libreville	1,384,000	Franc	French	gb-t.png
+Gambia	Banjul	1,641,564	Dalasi	English	ga-t.png
+Georgia	Tbilisi	4,474,000	Lari	Georgian	gg-t.png
+Germany	Berlin	82,310,000	Euro	German	de-t.png
+Ghana	Accra	22,880,000	Cedi	English	gh-t.png
+Gibraltar	Gibraltar	28,000	Pound	English	gi-t.png
+Greece	Athens	10,668,000	Euro	Greek	gr-t.png
+Greenland	Nuuk	57,750	Krone	Danish	gl-t.png
+Guam	Hagatna	170,000	Dollar	English,Chamorro	gq-t.png
+Guatemala	Guatemala City	12,750,000	Quetzal	Spanish	gt-t.png
+Guinea	Conakry	9,950,000	Franc	French	gv-t.png
+Guinea-Bissau	Bissau	1,586,000	Franc	Portuguese	gn-t.png
+Guyana	Georgetown	751,000	Dollar	English	gy-t.png
+Haiti	Port-au-Prince	8,700,000	Gourde	French,Haitian Creole	ha-t.png
+Honduras	Tegucigalpa	7,510,000	Lempira	Spanish	hn-t.png
+Hungary	Budapest	9,950,000	Forint	Hungarian	hu-t.png
+Iceland	Reykjavik	309,699	Krona	Icelandic	ic-t.png
+India	New Delhi	1,129,000,000	Rupee	Hindi,English,Telugu,Marathi,Tamil,Urdu,Assamese,Gujarati,Malayalam,Kannada,Oriya,Punjabi,Kashmiri,Sanskrit,Sindhi	in-t.png
+Indonesia	Jakarta	234,950,000	Rupiah	Bahasa	id-t.png
+Iran	Tehran	70,049,262	Rial	Persian	ir-t.png
+Iraq	Baghdad	26,783,383	Dinar	Arabic and Kurdish	iq-t.png
+Ireland	Dublin	4,062,235	Euro	English	ie-t.png
+Israel	Jerusalem	7,150,000	New sheqel	Hebrew,Arabic	is-t.png
+Italy	Rome	58,863,124	Euro	Italian	it-t.png
+Jamaica	Kingston	2,651,000	Dollar	English	jm-t.png
+Japan	Tokyo	127,720,000	Yen	Japan	ja-t.png
+Jordan	Amman	5,990,000	Dinar	Arabic	jo-t.png
+Kazakhstan	Astana	15,390,000	Tenge	Kazakh,Russian	kz-t.png
+Kenya	Nairobi	31,000,000	Shilling	Swahili,English	ke-t.png
+Kiribati	South Tarawa	110,000	Dollar	English	kr-t.png
+Kuwait	Kuwait City	2,687,000	Dinar	Arabic	kw-t.png
+Kyrgyzstan	Bishkek	5,330,000	Som	Kyrgyz,Russian	kg-t.png
+Laos	Vientiane	6,550,000	Lao kip	Lao	la-t.png
+Latvia	Riga	2,268,891	Lats	Latvian	lg-t.png
+Lebanon	Beirut	3,907,000	Lira	Arabic	le-t.png
+Lesotho	Maseru	2,022,000	Loti, Rand	Sesotho,English	ls-t.png
+Liberia	Monrovia	3,283,000	Dollar	English	lr-t.png
+Libya	Tripoli	6,100,000	Dinar	Arabic	ly-t.png
+Liechtenstein	Vaduz	34,000	Franc	German	li-t.png
+Lithuania	Vilnius	3,431,000	Litas	Lithuanian	lh-t.png
+Luxembourg	Luxembourg	472,000	Euro	French,German	lu-t.png
+Madagascar	Antananarivo	19,400,000	Ariary	Malagasy,French,English	ma-t.png
+Malawi	Lilongwe	13,550,000	Kwacha	English,Chichewa	mi-t.png
+Malaysia	Kuala Lumpur	26,990,000	Ringgit	Malay	my-t.png
+Maldives	Male	329,000	Rufiyaa	Dhivehi	mv-t.png
+Mali	Bamako	12,065,000	Franc	French	ml-t.png
+Malta	Valletta	402,000	Lira	Maltese,English	mt-t.png
+Marshall Islands	Majuro	62,620	Dollar	Marshallese,English	rm-t.png
+Mauritania	Nouakchott	3,069,000	Ouguiya	Arabic,Hassaniya,French	mr-t.png
+Mauritius	Port Louis	1,249,000	Rupee	English,Creole	mp-t.png
+Mexico	Mexico City	107,449,525	Peso	Spanish	mx-t.png
+Micronesia	Palikir	115,000	Dollar	Austronesian	fm-t.png
+Moldova	Chisinau	4,148,000	Leu	Moldovan,Romanian	md-t.png
+Monaco	Monaco	32,000	Euro	French	mn-t.png
+Mongolia	Ulaanbaatar	2,646,000	Tugrug	Mongolian	mg-t.png
+Morocco	Rabat	33,241,000	Dirham	Arabic	mo-t.png
+Mozambique	Maputo	20,765,000	Metical	Portuguese	mz-t.png
+Myanmar	Naypyidaw	47,400,000	Kyat	Burmese	mm-t.png
+Namibia	Windhoek	2,054,500	Dollar, Rand	English	wa-t.png
+Nepal	Kathmandu	28,880,000	Rupee	samoan,English	np-t.png
+Netherlands	Amsterdam	16,390,000	Euro	Dutch	nl-t.png
+New Zealand	Wellington	4,182,000	Dollar	Maori,English	nz-t.png
+Nicaragua	Managua	5,770,000	Cordoba	Spanish	ni-t.png
+Niger	Niamey	13,957,000	Franc	French	ne-t.png
+Nigeria	Abuja	134,700,000	Naira	English	ng-t.png
+North Korea	Pyongyang	23,330,000	Won	Korean	kn-t.png
+Norway	Oslo	4,770,000	Krone	Norwegian	no-t.png
+Oman	Muscat	2,567,000	Rial	Arabic	mu-t.png
+Pakistan	Islamabad	163,630,000	Rupee	English,Urdu	pk-t.png
+Palau	Melekeok	20,770	Dollar	English,Palauan	ps-t.png
+Panama	Panama City	3,232,000	Balboa	Spanish	pm-t.png
+Papua New Guinea	Port Moresby	5,887,000	Kina	Tok Pisin,Motu,English	pg-t.png
+Paraguay	Asuncion	6,660,000	Paraguayan guaran�	Spanish	py-t.png
+Peru	Lima	28,750,000	Nuevo sol	Spanish	pe-t.png
+Philippines	Manila	91,100,000	Peso	Filipino	ph-t.png
+Poland	Warsaw	38,132,277	Zloty	Polish	pl-t.png
+Portugal	Lisbon	10,605,870	Euro	Portuguese	po-t.png
+Puerto Rico	San Juan	3,955,000	Dollar	Spanish,English	pr-t.png
+Qatar	Doha	813,000	Riyal	Arabic	qa-t.png
+Republic of Macedonia	Skopje	2,054,500	Denar	Macedonian,Albanian	mk-t.png
+Romania	Bucharest	22,280,000	Leu	Romanian	ro-t.png
+Russia	Moscow	141,400,000	Ruble	Russian	ru-t.png
+Rwanda	Kigali	9,800,000	Franc	Kinyarwanda,French,English	rwanda-t.png
+Saint Lucia	Castries	161,000	Dollar	English	st-t.png
+Samoa	Apia	185,000	Tala	Samoan,English	ws-t.png
+Saudi Arabia	Riyadh	25,970,000	Riyal	Arabic	sa-t.png
+Senegal	Dakar	12,500,000	Franc	French	sg-t.png
+Sierra Leone	Freetown	6,140,000	Leone	English	sl-t.png
+Singapore	Singapore	4,483,900	Dollar	Malay,Tamil,Mandarin Chinese,English	sn-t.png
+Slovakia	Bratislava	5,460,000	Koruna	Slovak	sk-t.png
+Slovenia	Ljubljana	2,009,000	Euro	Slovene	si-t.png
+Solomon Islands	Honiara	478,000	Dollar	English	bp-t.png
+Somalia	Mogadishu	9,110,000	Shilling	Somali	so-t.png
+South Africa	Pretoria	44,220,000	Rand	Afrikaans,Afrikaans,Ndebele,Northern Sotho,Sotho,Swazi,Tsonga,Tswana,Venda,Xhosa,Zulu	sf-t.png
+South Korea	Seoul	49,024,737	Won	Korean	ks-t.png
+Spain	Madrid	44,708,964	Euro	Spanish	sp-t.png
+Sri Lanka	Sri Jayawardenepura	20,990,000	Rupee	Sinhala,Tamil	ce-t.png
+Sudan	Khartoum	42,250,000	Pound, dinar	Arabic	sd-t.png
+Suriname	Paramaribo	449,000	Dollar	Suriname	sr-t.png
+Swaziland	Lobamba	1,032,000	Lilangeni	Swazi	wz-t.png
+Sweden	Stockholm	9,113,257	Krona	Swedish	sw-t.png
+Switzerland	Bern	7,520,000	Franc	French,German,Italian	sz-t.png
+Syria	Damascus	19,300,000	Pound	Arabic	sy-t.png
+Taiwan	Taipei	22,890,000	Dollar	Mandarin Chinese	tw-t.png
+Tajikistan	Dushanbe	7,100,000	Somoni	Persian	tj-t.png
 Tanzania	Dodoma	37,849,133	Shilling	Swahili	tz-t.gif
-Thailand	Bangkok	62,828,706	Baht	Thai	th-t.gif
-Trinidad and Tobago	Port of Spain	1,305,000	Dollar	English	td-t.gif
-Tunisia	Tunis	10,280,000	Dinar	Arabic	ts-t.gif
-Turkey	Ankara	76,028,600	New lira	Turkish	tu-t.gif
-Turkmenistan	Ashgabat	5,220,000	Manat	Turkmen,Russian,Uzbek	tx-t.gif
-Uganda	Kampala	29,990,000	Shilling	Swahili	ug-t.gif
-Ukraine	Kiev (Kyiv)	46,300,000	Hryvnia	Ukrainian	up-t.gif
-United Arab Emirates	Abu Dhabi	4,496,000	Dirham	Arabic	ue-t.gif
-United Kingdom	London	60,609,153	Pound	English,Welsh	uk-t.gif
-United States	Washington, D.C.	301,950,000	Dollar	English	us-t.gif
-Uruguay	Montevideo	3,463,000	Peso	Spanish	uy-t.gif
-Uzbekistan	Tashkent	27,770,000	Som	Uzbek	uz-t.gif
-Vanuatu	Port Vila	211,000	Vatu	Bislama,English,French	nh-t.gif
-Venezuela	Caracas	26,070,000	Bolivar	Spanish	ve-t.gif
-Vietnam	Hanoi	85,250,224	Dong	Vietnamese	vm-t.gif
-Yemen	Sanaa	22,220,000	Rial	Arabic	ym-t.gif
-Zambia	Lusaka	11,668,000	Kwacha	English	za-t.gif
-Zimbabwe	Harare	13,010,000	Dollar	English	zi-t.gif
+Thailand	Bangkok	62,828,706	Baht	Thai	th-t.png
+Trinidad and Tobago	Port of Spain	1,305,000	Dollar	English	td-t.png
+Tunisia	Tunis	10,280,000	Dinar	Arabic	ts-t.png
+Turkey	Ankara	76,028,600	New lira	Turkish	tu-t.png
+Turkmenistan	Ashgabat	5,220,000	Manat	Turkmen,Russian,Uzbek	tx-t.png
+Uganda	Kampala	29,990,000	Shilling	Swahili	ug-t.png
+Ukraine	Kiev (Kyiv)	46,300,000	Hryvnia	Ukrainian	up-t.png
+United Arab Emirates	Abu Dhabi	4,496,000	Dirham	Arabic	ue-t.png
+United Kingdom	London	60,609,153	Pound	English,Welsh	uk-t.png
+United States	Washington, D.C.	301,950,000	Dollar	English	us-t.png
+Uruguay	Montevideo	3,463,000	Peso	Spanish	uy-t.png
+Uzbekistan	Tashkent	27,770,000	Som	Uzbek	uz-t.png
+Vanuatu	Port Vila	211,000	Vatu	Bislama,English,French	nh-t.png
+Venezuela	Caracas	26,070,000	Bolivar	Spanish	ve-t.png
+Vietnam	Hanoi	85,250,224	Dong	Vietnamese	vm-t.png
+Yemen	Sanaa	22,220,000	Rial	Arabic	ym-t.png
+Zambia	Lusaka	11,668,000	Kwacha	English	za-t.png
+Zimbabwe	Harare	13,010,000	Dollar	English	zi-t.png

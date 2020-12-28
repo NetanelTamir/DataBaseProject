@@ -4,6 +4,7 @@ from page import records_view, friends_view, view_utils, login_view, favorite_lo
     game_view
 from core.Game import Game
 
+GAME = None
 PLAYER = None
 entry_name = None
 entry_pass = None
@@ -18,12 +19,14 @@ passw = ""
 def handle_play_click():
     global entry_first_name
     global entry_password
+    global GAME
     if (entry_name and entry_pass):
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
         password = entry_pass.get()
 
     root.destroy()
+    GAME = Game()
     game_view.main()
 
 

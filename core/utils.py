@@ -14,9 +14,9 @@ def get_new_countries(countries_set, number_of_countries):
     total_countries = get_number_of_countries()
 
     for i in range(number_of_countries):
-        chosen = random.random(total_countries)
+        chosen = random.randrange(total_countries)
         while chosen in countries_set:
-            chosen = random.random(total_countries)
+            chosen = random.randrange(total_countries)
         countries.append(chosen)
 
     return countries
@@ -85,19 +85,6 @@ def get_country_description(country_data):
     if country_data[2] != "":
         desc += f"We also have a population of {country_data[3]} people.\n"
     if country_data[10] != "" and country_data[10] != "5" and country_data[10] != "0": # climate
-        # climate = "Our climate here is "
-        # if country_data[10].count(",") > 0:
-        #     climate_list = country_data.split(",")
-        #     for i in range(len(climate_list) - 1):
-        #         if climate_list[i] == 5:
-        #             continue
-        #         climate += WETHER_DICT[climate_list[i]]
-        #         if i == len(climate_list) - 2 and climate_list[i + 1] != 5:
-        #             climate += " and "
-        #     if climate_list[len(climate_list) - 1] != 5:
-        #         climate += WETHER_DICT[climate_list[len(climate_list) - 1]]
-        # else:
-        #     climate += WETHER_DICT[country_data[10]]
         climate=""
         if(country_data[10]==1):
             climate = "Our climate is - dry tropical or tundra and ice"

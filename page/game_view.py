@@ -8,22 +8,56 @@ from core import utils
 from core.Country import Country
 from page import signup_view, home_view, view_utils
 
-country_object = Country(154)
-flight = ['israel', 'lebanon', 'USA']
+GAME = None
+LEVEL = None
 Colors = ['#34568B', '#FF6F61', '#88B04B']
-country_desc = ""
+country_object = None
+flight = None
+country_desc = ''
 
+
+# def update_country(new_country_id):
 
 def handle_country_info_click():
     global country_object
     global country_desc
     global canvas
-    country_object = Country(154)
     country_desc = country_object.get_description()
     canvas.delete("all")
     canvas.create_text(150, 150, width=300, fill="green", font="Times 10 bold",
                        text=country_desc)
     canvas.update()
+    canvas.update()
+
+
+def handel_single_hint(message):
+    canvas.delete("all")
+    frame = tk.Frame()
+    country_city_banner = tk.Label(
+        frame,
+        text=message,
+        font=("Helvetica", 14),
+        background="#4169E1",
+        fg="black",
+        width=30,
+    ).place(x=0, y=0)
+
+    canvas.create_window(152, 152, window=frame, width=300, height=300)
+    canvas.update()
+
+
+def handle_hint():
+    canvas.delete("all")
+
+    frame = tk.Frame()
+    button1 = tk.Button(frame, text='Hint 1 - ', width=27, height=4, font=("Helvetica", 14), bg=Colors[0],
+                        fg="white").place(relx=0, rely=+ 0.33 * 0)
+    button2 = tk.Button(frame, text='Hint 2 - ', width=27, height=4, font=("Helvetica", 14), bg=Colors[1],
+                        fg="white").place(relx=0, rely=+ 0.33 * 1)
+    button3 = tk.Button(frame, text='Hint 3 - ', width=27, height=4, font=("Helvetica", 14), bg=Colors[2],
+                        fg="white").place(relx=0, rely=+ 0.33 * 2)
+
+    canvas.create_window(152, 152, window=frame, width=300, height=300)
     canvas.update()
 
 
@@ -35,33 +69,33 @@ def flight_click():
     l = []
     canvas.delete("all")
     frame = tk.Frame()
-    button1=tk.Button(frame,text=flight[0],width=27,height=4,font=("Helvetica", 14),bg=Colors[0],fg="white").place(relx=0, rely=+ 0.33 * 0)
-    button2=tk.Button(frame,text=flight[1],width=27,height=4,font=("Helvetica", 14),bg=Colors[1],fg="white").place(relx=0, rely=+ 0.33 * 1)
-    button3=tk.Button(frame,text=flight[2],width=27,height=4,font=("Helvetica", 14),bg=Colors[2],fg="white").place(relx=0, rely=+ 0.33 * 2)
+    button1 = tk.Button(frame, text=flight[0].data[1], width=27, height=4, font=("Helvetica", 14), bg=Colors[0],
+                        fg="white").place(relx=0, rely=+ 0.33 * 0)
+    button2 = tk.Button(frame, text=flight[1].data[1], width=27, height=4, font=("Helvetica", 14), bg=Colors[1],
+                        fg="white").place(relx=0, rely=+ 0.33 * 1)
+    button3 = tk.Button(frame, text=flight[2].data[1], width=27, height=4, font=("Helvetica", 14), bg=Colors[2],
+                        fg="white").place(relx=0, rely=+ 0.33 * 2)
 
     canvas.create_window(152, 152, window=frame, width=300, height=300)
-
-    #canvas.delete("button1")
-    # for i in range(0, 3):
-    #     l.append(tk.Button(
-    #         canvas,
-    #         text=flight[i],
-    #         width=27,
-    #         height=4,
-    #         font=("Helvetica", 14),
-    #         bg=Colors[i],
-    #         fg="white",
-    #         # command=new_
-    #     ).place(relx=0, rely= + 0.33 * i))
     canvas.update()
 
 
 def main():
     global canvas
+    global GAME
+    global LEVEL
+    global country_object
+    global flight
+    GAME = home_view.GAME
+    LEVEL = GAME.get_level()
+    country_object = LEVEL.get_src_country()
+    flight = LEVEL.get_possible_destinations()
     root = tk.Tk()
-    country = "Spain"
-    city = "Madrid"
+    country = country_object.get_country_name()
+    city = country_object.get_src_city()
+    map_src = country_object.get_map()
     score = 168
+    #############
     view_utils.init_root(root, "home view")
     view_utils.add_image(root, 'Carmen-sandiego-game-logo.png', relx=0.13, rely=0.05)
     country_city_banner = tk.Label(
@@ -84,7 +118,7 @@ def main():
 
     mapCanvas = tk.Canvas(root, height=200, width=200)
     mapCanvas.place(relx=0.65, rely=0.12)
-    map_img = Image.open("images/maps/spain.png")
+    map_img = Image.open("images/maps/" + map_src)
     map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
 
     root.map = mapImage = ImageTk.PhotoImage(map_img)
@@ -117,7 +151,7 @@ def main():
         height=1,
         bg="black",
         fg="white",
-        # command=handle_click
+        command=lambda: handle_hint()
     ).place(relx=0.635, rely=0.73)
 
     fly = tk.Button(

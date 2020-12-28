@@ -2,6 +2,7 @@ from database_interaction import *
 from core.utils import *
 import random
 
+
 class Country():
     def __init__(self, id):
         self.id = id
@@ -16,10 +17,10 @@ class Country():
                 continue
             self.questions_types.add(type)
 
-
     """
         Generate the lists of questions and cities
     """
+
     def generate_questions_and_cities(self):
         questions = []
         cities = []
@@ -35,20 +36,20 @@ class Country():
             cities.append(all_cities[idx][1])
         return questions, cities
 
-
     """
         Return two lists: question and cities 
         (each questions "belongs" to a city, that's where the question is happening) 
     """
+
     def get_questions_and_cities_list(self):
         if not self.questions:
             self.questions, self.cities = self.generate_questions_and_cities()
         return zip(self.questions, self.cities)
 
-
     """
         Get locations by city
     """
+
     def get_locations(self, city_name):
         NUMBER_OF_LOCATIONS = 15
         all_locations = get_locations_by_city_name(city_name)
@@ -58,20 +59,18 @@ class Country():
             chosen_locations.append(all_locations[idx])
         return chosen_locations
 
-
     """
         Get string description of country
     """
+
     def get_description(self):
         return get_country_description(self.data)
 
-
-
-    def get_flag(self):
-        flag = self.data[1].lower()
-        flag = flag.replace(" ", "_")
-        return flag
-
+    def get_map(self):
+        map = self.data[1].lower()
+        map = map.replace(" ", "_")
+        map = map + '.png'
+        return map
 
     def get_country_name(self):
         return self.data[1]

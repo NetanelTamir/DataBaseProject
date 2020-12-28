@@ -111,3 +111,6 @@ def get_random_city_from_list_by_id(id):
     all_cities = get_cities_by_country_id(id)
     idx = random.randrange(len(all_cities))
     return all_cities[idx]
+
+def update_score(player, score):
+    print("a")

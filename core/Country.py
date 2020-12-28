@@ -65,3 +65,16 @@ class Country():
     def get_description(self):
         return get_country_description(self.data)
 
+
+
+    def get_flag(self):
+        flag = self.data[1].lower()
+        flag = flag.replace(" ", "_")
+        return flag
+
+
+    def get_country_name(self):
+        return self.data[1]
+
+    def get_src_city(self):
+        return self.data[2]

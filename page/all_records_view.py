@@ -52,7 +52,7 @@ def main():
             bg=bg,
             width=20,
         )
-        z.grid(row=i, column=0, sticky='NW')
+        z.grid(row=i, column=3)
         x = tk.Label(
             window,
             text=name,
@@ -61,7 +61,7 @@ def main():
             bg=bg,
             width=20,
         )
-        x.grid(row=i, column=2, sticky='NW')
+        x.grid(row=i, column=4)
         y = tk.Label(
             window,
             text=str(score),
@@ -70,7 +70,7 @@ def main():
             bg=bg,
             width=20,
         )
-        y.grid(row=i, column=3, sticky='NW')
+        y.grid(row=i, column=5)
         label.append(x)
         label.append(y)
     backButton = tk.Button(

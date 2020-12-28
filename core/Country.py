@@ -24,7 +24,9 @@ class Country():
             chosen_locations.append(all_locations[idx])
         for i in range(len(chosen_locations)):
             if chosen_locations[i][2] == "diplomatic-representation":
-                chosen_locations[i][2] = "diplomatic"
+                #chosen_locations[i][2] = "d.rep"
+                chosen_locations[i] = (chosen_locations[i][0], chosen_locations[i][1], "d.rep", chosen_locations[i][3], chosen_locations[i][4],chosen_locations[i][5])
+
         return chosen_locations
 
 

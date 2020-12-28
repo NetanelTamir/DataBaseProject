@@ -48,15 +48,20 @@ def generate_questions(country):
     Generate real question from generic one
 """
 def build_real_question_from_generic_question(generic_question, type, country):
-    ret = {}
+    ret = []
     attr = country.data[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
-    if type in [2,5]:
-        attr = type
-        generic_question.replace("_ATTR_", str(attr))
+    generic_question = generic_question.replace("_ATTR_", str(attr))
+    if type in ["flag","map"]:
+        ret.append(True)
+        ret.append(generic_question)
+        if type == "flag":
+            ret.append("flags/" + attr)
+        else:
+            ret.append("maps/" + attr)
     else:
-        generic_question.replace("_ATTR_", str(attr))
-        ret["string"] = generic_question
-    return generic_question
+        ret.append(False)
+        ret.append(generic_question)
+    return ret
 
 
 """
@@ -104,7 +109,8 @@ def get_country_description(country_data):
 def get_incorrect_question():
     all_questions = get_questions_by_type("incorrect")
     idx = random.randrange(len(all_questions))
-    return all_questions[idx][1:-1]
+    question = all_questions[idx][0]
+    return question
 
 
 def get_random_city_from_list_by_id(id):

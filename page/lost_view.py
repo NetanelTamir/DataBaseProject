@@ -46,8 +46,8 @@ def main(player, score):
     view_utils.add_title_image(root, "you_lost.png",0.25,0)
 
     score_bunner = tk.Label(
-        text= str(player[4]) +", Your score is: " + str(score),
-        font=("Helvetica", 13),
+        text= str(player[4]).upper() +", Your score is: " + str(score),
+        font=("Helvetica 13 bold"),
         background="#4169E1",
         fg="black",
         width=40,

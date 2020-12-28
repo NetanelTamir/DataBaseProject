@@ -22,7 +22,6 @@ def handle_go_to_main_window():
     home_view.main()
 
 
-
 def handle_go_to_high_scores():
     global root
     global entry_pass
@@ -42,17 +41,17 @@ def main(player, score):
     global userName
     root = tk.Tk()
     view_utils.init_root(root, "you won")
-    view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "winner.png",0.3,0)
+    view_utils.add_background(root, "carmen_winner.jpg")
+    view_utils.add_title_image(root, "winner.png", 0.3, 0)
 
     score_bunner = tk.Label(
-        text= str(player[4]) +", Your score is: " + str(score),
-        font=("Helvetica", 13),
+        text=str(player[4]).upper() + " Your score is: " + str(score),
+        font=("Helvetica 13 bold"),
         background="#4169E1",
         fg="black",
         width=40,
-    ).place(x=125, y=90)
-    update_score(player,score)
+    ).place(x=125, y=80)
+    update_score(player, score)
     go_to_menu_button = tk.Button(
         root,
         text="return to menu",

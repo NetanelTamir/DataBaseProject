@@ -3,6 +3,7 @@ import datetime
 from page import records_view, friends_view, view_utils, login_view, favorite_locations_view, all_records_view, \
     game_view
 from core.Game import Game
+from database_interaction import update_last_played, get_player_by_id
 
 GAME = None
 PLAYER = None
@@ -20,11 +21,7 @@ def handle_play_click():
     global entry_first_name
     global entry_password
     global GAME
-    if (entry_name and entry_pass):
-        print("The button was clicked: " + "----" + entry_pass.get())
-        username = entry_name.get()
-        password = entry_pass.get()
-
+    update_last_played(PLAYER[0])
     root.destroy()
     GAME = Game()
     game_view.main()
@@ -71,13 +68,13 @@ def main():
     global passw
     global userName
     id = PLAYER[0]
+    PLAYER = get_player_by_id(id)[0]
     firstName = PLAYER[4]
     lastName = PLAYER[5]
     lastPlay = PLAYER[6]
     userName = PLAYER[1]
     delta = datetime.datetime.today().date() - lastPlay
     root = tk.Tk()
-
     view_utils.init_root(root, "home view")
     view_utils.add_background(root, "Earth-icon.png")
 

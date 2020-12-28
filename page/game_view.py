@@ -33,7 +33,7 @@ def handle_flight_choose(flight_obj):
         GAME.level_done()
         if GAME.is_game_won():
             root.destroy()
-            Winner_view.main(home_view.PLAYER,GAME.time_left)
+            Winner_view.main(home_view.PLAYER, GAME.get_score())
         else:
             GAME.user_switched_country()
             update_time()
@@ -51,14 +51,23 @@ def handle_flight_choose(flight_obj):
             root.map = mapImage = ImageTk.PhotoImage(map_img)
             mapCanvas.create_image(100, 100, image=mapImage)
     else:
-        print("WRONG!")
+        inco = utils.get_incorrect_question()
+        GAME.user_switched_country()
+        GAME.user_switched_country()
+        canvas.delete("all")
+        canvas.create_text(150, 150, width=300, fill="green", font="Times 10 bold",
+                           text=f"Local person says: {inco}\n\nYou are probably at the wrong place..."
+                                f" We are sending you back to the country you came from.")
+        canvas.update()
+        canvas.update()
+        update_time()
 
 
 def update_time():
     global time_label
     if GAME.is_game_lost():
         root.destroy()
-        lost_view.main(home_view.PLAYER,GAME.time_left)
+        lost_view.main(home_view.PLAYER, GAME.get_score())
     else:
         time_label.config(text="Time Left: " + str(GAME.time_left) + " h")
 
@@ -79,8 +88,13 @@ def handel_single_hint(message):
     GAME.user_used_hint()
     update_time()
     canvas.delete("all")
+    if message[0]:
+        img = Image.open("images/" + message[2])
+        img = img.resize((200, 200), PIL.Image.ANTIALIAS)
+        mapImage = ImageTk.PhotoImage(img)
+        canvas.create_image(100, 100, image=mapImage)
     canvas.create_text(150, 150, width=300, fill="red", font="Times 10 bold",
-                       text=message)
+                       text=message[1])
     canvas.update()
     canvas.update()
 

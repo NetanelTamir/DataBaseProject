@@ -15,8 +15,10 @@ class Country():
     """
     def get_locations(self):
         NUMBER_OF_LOCATIONS = 10
-        all_locations = get_locations_by_city_name(self.get_src_city)
+        all_locations = get_locations_by_city_id(self.get_src_city_id())
         chosen_locations = []
+        if len(all_locations) < NUMBER_OF_LOCATIONS:
+            return all_locations
         idx_list = random.sample(range(len(all_locations)), NUMBER_OF_LOCATIONS)
         for idx in idx_list:
             chosen_locations.append(all_locations[idx])

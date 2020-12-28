@@ -28,6 +28,7 @@ class Country():
             all_questions = get_questions_by_type(type)
             idx = random.randrange(0, len(all_questions))
             generic_question = all_questions[idx]
+            generic_question = generic_question[0]
             real_question = build_real_question_from_generic_question(generic_question, type, self)
             questions.append(real_question)
         all_cities = get_cities_by_countryid(self.id)

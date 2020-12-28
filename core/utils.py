@@ -3,7 +3,7 @@ import random
 #from core.Game import HINT_COST, FLIGHT_COST, NUMBER_OF_HOURS
 
 QUESTION_TYPE = {0:"population", 1:"currency", 2:"flag", 3:"capital", 4:"language", 5:"map", 6:"incorrect"}
-ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":1, "population":2, "language":4, "flag":5, "map":0, "currency":3}
+ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":2, "population":3, "language":5, "flag":6, "map":1, "currency":4}
 WETHER_DICT = {"1":"a","2":"b","3":"c","4":"d"}
 
 """
@@ -49,12 +49,12 @@ def generate_questions(country):
 """
 def build_real_question_from_generic_question(generic_question, type, country):
     ret = {}
-    attr = country[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
-    if type in ["flag", "map"]:
-        ret["file"] = attr
-        ret["string"] = generic_question
+    attr = country.data[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
+    if type in [2,5]:
+        attr = type
+        generic_question.replace("_ATTR_", str(attr))
     else:
-        generic_question.replace("_ATTR_", attr)
+        generic_question.replace("_ATTR_", str(attr))
         ret["string"] = generic_question
     return generic_question
 

@@ -40,6 +40,7 @@ def handel_single_hint(message):
         background="#4169E1",
         fg="black",
         width=30,
+        heigth = 5,
     ).place(x=0, y=0)
 
     canvas.create_window(152, 152, window=frame, width=300, height=300)
@@ -48,14 +49,15 @@ def handel_single_hint(message):
 
 def handle_hint():
     canvas.delete("all")
-
+    global country_object
+    hints = country_object.get_hints()
     frame = tk.Frame()
-    button1 = tk.Button(frame, text='Hint 1 - ', width=27, height=4, font=("Helvetica", 14), bg=Colors[0],
-                        fg="white").place(relx=0, rely=+ 0.33 * 0)
-    button2 = tk.Button(frame, text='Hint 2 - ', width=27, height=4, font=("Helvetica", 14), bg=Colors[1],
-                        fg="white").place(relx=0, rely=+ 0.33 * 1)
-    button3 = tk.Button(frame, text='Hint 3 - ', width=27, height=4, font=("Helvetica", 14), bg=Colors[2],
-                        fg="white").place(relx=0, rely=+ 0.33 * 2)
+    button1 = tk.Button(frame, text='Hint 1', width=27, height=4, font=("Helvetica", 14), bg=Colors[0],
+                        fg="white", command=lambda: handel_single_hint(hints[0])).place(relx=0, rely=+ 0.33 * 0)
+    button2 = tk.Button(frame, text='Hint 2', width=27, height=4, font=("Helvetica", 14), bg=Colors[1],
+                        fg="white", command=lambda: handel_single_hint(hints[1])).place(relx=0, rely=+ 0.33 * 1)
+    button3 = tk.Button(frame, text='Hint 3', width=27, height=4, font=("Helvetica", 14), bg=Colors[2],
+                        fg="white", command=lambda: handel_single_hint(hints[2])).place(relx=0, rely=+ 0.33 * 2)
 
     canvas.create_window(152, 152, window=frame, width=300, height=300)
     canvas.update()
@@ -118,10 +120,16 @@ def main():
 
     mapCanvas = tk.Canvas(root, height=200, width=200)
     mapCanvas.place(relx=0.65, rely=0.12)
-    map_img = Image.open("images/maps/" + map_src)
-    map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
+    try:
+        map_img = Image.open("images/maps/" + map_src)
+        map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
+        root.map = mapImage = ImageTk.PhotoImage(map_img)
+    except:
+        flag_src = country.data[6]
+        map_img = Image.open("images/maps/" + flag_src)
+        map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
+        root.map = mapImage = ImageTk.PhotoImage(map_img)
 
-    root.map = mapImage = ImageTk.PhotoImage(map_img)
     mapCanvas.create_image(100, 100, image=mapImage)
 
     country_info = tk.Button(

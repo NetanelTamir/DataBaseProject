@@ -25,16 +25,6 @@ def handle_remove_click():
     root = None
     main()
 
-# def handle_add_click():
-#     global entry_name
-#     global root
-#     user_add = entry_name.get()
-#     database_interaction.add_friendship_by_username(home_view.PLAYER[0], user_add)
-#     entry_name = None
-#     root.destroy()
-#     root = None
-#     main()
-
 def splitByLength(data):
     splitedData = data.split(" ")
     finalStr = ""
@@ -131,15 +121,6 @@ def main():
         fg="black",
         command=lambda: handle_remove_click()
     ).place(x=59, y=410)
-    # addFriend = tk.Button(
-    #     root,
-    #     text="Add country",
-    #     width=24,
-    #     height=1,
-    #     bg="green",
-    #     fg="black",
-    #     command=lambda: handle_add_click()
-    # ).place(x=340, y=360)
     yscroll = tk.Scrollbar(command=listbox.yview, orient=tk.VERTICAL)
     yscroll.grid(row=2, rowspan=4, column=3, sticky='nsw')
     listbox.configure(yscrollcommand=yscroll.set)
@@ -147,7 +128,6 @@ def main():
     xscroll.place(x=60, y=390, width=175)
     listbox.configure(xscrollcommand=xscroll.set)
     favoriteLocations = database_interaction.get_favorite_locations_by_user_id(PLAYER[0])
-    #favoriteLocations = [("Israel", "fsafafsaafafafaffmkvnsssssssssssssf fsafa ksafksfksafklnlks anlfasfaaaaaaaaab"),("Israel2", "fsaffsafaasfaa fsfsafsaaf afa faffmkvfsaffsasfmksaf ksfksafkln lksanl fasf")]
     for item in favoriteLocations:
         listbox.insert('end', item[1])
 

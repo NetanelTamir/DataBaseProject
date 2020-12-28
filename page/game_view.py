@@ -8,15 +8,58 @@ from core import utils
 from core.Country import Country
 from page import signup_view, home_view, view_utils
 
+root = None
 GAME = None
 LEVEL = None
 Colors = ['#34568B', '#FF6F61', '#88B04B']
 country_object = None
 flight = None
 country_desc = ''
+canvas = None
+mapCanvas = None
+time_label = None
+country_city_banner = None
 
 
-# def update_country(new_country_id):
+def handle_flight_choose(flight_obj):
+    global GAME
+    global LEVEL
+    global root
+    global country_object
+    global mapCanvas
+    global flight
+    id = flight_obj.data[0]
+    if LEVEL.is_real_dest(id):
+        GAME.level_done()
+        if GAME.is_game_won():
+            print("win")
+        else:
+            GAME.user_switched_country()
+            update_time()
+            LEVEL = GAME.get_level()
+            country_object = LEVEL.get_src_country()
+            flight = LEVEL.get_possible_destinations()
+            country = country_object.get_country_name()
+            city = country_object.get_src_city()
+            map_src = country_object.get_map()
+            country_city_banner.config(text="Your current location: " + country + " , " + city)
+            handle_country_info_click()
+            mapCanvas.delete("all")
+            map_img = Image.open("images/maps/" + map_src)
+            map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
+            root.map = mapImage = ImageTk.PhotoImage(map_img)
+            mapCanvas.create_image(100, 100, image=mapImage)
+    else:
+        print("WRONG!")
+
+
+def update_time():
+    global time_label
+    if GAME.is_game_lost():
+        print("LOST")
+    else:
+        time_label.config(text="Time Left: " + str(GAME.time_left) + " h")
+
 
 def handle_country_info_click():
     global country_object
@@ -31,6 +74,8 @@ def handle_country_info_click():
 
 
 def handel_single_hint(message):
+    GAME.user_used_hint()
+    update_time()
     canvas.delete("all")
     canvas.create_text(150, 150, width=300, fill="red", font="Times 10 bold",
                        text=message)
@@ -63,11 +108,11 @@ def flight_click():
     canvas.delete("all")
     frame = tk.Frame()
     button1 = tk.Button(frame, text=flight[0].data[1], width=27, height=4, font=("Helvetica", 14), bg=Colors[0],
-                        fg="white").place(relx=0, rely=+ 0.33 * 0)
+                        fg="white", command=lambda: handle_flight_choose(flight[0])).place(relx=0, rely=+ 0.33 * 0)
     button2 = tk.Button(frame, text=flight[1].data[1], width=27, height=4, font=("Helvetica", 14), bg=Colors[1],
-                        fg="white").place(relx=0, rely=+ 0.33 * 1)
+                        fg="white", command=lambda: handle_flight_choose(flight[1])).place(relx=0, rely=+ 0.33 * 1)
     button3 = tk.Button(frame, text=flight[2].data[1], width=27, height=4, font=("Helvetica", 14), bg=Colors[2],
-                        fg="white").place(relx=0, rely=+ 0.33 * 2)
+                        fg="white", command=lambda: handle_flight_choose(flight[2])).place(relx=0, rely=+ 0.33 * 2)
 
     canvas.create_window(152, 152, window=frame, width=300, height=300)
     canvas.update()
@@ -79,6 +124,10 @@ def main():
     global LEVEL
     global country_object
     global flight
+    global time_label
+    global country_city_banner
+    global root
+    global mapCanvas
     GAME = home_view.GAME
     LEVEL = GAME.get_level()
     country_object = LEVEL.get_src_country()
@@ -97,15 +146,16 @@ def main():
         background="#4169E1",
         fg="black",
         width=40,
-    ).place(x=10, y=0)
-    score_banner = tk.Label(
+    )
+    country_city_banner.place(x=10, y=0)
+    time_label = tk.Label(
         text="Time Left: " + str(GAME.time_left) + " h",
         font=("Helvetica", 13),
         background="#4169E1",
         fg="black",
         width=17,
-    ).place(x=430, y=0)
-
+    )
+    time_label.place(x=430, y=0)
     canvas = tk.Canvas(root, bg="white", height=300, width=300)
     canvas.place(relx=0.10, rely=0.25)
 
@@ -116,7 +166,7 @@ def main():
         map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
         root.map = mapImage = ImageTk.PhotoImage(map_img)
     except:
-        flag_src = country.data[6]
+        flag_src = country_object.data[6]
         map_img = Image.open("images/maps/" + flag_src)
         map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
         root.map = mapImage = ImageTk.PhotoImage(map_img)

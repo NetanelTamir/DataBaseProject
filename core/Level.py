@@ -7,7 +7,7 @@ class Level():
         self.countries = countries
         self.start = src
         idx = random.randrange(len(self.countries))
-        self.dst = idx
+        self.dst = countries[idx]
         self.wrong_country = False
         self.destinations = None
 

@@ -40,10 +40,10 @@ class Country():
         Return two lists: question and cities 
         (each questions "belongs" to a city, that's where the question is happening) 
     """
-    def get_questions_and_cities(self):
+    def get_questions_and_cities_list(self):
         if not self.questions:
             self.questions, self.cities = self.generate_questions_and_cities()
-        return self.questions, self.cities
+        return zip(self.questions, self.cities)
 
 
     """

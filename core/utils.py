@@ -50,15 +50,16 @@ def generate_questions(country):
 def build_real_question_from_generic_question(generic_question, type, country):
     ret = []
     attr = country.data[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
-    generic_question = generic_question.replace("_ATTR_", str(attr))
     if type in ["flag","map"]:
+        generic_question = generic_question.replace("_ATTR_", "")
         ret.append(True)
         ret.append(generic_question)
         if type == "flag":
-            ret.append("flags/" + attr)
+            ret.append("flags/" + country.get_flag())
         else:
-            ret.append("maps/" + attr)
+            ret.append("maps/" + country.get_map())
     else:
+        generic_question = generic_question.replace("_ATTR_", str(attr))
         ret.append(False)
         ret.append(generic_question)
     return ret

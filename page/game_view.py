@@ -55,7 +55,7 @@ def handle_flight_choose(flight_obj):
         GAME.user_switched_country()
         GAME.user_switched_country()
         canvas.delete("all")
-        canvas.create_text(150, 150, width=300, fill="green", font="Times 10 bold",
+        canvas.create_text(150, 150, width=300, fill="red", font="Times 10 bold",
                            text=f"Local person says: {inco}\n\nYou are probably at the wrong place..."
                                 f" We are sending you back to the country you came from.")
         canvas.update()
@@ -78,7 +78,7 @@ def handle_country_info_click():
     global canvas
     country_desc = country_object.get_description()
     canvas.delete("all")
-    canvas.create_text(150, 150, width=300, fill="green", font="Times 10 bold",
+    canvas.create_text(150, 150, width=300, fill="black", font="Times 10 bold",
                        text=country_desc)
     canvas.update()
     canvas.update()
@@ -89,20 +89,21 @@ def handel_single_hint(message):
     update_time()
     canvas.delete("all")
     if message[0]:
-        img = Image.open("images/" + message[2])
-        img = img.resize((200, 200), PIL.Image.ANTIALIAS)
-        mapImage = ImageTk.PhotoImage(img)
-        canvas.create_image(100, 100, image=mapImage)
-    canvas.create_text(150, 150, width=300, fill="red", font="Times 10 bold",
-                       text=message[1])
+        map_img = Image.open("images/" + message[2])
+        map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
+        canvas.map = mapImage = ImageTk.PhotoImage(map_img)
+        canvas.create_image(150, 150, image=mapImage)
+    else:
+        canvas.create_text(150, 150, width=300, fill="green", font="Times 10 bold",
+                           text=message[1])
     canvas.update()
     canvas.update()
 
 
 def handle_hint():
     canvas.delete("all")
-    global country_object
-    hints = country_object.get_hints()
+    global LEVEL
+    hints = LEVEL.get_hints()
     frame = tk.Frame()
     button1 = tk.Button(frame, text='Hint 1', width=27, height=4, font=("Helvetica", 14), bg=Colors[0],
                         fg="white", command=lambda: handel_single_hint(hints[0])).place(relx=0, rely=+ 0.33 * 0)

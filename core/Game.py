@@ -3,7 +3,7 @@ from core.utils import get_new_countries
 import random
 from database_interaction import get_number_of_countries
 
-NUMBER_OF_LEVELS = 1
+NUMBER_OF_LEVELS = 5
 NUMBER_OF_HOURS = 168
 NUMBER_OF_COUNTRIES_IN_LEVEL = 4
 HINT_COST = 3
@@ -79,4 +79,5 @@ class Game():
 
 
     def get_score(self):
-        return self.time_left / NUMBER_OF_HOURS * 100. + 20 * self.current_level
+        score = self.time_left / NUMBER_OF_HOURS * 100. + 20 * self.current_level
+        return round(score)

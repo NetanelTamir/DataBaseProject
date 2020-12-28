@@ -11,7 +11,7 @@ from dataset_parsing import help_create_cities, create_cities, create_comments, 
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
                                      user='root',
-                                     password='omer123')
+                                     password='netanel')
 cursor = None
 
 
@@ -357,6 +357,12 @@ def get_questions_by_type(type):
 
 def get_comments_by_type(type):
     sql = '''SELECT * FROM carmen_sandiego.comments WHERE comment_type='%s' ''' % (type)
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    return res
+
+def get_cities_by_country_id(id):
+    sql = '''SELECT id_cities,city FROM carmen_sandiego.cities Where id_country='%s'; ''' % (id)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res

@@ -25,7 +25,7 @@ def main():
         background="#4169E1",
         fg="black",
         width=50,
-    ).place(relx=0, rely=0.12)
+    ).place(relx=0.07, rely=0.12)
     window.grid_rowconfigure(1, {'minsize': 100})
     for i in range(2, 10):
         window.grid_rowconfigure(i, {'minsize': 0})

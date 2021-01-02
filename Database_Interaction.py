@@ -6,7 +6,7 @@ from datetime import date, datetime
 import mysql.connector
 from mysql.connector import Error
 
-from dataset_parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations
+from Dataset_Parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations
 
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
@@ -157,11 +157,7 @@ def log_in(username, password):
     salt = res[3]
     hash = res[2]
     if (hashlib.sha256((password + salt).encode('utf-8')).hexdigest() == hash):
-        sql = "SELECT * FROM carmen_sandiego.players WHERE user_name='%s'" % (username)
-        cursor.execute(sql)
-        res = cursor.fetchall()[0][0]
-        commit_connection()
-        return res
+        return res[0]
     return -1
 
 def update_last_played(id):
@@ -171,19 +167,19 @@ def update_last_played(id):
     commit_connection()
 
 
-# Adds friendship to DB
-def add_friendship_by_id(id1, id2):
-    sql = "INSERT INTO carmen_sandiego.friendships (id_friendships_a,id_friendships_b) VALUES (%s,%s)"
-
-    try:
-        if (id1 < id2):
-            cursor.execute(sql, (id1, id2))
-            commit_connection()
-        else:
-            cursor.execute(sql, (id2, id1))
-            commit_connection()
-    except:
-        print("Friendship exists already ")
+# # Adds friendship to DB
+# def add_friendship_by_id(id1, id2):
+#     sql = "INSERT INTO carmen_sandiego.friendships (id_friendships_a,id_friendships_b) VALUES (%s,%s)"
+#
+#     try:
+#         if (id1 < id2):
+#             cursor.execute(sql, (id1, id2))
+#             commit_connection()
+#         else:
+#             cursor.execute(sql, (id2, id1))
+#             commit_connection()
+#     except:
+#         print("Friendship exists already ")
 
 def add_friendship_by_username(id,username):
     try:
@@ -194,20 +190,20 @@ def add_friendship_by_username(id,username):
     except:
         print("Friendship exists already ")
 
-def remove_friendship(id1, id2):
-    sql = "DELETE FROM carmen_sandiego.friendships WHERE id_friendships_a='%s' AND id_friendships_b='%s'"
-    try:
-        if (id1 < id2):
-            cursor.execute(sql, (id1, id2))
-            commit_connection()
-            return 1
-        else:
-            cursor.execute(sql, (id2, id1))
-            commit_connection()
-            return 1
-    except:
-        print("Error Deleting friendship")
-        return -1
+# def remove_friendship(id1, id2):
+#     sql = "DELETE FROM carmen_sandiego.friendships WHERE id_friendships_a='%s' AND id_friendships_b='%s'"
+#     try:
+#         if (id1 < id2):
+#             cursor.execute(sql, (id1, id2))
+#             commit_connection()
+#             return 1
+#         else:
+#             cursor.execute(sql, (id2, id1))
+#             commit_connection()
+#             return 1
+#     except:
+#         print("Error Deleting friendship")
+#         return -1
 
 def remove_friendship_by_username(id,username):
     try:
@@ -218,6 +214,7 @@ def remove_friendship_by_username(id,username):
     except:
         print("Error Deleting friendship ")
 # Returns the ids of players who are friends with id
+
 def get_all_friendships_by_id(id):
     sql = '''Select user_name from players where ((id_players in (select id_friendships_a FROM carmen_sandiego.friendships
      WHERE id_friendships_b='%s')) or (id_players in (select id_friendships_b FROM carmen_sandiego.friendships 
@@ -231,27 +228,29 @@ def get_all_friendships_by_id(id):
 
 # Updates DB with new high_score
 def update_highscore_table(id, score):
-    sql = "SELECT * FROM carmen_sandiego.high_scores WHERE id_players='%s' and score='%s'" % (id, score)
-    cursor.execute(sql)
-    res = cursor.fetchall()
-
-    if len(res) == 0:
-        sql = "INSERT INTO carmen_sandiego.high_scores (id_players,score,date) VALUES (%s,%s,%s)"
-        cursor.execute(sql, (id, score, datetime.now()))
-
-    else:
-        sql = "UPDATE carmen_sandiego.high_scores SET date ='%s' WHERE id_players = '%s' and score='%s'" % (
-            datetime.now(), id, score)
-        cursor.execute(sql)
+    # sql = "SELECT * FROM carmen_sandiego.high_scores WHERE id_players='%s' and score='%s'" % (id, score)
+    # cursor.execute(sql)
+    # res = cursor.fetchall()
+    #
+    # if len(res) == 0:
+    #     sql = "INSERT INTO carmen_sandiego.high_scores (id_players,score,date) VALUES (%s,%s,%s)"
+    #     cursor.execute(sql, (id, score, datetime.now()))
+    #
+    # else:
+    #     sql = "UPDATE carmen_sandiego.high_scores SET date ='%s' WHERE id_players = '%s' and score='%s'" % (
+    #         datetime.now(), id, score)
+    #     cursor.execute(sql)
+    sql = "INSERT INTO carmen_sandiego.high_scores (id_players,score,date) VALUES (%s,%s,%s)"
+    cursor.execute(sql, (id, score, datetime.now()))
     commit_connection()
 
 
-# Gets HighScores (No Repeats)
-def get_highscores_no_repeats():
-    sql = "SELECT id_players,max(score) AS score FROM carmen_sandiego.high_scores GROUP BY id_players;"
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    return res
+# # Gets HighScores (No Repeats)
+# def get_highscores_no_repeats():
+#     sql = "SELECT id_players,max(score) AS score FROM carmen_sandiego.high_scores GROUP BY id_players;"
+#     cursor.execute(sql)
+#     res = cursor.fetchall()
+#     return res
 
 
 # Gets HighScores (Yes Repeats)
@@ -274,12 +273,12 @@ def get_highscores_no_repeats_friends(id):
     return res
 
 
-# Gets Average Score for each player
-def get_highscores_avg_scores():
-    sql = '''SELECT id_players,avg(score) AS score FROM carmen_sandiego.high_scores group by id_players;'''
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    return res
+# # Gets Average Score for each player
+# def get_highscores_avg_scores():
+#     sql = '''SELECT id_players,avg(score) AS score FROM carmen_sandiego.high_scores group by id_players;'''
+#     cursor.execute(sql)
+#     res = cursor.fetchall()
+#     return res
 
 
 def get_number_of_countries():
@@ -299,13 +298,13 @@ def get_country_by_id(country_id):
     return res
 
 
-def get_cities_by_countryid(country_id):
-    sql = '''SELECT id_cities,city 
-            FROM carmen_sandiego.cities,carmen_sandiego.countries
-            WHERE country=country_name AND id_countries='%s' ''' % (country_id)
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    return res
+# def get_cities_by_countryid(country_id):
+#     sql = '''SELECT id_cities,city
+#             FROM carmen_sandiego.cities,carmen_sandiego.countries
+#             WHERE country=country_name AND id_countries='%s' ''' % (country_id)
+#     cursor.execute(sql)
+#     res = cursor.fetchall()
+#     return res
 
 
 def get_locations_by_city_id(city_id):
@@ -315,12 +314,12 @@ def get_locations_by_city_id(city_id):
     return res
 
 
-def get_locations_by_city_name_and_type(city_name, type):
-    # Type= around/buy/diplomatic-representation/do/drink/eat/other/see/sleep/vicinity
-    sql = '''SELECT * FROM carmen_sandiego.locations WHERE city='%s' AND type='%s' ''' % (city_name, type)
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    return res
+# def get_locations_by_city_name_and_type(city_name, type):
+#     # Type= around/buy/diplomatic-representation/do/drink/eat/other/see/sleep/vicinity
+#     sql = '''SELECT * FROM carmen_sandiego.locations WHERE city='%s' AND type='%s' ''' % (city_name, type)
+#     cursor.execute(sql)
+#     res = cursor.fetchall()
+#     return res
 
 
 def add_favorite_location(player_id, location_id):
@@ -343,11 +342,11 @@ def remove_favorite_location(player_id, location_id):
     return
 
 
-def get_location_by_id(location_id):
-    sql = '''SELECT * FROM carmen_sandiego.locations WHERE id_locations='%s' ''' % (location_id)
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    return res
+# def get_location_by_id(location_id):
+#     sql = '''SELECT * FROM carmen_sandiego.locations WHERE id_locations='%s' ''' % (location_id)
+#     cursor.execute(sql)
+#     res = cursor.fetchall()
+#     return res
 
 def get_questions_by_type(type):
     sql = '''SELECT description FROM carmen_sandiego.questions WHERE question_type='%s' ''' % (type)
@@ -355,11 +354,11 @@ def get_questions_by_type(type):
     res = cursor.fetchall()
     return res
 
-def get_comments_by_type(type):
-    sql = '''SELECT * FROM carmen_sandiego.comments WHERE comment_type='%s' ''' % (type)
-    cursor.execute(sql)
-    res = cursor.fetchall()
-    return res
+# def get_comments_by_type(type):
+#     sql = '''SELECT * FROM carmen_sandiego.comments WHERE comment_type='%s' ''' % (type)
+#     cursor.execute(sql)
+#     res = cursor.fetchall()
+#     return res
 
 def get_cities_by_country_id(id):
     sql = '''SELECT id_cities,city FROM carmen_sandiego.cities Where id_country='%s'; ''' % (id)

@@ -1,7 +1,7 @@
 from core.Level import Level
 from core.utils import get_new_countries
 import random
-from database_interaction import get_number_of_countries
+from Database_Interaction import get_number_of_countries
 
 NUMBER_OF_LEVELS = 5
 NUMBER_OF_HOURS = 168

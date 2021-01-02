@@ -1,6 +1,6 @@
 import tkinter as tk
 
-import database_interaction
+import Database_Interaction
 from page import signup_view, home_view, view_utils
 
 entry_name = None
@@ -21,9 +21,9 @@ def handle_click():
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
         password = entry_pass.get()
-        id = database_interaction.log_in(username, password)
+        id = Database_Interaction.log_in(username, password)
         if (id > -1):
-            home_view.PLAYER = database_interaction.get_player_by_id(id)[0]
+            home_view.PLAYER = Database_Interaction.get_player_by_id(id)[0]
             root.destroy()
             home_view.main()
 

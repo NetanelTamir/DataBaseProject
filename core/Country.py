@@ -1,4 +1,4 @@
-from database_interaction import *
+from Database_Interaction import *
 from core.utils import *
 import random
 

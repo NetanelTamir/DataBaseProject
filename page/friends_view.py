@@ -1,5 +1,5 @@
 import tkinter as tk
-import database_interaction
+import Database_Interaction
 from page import view_utils
 from page import home_view
 
@@ -15,7 +15,7 @@ def handle_remove_click():
     global name_to_delete
     global root
     user_delete = name_to_delete
-    database_interaction.remove_friendship_by_username(home_view.PLAYER[0], user_delete)
+    Database_Interaction.remove_friendship_by_username(home_view.PLAYER[0], user_delete)
     entry_name = None
     root.destroy()
     root = None
@@ -25,7 +25,7 @@ def handle_add_click():
     global entry_name
     global root
     user_add = entry_name.get()
-    database_interaction.add_friendship_by_username(home_view.PLAYER[0], user_add)
+    Database_Interaction.add_friendship_by_username(home_view.PLAYER[0], user_add)
     entry_name = None
     root.destroy()
     root = None
@@ -93,7 +93,7 @@ def main():
     yscroll = tk.Scrollbar(command=listbox.yview, orient=tk.VERTICAL)
     yscroll.place(x=264, y=72, height=200)
     listbox.configure(yscrollcommand=yscroll.set)
-    friend_list = database_interaction.get_all_friendships_by_id(PLAYER[0])
+    friend_list = Database_Interaction.get_all_friendships_by_id(PLAYER[0])
     for item in friend_list:
         listbox.insert('end', item)
 

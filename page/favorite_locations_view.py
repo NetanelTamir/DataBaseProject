@@ -1,5 +1,5 @@
 import tkinter as tk
-import database_interaction
+import Database_Interaction
 from page import view_utils
 from page import home_view
 
@@ -19,7 +19,7 @@ def handle_remove_click():
     global root
     if(currentLocationId == -1):
         return
-    database_interaction.remove_favorite_location(home_view.PLAYER[0], currentLocationId)
+    Database_Interaction.remove_favorite_location(home_view.PLAYER[0], currentLocationId)
     entry_name = None
     root.destroy()
     root = None
@@ -127,7 +127,7 @@ def main():
     xscroll = tk.Scrollbar(command=listbox.xview, orient=tk.HORIZONTAL)
     xscroll.place(x=60, y=390, width=175)
     listbox.configure(xscrollcommand=xscroll.set)
-    favoriteLocations = database_interaction.get_favorite_locations_by_user_id(PLAYER[0])
+    favoriteLocations = Database_Interaction.get_favorite_locations_by_user_id(PLAYER[0])
     for item in favoriteLocations:
         listbox.insert('end', item[1])
 

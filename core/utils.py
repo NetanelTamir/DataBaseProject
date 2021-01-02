@@ -1,6 +1,6 @@
 from concurrent.futures import thread
 
-from database_interaction import *
+from Database_Interaction import *
 import random
 #from core.Game import HINT_COST, FLIGHT_COST, NUMBER_OF_HOURS
 

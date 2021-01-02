@@ -1,4 +1,6 @@
 from page import login_view
-import database_interaction
-database_interaction.create_connection()
+import Database_Interaction
+import Dataset_Parsing
+
+Database_Interaction.create_connection()
 login_view.main()

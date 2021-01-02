@@ -1,6 +1,6 @@
 import tkinter as tk
 
-import database_interaction
+import Database_Interaction
 from page import signup_view, home_view, view_utils, records_view
 from core.utils import *
 

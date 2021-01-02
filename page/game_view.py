@@ -7,7 +7,7 @@ from PIL import Image
 from core import utils
 from core.Country import Country
 from page import signup_view, home_view, view_utils, Winner_view, lost_view
-from database_interaction import add_favorite_location
+from Database_Interaction import add_favorite_location
 
 root = None
 GAME = None
@@ -44,7 +44,7 @@ def handle_flight_choose(flight_obj):
             country = country_object.get_country_name()
             city = country_object.get_src_city()
             map_src = country_object.get_map()
-            country_city_banner.config(text="Your current location: " + country + " , " + city)
+            country_city_banner.config(text=country + " , " + city)
             handle_country_info_click()
             mapCanvas.delete("all")
             map_img = Image.open("images/maps/" + map_src)
@@ -257,7 +257,7 @@ def main():
     view_utils.init_root(root, "home view")
     view_utils.add_image(root, 'Carmen-sandiego-game-logo.png', relx=0.13, rely=0.05)
     country_city_banner = tk.Label(
-        text="Your current location: " + country + " , " + city,
+        text=country + " , " + city,
         font=("Helvetica", 13),
         background="#4169E1",
         fg="black",

@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from page import login_view, view_utils
-import database_interaction
+import Database_Interaction
 entry_first_name = None
 entry_password = None
 entry_user_name = None
@@ -27,7 +27,7 @@ def handle_sign_up():
     first_name = entry_first_name.get()
     password = entry_password.get()
     print(password + "  " + user_name)
-    response = database_interaction.add_player((user_name,password,first_name,last_name))
+    response = Database_Interaction.add_player((user_name, password, first_name, last_name))
     if response == -1:
         view_utils.show_error("user-name already exist")
     if response == -2:

@@ -50,14 +50,6 @@ def create_cities():
         for row in rows:
             writer.writerow(row)
 
-    # query = "LOAD DATA INFILE 'cities.csv' INTO TABLE carmen_sandiego.cities"
-    # cursor.execute(query)
-
-    # with open('cities.csv', encoding='cp850') as csvfile:
-    #     reader = csv.reader(csvfile, delimiter=',')
-    #     sql = "INSERT INTO carmen_sandiego.cities (city, country) VALUES (%s,%s)"
-    #     for row in reader:
-    #         cursor.execute(sql, row)
 
 
 def create_locations():
@@ -92,23 +84,7 @@ def create_questions():
         writer = csv.writer(csvfile, delimiter=',', quoting=1)
         for row in rows:
             writer.writerow(row)
-    # with open('questions.csv', encoding='cp850') as csvfile:
-    #     reader = csv.reader(csvfile, delimiter=',')
-    #     sql = "INSERT INTO carmen_sandiego.questions (question_type, description) VALUES (%s,%s)"
-    #     for row in reader:
-    #         cursor.execute(sql, row)
 
-
-# def create_comments():
-#     rows = []
-#     with open('src_files/gen_comments.txt', encoding='cp850') as csvfile:
-#         reader = csv.reader(csvfile, delimiter=',')
-#         for row in reader:
-#             rows.append((row[0], row[1]))
-#     with open('parsed_csvs/comments.csv', 'w', newline='', encoding='cp850') as csvfile:
-#         writer = csv.writer(csvfile, delimiter=',', quoting=1)
-#         for row in rows:
-#             writer.writerow(row)
 
 def create_countries():
     rows = []
@@ -128,25 +104,6 @@ def create_countries():
         writer = csv.writer(csvfile, delimiter=',', quoting=1)
         for row in rows:
             writer.writerow(row)
-
-    # query = "LOAD DATA LOCAL INFILE 'parsed_csvs/countries.csv' INTO TABLE carmen_sandiego.countries"
-    # cursor.execute(query)
-
-    # with open('parsed_csvs/countries.csv', encoding='cp850') as csvfile:
-    #     reader = csv.reader(csvfile, delimiter=',')
-    #     sql = "INSERT INTO carmen_sandiego.countries (country_name,capital_name,population,currency,languages,flag,region,area,gdp,climate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    #     for row in reader:
-    #         row[2] = int(row[2].replace(',',''))
-    #         row[7] = int(row[7])
-    #         try:
-    #             row[8] = int(row[8])
-    #         except:
-    #             row[8] = 0
-    #         try:
-    #             row[9] = int(row[9])
-    #         except:
-    #             row[9] = 0
-    #         cursor.execute(sql, row)
 
 # help_create_cities()
 # create_cities()

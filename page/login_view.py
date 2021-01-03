@@ -21,6 +21,9 @@ def handle_click():
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
         password = entry_pass.get()
+        if len(userName) > 20 or len(userName) < 2:
+            view_utils.show_error("User name must contain at least 2 characters and at most 20 characters!")
+            return
         id = Database_Interaction.log_in(username, password)
         if (id > -1):
             home_view.PLAYER = Database_Interaction.get_player_by_id(id)[0]

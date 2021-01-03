@@ -6,7 +6,7 @@ from datetime import date, datetime
 import mysql.connector
 from mysql.connector import Error
 
-from Dataset_Parsing import help_create_cities, create_cities, create_comments, create_questions, create_locations
+from Dataset_Parsing import help_create_cities, create_cities, create_questions, create_locations
 
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
@@ -76,15 +76,15 @@ def fill_cities():
     commit_connection()
 
 
-def fill_comments():
-    global cursor
-
-    with open('parsed_csvs/comments.csv', encoding='cp850') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',')
-        sql = "INSERT INTO carmen_sandiego.comments (comment_type, description) VALUES (%s,%s)"
-        for row in reader:
-            cursor.execute(sql, row)
-    commit_connection()
+# def fill_comments():
+#     global cursor
+#
+#     with open('parsed_csvs/comments.csv', encoding='cp850') as csvfile:
+#         reader = csv.reader(csvfile, delimiter=',')
+#         sql = "INSERT INTO carmen_sandiego.comments (comment_type, description) VALUES (%s,%s)"
+#         for row in reader:
+#             cursor.execute(sql, row)
+#     commit_connection()
 
 
 def fill_questions():
@@ -112,7 +112,6 @@ def fill_all():
     create_connection()
     fill_countries()
     fill_cities()
-    fill_comments()
     fill_questions()
     commit_connection()
 
@@ -152,7 +151,10 @@ def add_player(user):
 def log_in(username, password):
     sql = "SELECT * FROM carmen_sandiego.players WHERE user_name='%s'" % (username)
     cursor.execute(sql)
-    res = cursor.fetchall()[0]
+    try:
+        res = cursor.fetchall()[0]
+    except:
+        return -1
 
     salt = res[3]
     hash = res[2]
@@ -181,14 +183,25 @@ def update_last_played(id):
 #     except:
 #         print("Friendship exists already ")
 
+def isRealUsername(username):
+    sql = '''SELECT user_name From players'''
+    cursor.execute(sql)
+    res = cursor.fetchall()
+    tup=(username,)
+    if tup in res:
+        return True
+    return False
+
+
 def add_friendship_by_username(id,username):
-    try:
-        sql = '''Insert into friendships (id_friendships_a,id_friendships_b) values((SELECT min(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')),
-                (SELECT max(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')))''' % (id, username, id,username)
-        cursor.execute(sql)
-        commit_connection()
-    except:
-        print("Friendship exists already ")
+    if(isRealUsername(username)):
+        try:
+            sql = '''Insert into friendships (id_friendships_a,id_friendships_b) values((SELECT min(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')),
+                    (SELECT max(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')))''' % (id, username, id,username)
+            cursor.execute(sql)
+            commit_connection()
+        except:
+            print("Friendship exists already")
 
 # def remove_friendship(id1, id2):
 #     sql = "DELETE FROM carmen_sandiego.friendships WHERE id_friendships_a='%s' AND id_friendships_b='%s'"

@@ -94,16 +94,16 @@ def create_questions():
     #     for row in reader:
     #         cursor.execute(sql, row)
 
-def create_comments():
-    rows = []
-    with open('src_files/gen_comments.txt', encoding='cp850') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',')
-        for row in reader:
-            rows.append((row[0], row[1]))
-    with open('parsed_csvs/comments.csv', 'w', newline='', encoding='cp850') as csvfile:
-        writer = csv.writer(csvfile, delimiter=',', quoting=1)
-        for row in rows:
-            writer.writerow(row)
+# def create_comments():
+#     rows = []
+#     with open('src_files/gen_comments.txt', encoding='cp850') as csvfile:
+#         reader = csv.reader(csvfile, delimiter=',')
+#         for row in reader:
+#             rows.append((row[0], row[1]))
+#     with open('parsed_csvs/comments.csv', 'w', newline='', encoding='cp850') as csvfile:
+#         writer = csv.writer(csvfile, delimiter=',', quoting=1)
+#         for row in rows:
+#             writer.writerow(row)
 
 def create_countries():
     rows = []
@@ -147,7 +147,6 @@ def create_countries():
 #help_create_cities()
 #create_cities()
 #create_locations()
-#create_comments()
 #create_questions()
 #create_countries()
 

@@ -22,10 +22,22 @@ def handle_sign_up():
     global entry_user_name
     global entry_first_name
     global entry_password
-    last_name = entry_last_name.get()
-    user_name = entry_user_name.get()
     first_name = entry_first_name.get()
+    if len(first_name) < 2 or len(first_name) > 20:
+        view_utils.show_error("first name must contain at least 2 characters and at most 20 characters!")
+        return
+    last_name = entry_last_name.get()
+    if len(last_name) < 2 or len(last_name) > 20:
+        view_utils.show_error("Last name must contain at least 2 characters and at most 20 characters!")
+        return
+    user_name = entry_user_name.get()
+    if len(user_name) < 2 or len(user_name) > 20:
+        view_utils.show_error("User name must contain at least 2 characters and at most 20 characters!")
+        return
     password = entry_password.get()
+    if len(password) < 2 or len(password) > 20:
+        view_utils.show_error("password must contain at least 2 characters and at most 20 characters!")
+        return
     print(password + "  " + user_name)
     response = Database_Interaction.add_player((user_name, password, first_name, last_name))
     if response == -1:

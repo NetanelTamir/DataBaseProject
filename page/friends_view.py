@@ -6,10 +6,13 @@ from page import home_view
 root = None
 entry_name = None
 name_to_delete = None
+
+
 def handle_Back_click():
     global root
     root.destroy()
     home_view.main()
+
 
 def handle_remove_click():
     global name_to_delete
@@ -20,6 +23,7 @@ def handle_remove_click():
     root.destroy()
     root = None
     main()
+
 
 def handle_add_click():
     global entry_name
@@ -32,14 +36,13 @@ def handle_add_click():
     main()
 
 
-
 def callback(event):
     selection = event.widget.curselection()
     global name_to_delete
     if selection:
         index = selection[0]
         data = event.widget.get(index)
-        name_to_delete=data
+        name_to_delete = data
 
 
 def main():
@@ -49,17 +52,10 @@ def main():
     root = tk.Tk()
     view_utils.init_root(root, "friendship view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "friends.png",relx=0.4,rely=0)
-
+    view_utils.add_title_image(root, "friends.png", relx=0.4, rely=0)
     PLAYER = home_view.PLAYER
-    # root.grid_rowconfigure(1, {'minsize': 110})
-    # for i in range(2, 10):
-    #     root.grid_rowconfigure(i, {'minsize': 65})
-    # for i in range(0, 10):
-    #     root.grid_columnconfigure(i, {'minsize': 60})
-
     listbox = tk.Listbox(root, width=30, height=14, font=("Helvetica", 14))
-    listbox.place(relx=0.1,rely=0.15,width=200,height=200)
+    listbox.place(relx=0.1, rely=0.15, width=200, height=200)
     listbox.bind("<<ListboxSelect>>", callback)
 
     user_label = tk.Label(
@@ -89,7 +85,7 @@ def main():
         bg="green",
         fg="black",
         command=lambda: handle_add_click()
-    ).place(x=400, y=110  )
+    ).place(x=400, y=110)
     yscroll = tk.Scrollbar(command=listbox.yview, orient=tk.VERTICAL)
     yscroll.place(x=264, y=72, height=200)
     listbox.configure(yscrollcommand=yscroll.set)

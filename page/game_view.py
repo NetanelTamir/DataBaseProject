@@ -1,13 +1,12 @@
 import tkinter as tk
 
 import PIL
-from PIL import Image, ImageTk
 from PIL import Image
+from PIL import Image, ImageTk
 
-from core import utils
-from core.Country import Country
-from page import signup_view, home_view, view_utils, Winner_view, lost_view
 from Database_Interaction import add_favorite_location
+from core import utils
+from page import home_view, view_utils, Winner_view, lost_view
 
 root = None
 GAME = None
@@ -139,17 +138,10 @@ def flight_click():
 
 
 def handle_add_to_favorite(place):
-    add_favorite_location(home_view.PLAYER[0],place)
+    add_favorite_location(home_view.PLAYER[0], place)
+
 
 def favorite_locations_handle_click():
-    # listbox = tk.Listbox(root, width=14, height=12, font=("Helvetica", 14))
-    # listbox.grid(row=2, rowspan=4, columnspan=2, column=1)
-    # listbox.bind("<<ListboxSelect>>", callback)
-
-    # listbox.configure(yscrollcommand=yscroll.set)
-    # xscroll = tk.Scrollbar(command=listbox.xview, orient=tk.HORIZONTAL)
-    # xscroll.place(x=60, y=390, width=175)
-
     global canvas
     list_of_poc = country_object.get_locations()
     place_lables = []
@@ -163,9 +155,8 @@ def favorite_locations_handle_click():
     for i in range(1, 6):
         frame.grid_columnconfigure(i, {'minsize': 48})
 
-
     for i in range(len(list_of_poc)):
-        if i %2 == 0:
+        if i % 2 == 0:
             back_ground = "white"
         else:
             back_ground = "#007fff"
@@ -178,12 +169,7 @@ def favorite_locations_handle_click():
             width=26,
             state='readonly'
         ).grid(row=i, column=1)
-        #tk.Entry(entry).configure(state='disabled')
         place_lables.append(entry)
-        # xscroll = tk.Scrollbar(frame,command=tk.Entry(place_lables[i]).xview, width=12, orient=tk.HORIZONTAL)
-        # xscroll.grid(row=i, column=2)
-        # tk.Entry(place_lables[i]).configure(xscrollcommand=xscroll.set)
-        #place_lables[i].place(relx=0, rely=i * 0.1)
         type_lables.append(tk.Label(
             frame,
             text=list_of_poc[i][2],
@@ -192,41 +178,47 @@ def favorite_locations_handle_click():
             fg="black",
             width=6,
         ).grid(row=i, column=2))
-        #type_lables[i].place(relx=0.62, rely=i * 0.1)
-    # for i in place_lables:
-    #     tk.Entry(i).configure(state="disabled")
     frame.update()
-    if len(list_of_poc)>=1:
-        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10),bg="white",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[0][0])).place(relx=0.8, rely=-0.02))
+    if len(list_of_poc) >= 1:
+        buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="white",
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[0][0])).place(relx=0.8,
+                                                                                                              rely=-0.02))
     if len(list_of_poc) >= 2:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="#007fff",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[1][0])).place(relx=0.8, rely=0.08))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[1][0])).place(relx=0.8,
+                                                                                                              rely=0.08))
     if len(list_of_poc) >= 3:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="white",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[2][0])).place(relx=0.8, rely=0.18))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[2][0])).place(relx=0.8,
+                                                                                                              rely=0.18))
     if len(list_of_poc) >= 4:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="#007fff",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[3][0])).place(relx=0.8, rely=0.28))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[3][0])).place(relx=0.8,
+                                                                                                              rely=0.28))
     if len(list_of_poc) >= 5:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="white",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[4][0])).place(relx=0.8, rely=0.38))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[4][0])).place(relx=0.8,
+                                                                                                              rely=0.38))
     if len(list_of_poc) >= 6:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="#007fff",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[5][0])).place(relx=0.8, rely=0.48))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[5][0])).place(relx=0.8,
+                                                                                                              rely=0.48))
     if len(list_of_poc) >= 7:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="white",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[6][0])).place(relx=0.8, rely=0.58))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[6][0])).place(relx=0.8,
+                                                                                                              rely=0.58))
     if len(list_of_poc) >= 8:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="#007fff",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[7][0])).place(relx=0.8, rely=0.68))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[7][0])).place(relx=0.8,
+                                                                                                              rely=0.68))
     if len(list_of_poc) >= 9:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="white",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[8][0])).place(relx=0.8, rely=0.78))
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[8][0])).place(relx=0.8,
+                                                                                                              rely=0.78))
     if len(list_of_poc) >= 10:
         buttons.append(tk.Button(frame, text='ADD', width=6, font=("Helvetica", 10), bg="#007fff",
-                        fg="black", command=lambda: handle_add_to_favorite(list_of_poc[9][0])).place(relx=0.8, rely=0.88))
-
+                                 fg="black", command=lambda: handle_add_to_favorite(list_of_poc[9][0])).place(relx=0.8,
+                                                                                                              rely=0.88))
 
     canvas.create_window(152, 152, window=frame, width=300, height=300)
 

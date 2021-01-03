@@ -5,19 +5,22 @@ from page import home_view
 
 root = None
 entry_name = None
-url_place= None
+url_place = None
 NUM_OF_CHARACTERS_IN_ROW = 38
 currentLocationId = -1
 favoriteLocations = None
+
+
 def handle_Back_click():
     global root
     root.destroy()
     home_view.main()
 
+
 def handle_remove_click():
     global entry_name
     global root
-    if(currentLocationId == -1):
+    if (currentLocationId == -1):
         return
     Database_Interaction.remove_favorite_location(home_view.PLAYER[0], currentLocationId)
     entry_name = None
@@ -25,18 +28,20 @@ def handle_remove_click():
     root = None
     main()
 
+
 def splitByLength(data):
     splitedData = data.split(" ")
     finalStr = ""
     counter = 0
     for word in splitedData:
-        if(counter + len(word) >= NUM_OF_CHARACTERS_IN_ROW):
+        if (counter + len(word) >= NUM_OF_CHARACTERS_IN_ROW):
             finalStr += "\n" + word + " "
             counter = len(word)
         else:
             counter += len(word)
             finalStr += word + " "
     return finalStr
+
 
 def callback(event):
     global favoriteLocations
@@ -51,12 +56,12 @@ def callback(event):
             if item[1] == data:
                 currentLocationId = item[0]
                 dataToShow = item[5]
-                url=item[4]
+                url = item[4]
                 entry_name.configure(state='normal')
                 url_place.configure(state='normal')
-                entry_name.delete("1.0","end")
+                entry_name.delete("1.0", "end")
                 entry_name.insert("1.0", dataToShow)
-                url_place.delete("1.0","end")
+                url_place.delete("1.0", "end")
                 url_place.insert("1.0", url)
                 entry_name.configure(state='disabled')
                 url_place.configure(state='disabled')
@@ -75,7 +80,7 @@ def main():
     root = tk.Tk()
     view_utils.init_root(root, "favorite locations view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "favorite_locations.png",relx=0.27,rely=0)
+    view_utils.add_title_image(root, "favorite_locations.png", relx=0.27, rely=0)
 
     PLAYER = home_view.PLAYER
     root.grid_rowconfigure(1, {'minsize': 110})
@@ -95,14 +100,14 @@ def main():
         width=17,
     ).place(x=408, y=60)
     global entry_name
-    entry_name = tk.Text(width=20,wrap="word",master=root)
+    entry_name = tk.Text(width=20, wrap="word", master=root)
     entry_name.configure(state='disabled')
-    entry_name.place(x=320, y=100,height=200,width=300)
+    entry_name.place(x=320, y=100, height=200, width=300)
 
     global url_place
     url_place = tk.Text(width=20, master=root)
     url_place.configure(state='disabled')
-    url_place.place(x=320, y=350,height=30,width=300)
+    url_place.place(x=320, y=350, height=30, width=300)
 
     url_label = tk.Label(
         text="URL",
@@ -110,7 +115,6 @@ def main():
         bg="black",
         width=17,
     ).place(x=408, y=320)
-
 
     remove_favorite_location = tk.Button(
         root,

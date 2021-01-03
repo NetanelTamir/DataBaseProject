@@ -1,13 +1,14 @@
 import csv
 
+
 def help_create_cities():
     rows = []
-    with open('src_files/worldcities.csv', encoding='cp850') as csvfile,open('parsed_csvs/countries.csv',
-                                                                               encoding='cp850') as csvfile2:
-        reader2=csv.reader(csvfile2, delimiter=',')
-        cities_dict={}
-        for index,value in enumerate(reader2):
-            cities_dict[value[0]]=index+1
+    with open('src_files/worldcities.csv', encoding='cp850') as csvfile, open('parsed_csvs/countries.csv',
+                                                                              encoding='cp850') as csvfile2:
+        reader2 = csv.reader(csvfile2, delimiter=',')
+        cities_dict = {}
+        for index, value in enumerate(reader2):
+            cities_dict[value[0]] = index + 1
         reader = csv.reader(csvfile, delimiter=',')
         cities = []
         for row in reader:
@@ -15,13 +16,14 @@ def help_create_cities():
         csvfile.seek(0)
         for row in reader:
             if sum(row[1] in s for s in cities) == 1:
-                if(row[4] in cities_dict.keys()):
+                if (row[4] in cities_dict.keys()):
                     rows.append((row[1], cities_dict[row[4]]))
 
     with open('src_files/worldcities2.csv', 'w', newline='', encoding='cp850') as csvfile:
         writer = csv.writer(csvfile, delimiter=',', quoting=1)
         for row in rows:
             writer.writerow(row)
+
 
 def create_cities():
     rows = []
@@ -48,8 +50,8 @@ def create_cities():
         for row in rows:
             writer.writerow(row)
 
-    #query = "LOAD DATA INFILE 'cities.csv' INTO TABLE carmen_sandiego.cities"
-    #cursor.execute(query)
+    # query = "LOAD DATA INFILE 'cities.csv' INTO TABLE carmen_sandiego.cities"
+    # cursor.execute(query)
 
     # with open('cities.csv', encoding='cp850') as csvfile:
     #     reader = csv.reader(csvfile, delimiter=',')
@@ -57,18 +59,20 @@ def create_cities():
     #     for row in reader:
     #         cursor.execute(sql, row)
 
+
 def create_locations():
     rows = []
-    with open('src_files/wikivoyage-listings-en.csv', encoding='cp850') as csvfile, open('parsed_csvs/cities.csv',encoding='cp850') as csvfile2:
+    with open('src_files/wikivoyage-listings-en.csv', encoding='cp850') as csvfile, open('parsed_csvs/cities.csv',
+                                                                                         encoding='cp850') as csvfile2:
         reader = csv.reader(csvfile, delimiter=',')
         reader2 = csv.reader(csvfile2, delimiter=',')
         cities = []
         indexes = []
-        for index,row2 in enumerate(reader2):
+        for index, row2 in enumerate(reader2):
             cities.append(row2[0])
-            indexes.append(index+1)
+            indexes.append(index + 1)
         for row in reader:
-            for index,city in zip(indexes,cities):
+            for index, city in zip(indexes, cities):
                 if (row[0].startswith(city)):
                     rows.append((row[2], row[1], index, row[12], row[23]))
                     break
@@ -94,6 +98,7 @@ def create_questions():
     #     for row in reader:
     #         cursor.execute(sql, row)
 
+
 # def create_comments():
 #     rows = []
 #     with open('src_files/gen_comments.txt', encoding='cp850') as csvfile:
@@ -112,7 +117,7 @@ def create_countries():
         reader = csv.reader(csvfile, delimiter='\t')
 
         reader2 = csv.reader(csvfile2, delimiter=',')
-        for row1,row2 in zip(reader,reader2):
+        for row1, row2 in zip(reader, reader2):
             row1.append(str(row2[1]).strip())
             row1.append(row2[3])
             row1.append(row2[8])
@@ -124,9 +129,8 @@ def create_countries():
         for row in rows:
             writer.writerow(row)
 
-
-    #query = "LOAD DATA LOCAL INFILE 'parsed_csvs/countries.csv' INTO TABLE carmen_sandiego.countries"
-    #cursor.execute(query)
+    # query = "LOAD DATA LOCAL INFILE 'parsed_csvs/countries.csv' INTO TABLE carmen_sandiego.countries"
+    # cursor.execute(query)
 
     # with open('parsed_csvs/countries.csv', encoding='cp850') as csvfile:
     #     reader = csv.reader(csvfile, delimiter=',')
@@ -144,10 +148,10 @@ def create_countries():
     #             row[9] = 0
     #         cursor.execute(sql, row)
 
-#help_create_cities()
-#create_cities()
-#create_locations()
-#create_questions()
-#create_countries()
+# help_create_cities()
+# create_cities()
+# create_locations()
+# create_questions()
+# create_countries()
 
-#connection.commit()
+# connection.commit()

@@ -1,7 +1,8 @@
 import tkinter as tk
-from tkinter import messagebox
-from page import login_view, view_utils
+
 import Database_Interaction
+from page import login_view, view_utils
+
 entry_first_name = None
 entry_password = None
 entry_user_name = None
@@ -11,10 +12,12 @@ goBack = None
 signUpButton = None
 root = None
 
+
 def handle_go_backclick():
     global root
     root.destroy()
     login_view.main()
+
 
 def handle_sign_up():
     global root
@@ -47,7 +50,9 @@ def handle_sign_up():
     if response == 0:
         view_utils.show_message("success!", "welcome " + first_name + " " + last_name)
         root.destroy()
-        login_view.after_signup_main(user_name,password)
+        login_view.after_signup_main(user_name, password)
+
+
 def main():
     global entry_last_name
     global entry_user_name
@@ -61,7 +66,7 @@ def main():
 
     view_utils.init_root(root, "sign-up view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_title_image(root, "signUp.png",0.38,0)
+    view_utils.add_title_image(root, "signUp.png", 0.38, 0)
     view_utils.classic_grid(root)
 
     first_name_label = tk.Label(
@@ -79,7 +84,7 @@ def main():
         width=20,
     ).grid(row=4, column=3, sticky='NW')
     entry_last_name = tk.Entry(width=20, text="last name", master=root)
-    entry_last_name.grid(row=4,column=5,sticky='NW')
+    entry_last_name.grid(row=4, column=5, sticky='NW')
     user_label = tk.Label(
         text="enter user name",
         fg="white",
@@ -114,6 +119,5 @@ def main():
         fg="white",
         command=handle_sign_up
     ).grid(row=7, column=5)
-
 
     root.mainloop()

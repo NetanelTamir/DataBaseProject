@@ -9,6 +9,7 @@ NUMBER_OF_COUNTRIES_IN_LEVEL = 4
 HINT_COST = 3
 FLIGHT_COST = 8
 
+
 class Game():
     def __init__(self):
         self.number_of_levels = NUMBER_OF_LEVELS
@@ -22,34 +23,35 @@ class Game():
     """
         Get next level
     """
+
     def get_level(self):
         return self.levels[self.current_level]
-
 
     """
         Update current level once a level is done
     """
+
     def level_done(self):
         self.current_level += 1
-
 
     """
         Check if all levels are done and that player is on time
     """
+
     def is_game_won(self):
         return self.current_level >= self.number_of_levels and self.time_left >= 0
-
 
     """
         Check if there is still time left
     """
+
     def is_game_lost(self):
         return self.time_left <= 0
-
 
     """
         Generate levels for game
     """
+
     def create_levels(self, src):
         l = []
         for i in range(self.number_of_levels):
@@ -63,20 +65,19 @@ class Game():
         print("create levels")
         return l
 
-
     """
         Update time after hint
     """
+
     def user_used_hint(self):
         self.time_left -= HINT_COST
-
 
     """
         Update time after flight
     """
+
     def user_switched_country(self):
         self.time_left -= FLIGHT_COST
-
 
     def get_score(self):
         score = self.time_left / NUMBER_OF_HOURS * 100. + 20 * self.current_level

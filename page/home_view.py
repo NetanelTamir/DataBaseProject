@@ -70,19 +70,12 @@ def main():
     id = PLAYER[0]
     PLAYER = get_player_by_id(id)[0]
     firstName = PLAYER[4]
-    lastName = PLAYER[5]
     lastPlay = PLAYER[6]
     userName = PLAYER[1]
     delta = datetime.datetime.today().date() - lastPlay
     root = tk.Tk()
     view_utils.init_root(root, "home view")
     view_utils.add_background(root, "Earth-icon.png")
-
-    # root.grid_rowconfigure(1, {'minsize': 110})
-    # for i in range(2, 10):
-    #     root.grid_rowconfigure(i, {'minsize': 64})
-    # for i in range(0, 10):
-    #     root.grid_columnconfigure(i, {'minsize': 45})
     label = tk.Label(
         text="Welcome " + firstName + "!\n Your last game was " + str(delta.days) + " days ago.",
         font=("Helvetica", 14),

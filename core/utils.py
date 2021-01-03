@@ -1,16 +1,16 @@
-from concurrent.futures import thread
+import random
 
 from Database_Interaction import *
-import random
-#from core.Game import HINT_COST, FLIGHT_COST, NUMBER_OF_HOURS
 
-QUESTION_TYPE = {0:"population", 1:"currency", 2:"flag", 3:"capital", 4:"language", 5:"map", 6:"incorrect"}
-ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital":2, "population":3, "language":5, "flag":6, "map":1, "currency":4}
-WETHER_DICT = {"1":"a","2":"b","3":"c","4":"d"}
+QUESTION_TYPE = {0: "population", 1: "currency", 2: "flag", 3: "capital", 4: "language", 5: "map", 6: "incorrect"}
+ATTR_LOCATION_IN_COUNTRY_ARRAY = {"capital": 2, "population": 3, "language": 5, "flag": 6, "map": 1, "currency": 4}
+WETHER_DICT = {"1": "a", "2": "b", "3": "c", "4": "d"}
 
 """
     Generate n new countries which are not in given set
 """
+
+
 def get_new_countries(countries_set, number_of_countries):
     countries = []
     total_countries = get_number_of_countries()
@@ -27,6 +27,8 @@ def get_new_countries(countries_set, number_of_countries):
 """
     Get random question type
 """
+
+
 def get_random_question_type():
     idx = random.randrange(7)
     return QUESTION_TYPE[idx]
@@ -35,6 +37,8 @@ def get_random_question_type():
 """
     Generate questions for country
 """
+
+
 def generate_questions(country):
     questions = []
     for type in country.questions_types:
@@ -49,10 +53,12 @@ def generate_questions(country):
 """
     Generate real question from generic one
 """
+
+
 def build_real_question_from_generic_question(generic_question, type, country):
     ret = []
     attr = country.data[ATTR_LOCATION_IN_COUNTRY_ARRAY[type]]
-    if type in ["flag","map"]:
+    if type in ["flag", "map"]:
         generic_question = generic_question.replace("_ATTR_", "")
         ret.append(True)
         ret.append(generic_question)
@@ -70,21 +76,25 @@ def build_real_question_from_generic_question(generic_question, type, country):
 """
     Get instruction for game
 """
+
+
 def get_instructions():
     NUMBER_OF_HOURS = 168
     HINT_COST = 1
     FLIGHT_COST = 8
     return f"Welcome agent 007! We've got intel on Carmen San Diego's whereabouts. We're sending you to catch her!\n" \
-        f"You need to act quickly - she's moving fast and she's about to commit a serious crime by the end of" \
-        f" this week, according to our intel. You've got {NUMBER_OF_HOURS} to catch her!\n" \
-        f"You can ask people around to see if they saw her, but it will cost you time; {HINT_COST} hour for " \
-        f"questioning people and {FLIGHT_COST} hours for switching countries. Keep that in mind before making " \
-        f"any move!\nWe're counting on you. Good luck!"
+           f"You need to act quickly - she's moving fast and she's about to commit a serious crime by the end of" \
+           f" this week, according to our intel. You've got {NUMBER_OF_HOURS} to catch her!\n" \
+           f"You can ask people around to see if they saw her, but it will cost you time; {HINT_COST} hour for " \
+           f"questioning people and {FLIGHT_COST} hours for switching countries. Keep that in mind before making " \
+           f"any move!\nWe're counting on you. Good luck!"
 
 
 """
     Get country description
 """
+
+
 def get_country_description(country_data):
     # country_name, capital_name, population, currency, languages, flag, region, area, gdp, climate
     desc = f"Welcome to {country_data[1]}! Here is some infromation about this wonderful country:\n" \
@@ -92,9 +102,9 @@ def get_country_description(country_data):
            f"currency is called the {country_data[4]}.\nWe are located in the {country_data[7]} region.\n"
     if country_data[2] != "":
         desc += f"We also have a population of {country_data[3]} people.\n"
-    if country_data[10] != "" and country_data[10] != "5" and country_data[10] != "0": # climate
-        climate=""
-        if(country_data[10]==1):
+    if country_data[10] != "" and country_data[10] != "5" and country_data[10] != "0":  # climate
+        climate = ""
+        if (country_data[10] == 1):
             climate = "Our climate is - dry tropical or tundra and ice"
         if (country_data[10] == 2):
             climate = "Our climate is - wet tropical"
@@ -109,6 +119,8 @@ def get_country_description(country_data):
 """
     Generate incorrect question
 """
+
+
 def get_incorrect_question():
     all_questions = get_questions_by_type("incorrect")
     idx = random.randrange(len(all_questions))
@@ -121,5 +133,6 @@ def get_random_city_from_list_by_id(id):
     idx = random.randrange(len(all_cities))
     return all_cities[idx]
 
+
 def update_score(player, score):
-    update_highscore_table(player[0],score)
+    update_highscore_table(player[0], score)

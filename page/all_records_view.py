@@ -12,7 +12,6 @@ def handle_Back_click():
 
 
 def main():
-    id = home_view.PLAYER[0]
     global window
     global player_g
     window = tk.Tk()

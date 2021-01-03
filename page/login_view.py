@@ -21,7 +21,7 @@ def handle_click():
         print("The button was clicked: " + "----" + entry_pass.get())
         username = entry_name.get()
         password = entry_pass.get()
-        if len(userName) == 0 or len(password) == 0:
+        if len(username) == 0 or len(password) == 0:
             view_utils.show_error("missing username and/or password!")
             return
         id = Database_Interaction.log_in(username, password)

@@ -2,6 +2,7 @@ import tkinter as tk
 
 import Database_Interaction
 from page import login_view, view_utils
+from core import event_handler
 
 entry_first_name = None
 entry_password = None
@@ -26,29 +27,14 @@ def handle_sign_up():
     global entry_first_name
     global entry_password
     first_name = entry_first_name.get()
-    if len(first_name) < 2 or len(first_name) > 20:
-        view_utils.show_error("first name must contain at least 2 characters and at most 20 characters!")
-        return
     last_name = entry_last_name.get()
-    if len(last_name) < 2 or len(last_name) > 20:
-        view_utils.show_error("Last name must contain at least 2 characters and at most 20 characters!")
-        return
     user_name = entry_user_name.get()
-    if len(user_name) < 2 or len(user_name) > 20:
-        view_utils.show_error("User name must contain at least 2 characters and at most 20 characters!")
-        return
     password = entry_password.get()
-    if len(password) < 2 or len(password) > 20:
-        view_utils.show_error("password must contain at least 2 characters and at most 20 characters!")
-        return
-    print(password + "  " + user_name)
-    response = Database_Interaction.add_player((user_name, password, first_name, last_name))
+    response, msg = event_handler.add_player(user_name, password, first_name, last_name)
     if response == -1:
-        view_utils.show_error("user-name already exist")
-    if response == -2:
-        view_utils.show_error("sign up failed")
+        view_utils.show_error(msg)
     if response == 0:
-        view_utils.show_message("success!", "welcome " + first_name + " " + last_name)
+        view_utils.show_message("success", msg)
         root.destroy()
         login_view.after_signup_main(user_name, password)
 

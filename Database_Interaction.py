@@ -9,7 +9,7 @@ from mysql.connector import Error
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
                                      user='root',
-                                     password='netanel')
+                                     password='omer123')
 cursor = None
 
 
@@ -170,18 +170,22 @@ def add_friendship_by_username(id, username):
         try:
             sql = '''Insert into friendships (id_friendships_a,id_friendships_b) values((SELECT min(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')),
                     (SELECT max(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')))''' % (
-            id, username, id, username)
+                id, username, id, username)
             cursor.execute(sql)
             commit_connection()
+            return 1
         except:
             print("Friendship exists already")
+            return -1
+    else:
+        return -2
 
 
 def remove_friendship_by_username(id, username):
     try:
         sql = '''Delete from friendships where(id_friendships_a = (SELECT min(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')) and id_friendships_b =
                 (SELECT max(id_players) FROM carmen_sandiego.players WHERE (id_players='%s' or user_name='%s')))''' % (
-        id, username, id, username)
+            id, username, id, username)
         cursor.execute(sql)
         commit_connection()
     except:
@@ -223,7 +227,7 @@ def get_highscores_no_repeats_friends(id):
              WHERE ((high_scores.id_players in (SELECT id_friendships_a FROM friendships WHERE id_friendships_b='%s') or
 		     high_scores.id_players in (SELECT id_friendships_b FROM friendships WHERE id_friendships_a='%s' ) or
 		      high_scores.id_players = '%s')) and players.id_players=high_scores.id_players group by high_scores.id_players order by score DESC limit 10''' % (
-    id, id, id)
+        id, id, id)
     cursor.execute(sql)
     res = cursor.fetchall()
     return res

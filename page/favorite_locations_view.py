@@ -2,6 +2,7 @@ import tkinter as tk
 import Database_Interaction
 from page import view_utils
 from page import home_view
+from core import  event_handler
 
 root = None
 entry_name = None
@@ -20,27 +21,11 @@ def handle_Back_click():
 def handle_remove_click():
     global entry_name
     global root
-    if (currentLocationId == -1):
-        return
-    Database_Interaction.remove_favorite_location(home_view.PLAYER[0], currentLocationId)
-    entry_name = None
-    root.destroy()
-    root = None
-    main()
-
-
-def splitByLength(data):
-    splitedData = data.split(" ")
-    finalStr = ""
-    counter = 0
-    for word in splitedData:
-        if (counter + len(word) >= NUM_OF_CHARACTERS_IN_ROW):
-            finalStr += "\n" + word + " "
-            counter = len(word)
-        else:
-            counter += len(word)
-            finalStr += word + " "
-    return finalStr
+    if event_handler.remove_favorite_location(home_view.PLAYER[0], currentLocationId) != -1:
+        entry_name = None
+        root.destroy()
+        root = None
+        main()
 
 
 def callback(event):

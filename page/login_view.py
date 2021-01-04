@@ -2,6 +2,7 @@ import tkinter as tk
 
 import Database_Interaction
 from page import signup_view, home_view, view_utils
+from core import event_handler
 
 entry_name = None
 entry_pass = None
@@ -17,18 +18,15 @@ def handle_click():
     global entry_first_name
     global entry_password
     global root
-    if (entry_name and entry_pass):
-        print("The button was clicked: " + "----" + entry_pass.get())
-        username = entry_name.get()
-        password = entry_pass.get()
-        if len(username) == 0 or len(password) == 0:
-            view_utils.show_error("missing username and/or password!")
-            return
-        id = Database_Interaction.log_in(username, password)
-        if (id > -1):
-            home_view.PLAYER = Database_Interaction.get_player_by_id(id)[0]
-            root.destroy()
-            home_view.main()
+    username = entry_name.get()
+    password = entry_pass.get()
+    response, msg = event_handler.log_in(username, password)
+    if response == -1:
+        view_utils.show_error(msg)
+    else:
+        home_view.PLAYER = msg
+        root.destroy()
+        home_view.main()
 
 
 def handle_sign_up():

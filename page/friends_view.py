@@ -2,6 +2,7 @@ import tkinter as tk
 import Database_Interaction
 from page import view_utils
 from page import home_view
+from core import event_handler
 
 root = None
 entry_name = None
@@ -18,8 +19,11 @@ def handle_remove_click():
     global name_to_delete
     global root
     user_delete = name_to_delete
-    Database_Interaction.remove_friendship_by_username(home_view.PLAYER[0], user_delete)
-    entry_name = None
+    response, msg = event_handler.remove_friend(home_view.PLAYER[0], user_delete)
+    if response == -1:
+        view_utils.show_error(msg)
+        return
+    name_to_delete = None
     root.destroy()
     root = None
     main()
@@ -29,8 +33,15 @@ def handle_add_click():
     global entry_name
     global root
     user_add = entry_name.get()
-    Database_Interaction.add_friendship_by_username(home_view.PLAYER[0], user_add)
-    entry_name = None
+    response, msg = event_handler.add_friend(home_view.PLAYER[0], home_view.PLAYER[1], user_add)
+    if response == -1:
+        view_utils.show_error(msg)
+        return
+    if response == -2:
+        view_utils.show_error(msg)
+        entry_name.delete(0, 'end')
+        return
+    entry_name.delete(0, 'end')
     root.destroy()
     root = None
     main()

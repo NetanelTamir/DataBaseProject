@@ -16,9 +16,9 @@ def get_new_countries(countries_set, number_of_countries):
     total_countries = get_number_of_countries()
 
     for i in range(number_of_countries):
-        chosen = random.randrange(total_countries)
+        chosen = random.randrange(1,total_countries)
         while chosen in countries_set:
-            chosen = random.randrange(total_countries)
+            chosen = random.randrange(1,total_countries)
         countries.append(chosen)
 
     return countries

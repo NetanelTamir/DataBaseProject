@@ -15,7 +15,7 @@ class Game():
         self.number_of_levels = NUMBER_OF_LEVELS
         self.current_level = 0
         self.countries_used = set()
-        self.start = random.randrange(get_number_of_countries())
+        self.start = random.randrange(1, get_number_of_countries())
         self.countries_used.add(self.start)
         self.levels = self.create_levels(self.start)
         self.time_left = NUMBER_OF_HOURS

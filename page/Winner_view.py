@@ -40,7 +40,7 @@ def main(player, score):
     global userName
     root = tk.Tk()
     view_utils.init_root(root, "you won")
-    view_utils.add_background(root, "carmen_winner.jpg")
+    view_utils.add_background(root, "images/logos/carmen_winner.jpg")
     view_utils.add_title_image(root, "winner.png", 0.3, 0)
 
     score_bunner = tk.Label(

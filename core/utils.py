@@ -16,9 +16,9 @@ def get_new_countries(countries_set, number_of_countries):
     total_countries = get_number_of_countries()
 
     for i in range(number_of_countries):
-        chosen = random.randrange(1,total_countries)
+        chosen = random.randrange(1, total_countries)
         while chosen in countries_set:
-            chosen = random.randrange(1,total_countries)
+            chosen = random.randrange(1, total_countries)
         countries.append(chosen)
 
     return countries
@@ -136,3 +136,4 @@ def get_random_city_from_list_by_id(id):
 
 def update_score(player, score):
     update_highscore_table(player[0], score)
+

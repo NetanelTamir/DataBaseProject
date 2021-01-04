@@ -5,7 +5,7 @@ from PIL import Image
 from PIL import Image, ImageTk
 
 from Database_Interaction import add_favorite_location
-from core import utils
+from core import utils, event_handler
 from page import home_view, view_utils, Winner_view, lost_view
 
 root = None
@@ -29,28 +29,26 @@ def handle_flight_choose(flight_obj):
     global mapCanvas
     global flight
     id = flight_obj.data[0]
-    if LEVEL.is_real_dest(id):
-        GAME.level_done()
-        if GAME.is_game_won():
-            root.destroy()
-            Winner_view.main(home_view.PLAYER, GAME.get_score())
-        else:
-            GAME.user_switched_country()
-            update_time()
-            LEVEL = GAME.get_level()
-            country_object = LEVEL.get_src_country()
-            flight = LEVEL.get_possible_destinations()
-            country = country_object.get_country_name()
-            city = country_object.get_src_city()
-            map_src = country_object.get_map()
-            country_city_banner.config(text=country + " , " + city)
-            handle_country_info_click()
-            mapCanvas.delete("all")
-            map_img = Image.open("images/maps/" + map_src)
-            map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
-            root.map = mapImage = ImageTk.PhotoImage(map_img)
-            mapCanvas.create_image(100, 100, image=mapImage)
-    else:
+    response = event_handler.handle_choose_id(id, GAME, LEVEL)
+    if response == 2:
+        root.destroy()
+        Winner_view.main(home_view.PLAYER, GAME.get_score())
+    if response == 1:
+        update_time()
+        LEVEL = GAME.get_level()
+        country_object = LEVEL.get_src_country()
+        flight = LEVEL.get_possible_destinations()
+        country = country_object.get_country_name()
+        city = country_object.get_src_city()
+        map_src = country_object.get_map()
+        country_city_banner.config(text=country + " , " + city)
+        handle_country_info_click()
+        mapCanvas.delete("all")
+        map_img = Image.open("images/maps/" + map_src)
+        map_img = map_img.resize((200, 200), PIL.Image.ANTIALIAS)
+        root.map = mapImage = ImageTk.PhotoImage(map_img)
+        mapCanvas.create_image(100, 100, image=mapImage)
+    if response == -1:
         inco = utils.get_incorrect_question()
         GAME.user_switched_country()
         GAME.user_switched_country()

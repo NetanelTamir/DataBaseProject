@@ -61,10 +61,10 @@ def add_friend(player_id, player_name, friend_to_add):
 
 def handle_choose_id(id, GAME, LEVEL):
     if LEVEL.is_real_dest(id):
+        GAME.user_switched_country()
         GAME.level_done()
         if GAME.is_game_won():
             return 2
-        GAME.user_switched_country()
         return 1
     else:
         return -1

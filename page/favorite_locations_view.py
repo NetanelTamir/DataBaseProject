@@ -45,9 +45,15 @@ def callback(event):
                 entry_name.configure(state='normal')
                 url_place.configure(state='normal')
                 entry_name.delete("1.0", "end")
-                entry_name.insert("1.0", dataToShow)
+                if not dataToShow:
+                    entry_name.insert("1.0", "No info available")
+                else:
+                    entry_name.insert("1.0", dataToShow)
                 url_place.delete("1.0", "end")
-                url_place.insert("1.0", url)
+                if not url:
+                    url_place.insert("1.0", "No info available")
+                else:
+                    url_place.insert("1.0", url)
                 entry_name.configure(state='disabled')
                 url_place.configure(state='disabled')
 

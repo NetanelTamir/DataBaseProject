@@ -81,4 +81,5 @@ class Game():
 
     def get_score(self):
         score = ((self.time_left / NUMBER_OF_HOURS) * 100.) * 5 + 20 * self.current_level
-        return round(score)
+        score =  max(round(score),0)
+        return score

@@ -29,6 +29,7 @@ def handle_flight_choose(flight_obj):
     global mapCanvas
     global flight
     id = flight_obj.data[0]
+
     response = event_handler.handle_choose_id(id, GAME, LEVEL)
     if response == 2:
         root.destroy()

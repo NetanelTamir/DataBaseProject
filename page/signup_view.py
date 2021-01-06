@@ -53,6 +53,7 @@ def main():
     view_utils.init_root(root, "sign-up view")
     view_utils.add_background(root, "Earth-icon.png")
     view_utils.add_title_image(root, "signUp.png", 0.38, 0)
+    view_utils.add_image(root, "carmen-swing-miror.png", relx=0.02, rely=0)
     view_utils.classic_grid(root)
 
     first_name_label = tk.Label(

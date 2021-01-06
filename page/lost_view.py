@@ -43,6 +43,7 @@ def main(player, score):
     view_utils.init_root(root, "you lost")
     view_utils.add_background(root, "Earth-icon.png")
     view_utils.add_title_image(root, "you_lost.png",0.25,0)
+    view_utils.add_image(root, "carmen-sad.jpg", relx=0.7, rely=0.4)
 
     score_bunner = tk.Label(
         text= str(player[4]).upper() +", Your score is: " + str(score),

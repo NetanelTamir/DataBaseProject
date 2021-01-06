@@ -63,6 +63,7 @@ def main():
     root = tk.Tk()
     view_utils.init_root(root, "friendship view")
     view_utils.add_background(root, "Earth-icon.png")
+    view_utils.add_image(root, "carmen-crouch.png", relx=0.7, rely=0.6)
     view_utils.add_title_image(root, "friends.png", relx=0.4, rely=0)
     PLAYER = home_view.PLAYER
     listbox = tk.Listbox(root, width=30, height=14, font=("Helvetica", 14))

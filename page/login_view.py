@@ -59,7 +59,8 @@ def main():
     root = tk.Tk()
     view_utils.init_root(root, "login view")
     view_utils.add_background(root, "Earth-icon.png")
-    view_utils.add_image(root, "carmensandiego-login_image.jpg", relx=-0.003, rely=0.70)
+    view_utils.add_image(root, "carmen-swing.png", relx=0.8, rely=0)
+    view_utils.add_image(root, "glass.png", relx=0.05, rely=0.6)
     view_utils.add_title_image(root, "welcome.png", 0.1, 0)
 
     view_utils.add_image(root, 'username.png', 0.07, 0.2)

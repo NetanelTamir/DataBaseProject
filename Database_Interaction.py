@@ -9,7 +9,7 @@ from mysql.connector import Error
 connection = mysql.connector.connect(host='localhost', auth_plugin='mysql_native_password',
                                      database='carmen_sandiego',
                                      user='root',
-                                     password='netanel')
+                                     password='omer123')
 cursor = None
 
 

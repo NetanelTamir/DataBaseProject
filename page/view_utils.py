@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
-from PIL import Image, ImageTk
 
+from PIL import Image, ImageTk
 
 
 def init_root(root, title_name):

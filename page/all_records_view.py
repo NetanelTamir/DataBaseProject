@@ -2,6 +2,7 @@ import tkinter as tk
 
 from Database_Interaction import get_highscores_yes_repeats
 from page import home_view, view_utils
+
 window = None
 
 def handle_Back_click():

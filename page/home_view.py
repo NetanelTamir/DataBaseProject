@@ -1,9 +1,10 @@
-import tkinter as tk
 import datetime
+import tkinter as tk
+
+from Database_Interaction import update_last_played, get_player_by_id
+from core.Game import Game
 from page import records_view, friends_view, view_utils, login_view, favorite_locations_view, all_records_view, \
     game_view
-from core.Game import Game
-from Database_Interaction import update_last_played, get_player_by_id
 
 GAME = None
 PLAYER = None

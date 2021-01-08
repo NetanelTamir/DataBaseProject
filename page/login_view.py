@@ -1,8 +1,7 @@
 import tkinter as tk
 
-import Database_Interaction
-from page import signup_view, home_view, view_utils
 from core import event_handler
+from page import signup_view, home_view, view_utils
 
 entry_name = None
 entry_pass = None

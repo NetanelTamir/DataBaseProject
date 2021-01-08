@@ -1,6 +1,9 @@
 import random
+
 from core.Country import Country
-from core.utils import get_incorrect_question, get_random_question_type, get_questions_by_type, build_real_question_from_generic_question
+from core.utils import get_incorrect_question, get_random_question_type, get_questions_by_type, \
+    build_real_question_from_generic_question
+
 
 class Level():
     def __init__(self, countries, src):

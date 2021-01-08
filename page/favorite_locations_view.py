@@ -1,8 +1,9 @@
 import tkinter as tk
+
 import Database_Interaction
-from page import view_utils
+from core import event_handler
 from page import home_view
-from core import  event_handler
+from page import view_utils
 
 root = None
 entry_name = None

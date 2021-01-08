@@ -190,7 +190,6 @@ def remove_friendship_by_username(id, username):
     except:
         print("Error Deleting friendship ")
 
-
 # Returns the ids of players who are friends with id
 
 def get_all_friendships_by_id(id):

@@ -63,7 +63,6 @@ class Game():
             level = Level(countries, src)
             src = level.get_dst()
             l.append(level)
-        print("create levels")
         return l
 
     """

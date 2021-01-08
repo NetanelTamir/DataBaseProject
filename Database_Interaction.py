@@ -175,7 +175,6 @@ def add_friendship_by_username(id, username):
             commit_connection()
             return 1
         except:
-            print("Friendship exists already")
             return -1
     else:
         return -2

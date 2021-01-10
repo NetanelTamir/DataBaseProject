@@ -7,16 +7,13 @@ import mysql.connector
 from mysql.connector import Error
 
 file = open("config", "r")
-lines=file.readlines()
-host=lines[0].split('=')[1][:-1]
-database=lines[1].split('=')[1][:-1]
-user=lines[2].split('=')[1][:-1]
-password=lines[3].split('=')[1][:-1]
+lines = file.readlines()
+host = lines[0].split('=')[1][:-1]
+database = lines[1].split('=')[1][:-1]
+user = lines[2].split('=')[1][:-1]
+password = lines[3].split('=')[1]
 file.close()
-connection = mysql.connector.connect(host=host, auth_plugin='mysql_native_password',
-                                     database=database,
-                                     user=user,
-                                     password=password)
+connection = ''
 cursor = None
 
 
@@ -24,6 +21,12 @@ def create_connection():
     try:
         global connection
         global cursor
+
+        connection = mysql.connector.connect(host=host, auth_plugin='mysql_native_password',
+                                     database=database,
+                                     user=user,
+                                     password=password)
+
         if connection.is_connected():
             db_Info = connection.get_server_info()
             print("Connected to MySQL Server version ", db_Info)
@@ -196,6 +199,7 @@ def remove_friendship_by_username(id, username):
         commit_connection()
     except:
         print("Error Deleting friendship ")
+
 
 # Returns the ids of players who are friends with id
 

@@ -84,9 +84,9 @@ def get_instructions():
     FLIGHT_COST = 8
     return f"Welcome agent 007! We've got intel on Carmen San Diego's whereabouts. We're sending you to catch her!\n" \
            f"You need to act quickly - she's moving fast and she's about to commit a serious crime by the end of" \
-           f" this week, according to our intel. You've got {NUMBER_OF_HOURS} to catch her!\n" \
-           f"You can ask people around to see if they saw her, but it will cost you time; {HINT_COST} hour for " \
-           f"questioning people and {FLIGHT_COST} hours for switching countries. Keep that in mind before making " \
+           f" this week, according to our intel. You've got 168 hours to catch her!\n" \
+           f"You can ask people around to see if they saw her, but it will cost you time; 3 hours for " \
+           f"questioning people and 8 hours for switching countries. Keep that in mind before making " \
            f"any move!\nWe're counting on you. Good luck!"
 
 

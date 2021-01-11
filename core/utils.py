@@ -79,9 +79,6 @@ def build_real_question_from_generic_question(generic_question, type, country):
 
 
 def get_instructions():
-    NUMBER_OF_HOURS = 168
-    HINT_COST = 1
-    FLIGHT_COST = 8
     return f"Welcome agent 007! We've got intel on Carmen San Diego's whereabouts. We're sending you to catch her!\n" \
            f"You need to act quickly - she's moving fast and she's about to commit a serious crime by the end of" \
            f" this week, according to our intel. You've got 168 hours to catch her!\n" \
